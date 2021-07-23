@@ -1,4 +1,13 @@
 @charset "UTF-8";
+h1, .h1 {
+  color: antiquewhite;
+  font-size: 1.5rem !important;
+}
+
+.navbar-collapse {
+  justify-content: flex-end;
+}
+
 /*!
  * Bootstrap v5.0.2 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors
