@@ -33,17 +33,17 @@ function contentLoad()
             productImageImg.setAttribute('title', 'Ours en peluche ' + product.name);
 
             const productDetail = document.createElement('div');
-            productImageDiv .appendChild(productDetail );
-            productDetail .className = 'product_detail';
+            productImageDiv.appendChild(productDetail );
+            productDetail.className = 'product_detail';
         
-               
             const productName = document.createElement('h3');
             productDetail.appendChild(productName);
+            productName.className = 'product_name';
             productName.textContent = product.name;
-        
-               
+            
             const productRate = document.createElement('p');
             productDetail.appendChild(productRate);
+            productRate.className = 'product_rate';
             productRate.textContent = product.price / 100 + " €";
         }
             

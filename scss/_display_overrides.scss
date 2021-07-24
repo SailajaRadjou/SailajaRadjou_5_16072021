@@ -1,3 +1,28 @@
+.navbar-collapse {
+    justify-content: flex-end;
+}  
+.title-center{
+    height: 50px;
+    margin: 5rem;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bolder;
+   background-color: mistyrose;
+   color: blue;
+    box-shadow: 0 5px 6px darkgray;
+}
+#content{
+    max-width: 100%;
+    margin: 5rem;
+    border: none;
+    box-shadow: 1rem 1rem 1rem 1rem mistyrose !important;
+} 
+.display_content{
+    display: flex;
+    align-items: center;
+    width:auto;
+    flex-flow: column;
+} 
 .icon-size{
     font-size: 2.2rem !important;
     color : mistyrose;
@@ -35,4 +60,9 @@
     flex-flow: column;
     justify-content: flex-end;
     width: auto;
+}
+.product_name, .product_rate{
+    font-size: 1.5rem;
+    color: blue;
+    font-weight: bold;
 }
