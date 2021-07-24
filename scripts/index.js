@@ -33,7 +33,7 @@ function contentLoad()
             productImageImg.setAttribute('title', 'Ours en peluche ' + product.name);
 
             const productDetail = document.createElement('div');
-            productLink .appendChild(productDetail );
+            productImageDiv .appendChild(productDetail );
             productDetail .className = 'product_detail';
         
                

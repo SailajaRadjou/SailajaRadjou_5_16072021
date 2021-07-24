@@ -3,9 +3,12 @@
 }  
 #content{
     max-width: 100%;
+    border: none;
+    box-shadow: 1rem 1rem 1rem 1rem mistyrose !important;
 } 
 .display_content{
     display: flex;
+    align-items: center;
     width:auto;
     flex-flow: column;
 } 
