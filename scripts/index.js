@@ -7,13 +7,18 @@ function contentLoad()
         Response.json().then((data) => 
         {
             console.log(data);
-            let display = '<div>';
+            
             for(let teddy of data)
             {
-                display += '<a> ${teddy.imageUrl}</a>';
+                let productImageDiv = document.createElement("div");
+                document.querySelector(".displaycontent").appendChild(productImageDiv);
+                productImageDiv.classList.add("productList");
+                
+                let productImageImg = document.createElement("img");
+                document.querySelector(".productList").appendChild(productImageImg);
+                productImageImg.src = teddy.imageUrl;
             }
-            display += '</div>';
-            document.querySelector('#content').innerHTML = display;
+            
         })
     ).catch(err => console.log('error : '+ err));
 }
