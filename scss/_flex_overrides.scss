@@ -1,3 +1,11 @@
 .navbar-collapse {
     justify-content: flex-end;
-}    
+}  
+#content{
+    max-width: 100%;
+} 
+.display_content{
+    display: flex;
+    width:auto;
+    flex-flow: column;
+} 

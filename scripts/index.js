@@ -5,32 +5,48 @@ contentLoad();
 function contentLoad()
 {
     let url = 'http://localhost:3000/api/teddies';
-    fetch('http://localhost:3000/api/teddies').then(function(Response){
+    fetch(url)
+    .then(function(Response){
         return Response.json();
     })
-    .then(function(data)
+    .then(function(receivedData)
+    {
+        const products = receivedData;
+        console.log(products);
+        for(let product of products)
         {
-            const articles = data;
-            console.log(articles);
-            for(let teddy of articles)
-            {
-                const productImageDiv = document.createElement("div");
-                document.querySelector(".displaycontent").appendChild(productImageDiv);
-                productImageDiv.classList.add("productList");
+            const productImageDiv = document.createElement("div");
+            document.querySelector(".display_content").appendChild(productImageDiv);
+            productImageDiv.classList.add("product_list");
 
-                const productLink = document.createElement("a");
-                productImageDiv.appendChild(productLink);
-                productLink.className = 'product_link';
-                productLink.setAttribute('title', "L'ourson " + teddy.name + " vous attend !");
+            const productLink = document.createElement("a");
+            productImageDiv.appendChild(productLink);
+            productLink.className = 'product_link';
+            productLink.href="#";
+            productLink.setAttribute('title', "L'ourson " + product.name + " vous attend !");
 
-                const productImageImg = document.createElement("img");
-                productLink.appendChild(productImageImg);
-                productImageImg.classList.add("product_image");
-                productImageImg.setAttribute('src', teddy.imageUrl);
-                productImageImg.setAttribute('alt', 'Ours en peluche ' + teddy.name);
-                productImageImg.setAttribute('title', 'Ours en peluche ' + teddy.name);
-            }
+            const productImageImg = document.createElement("img");
+            productLink.appendChild(productImageImg);
+            productImageImg.classList.add("product_image");
+            productImageImg.setAttribute('src', product.imageUrl);
+            productImageImg.setAttribute('alt', 'Ours en peluche ' + product.name);
+            productImageImg.setAttribute('title', 'Ours en peluche ' + product.name);
+
+            const productDetail = document.createElement('div');
+            productLink .appendChild(productDetail );
+            productDetail .className = 'product_detail';
+        
+               
+            const productName = document.createElement('h3');
+            productDetail.appendChild(productName);
+            productName.textContent = product.name;
+        
+               
+            const productRate = document.createElement('p');
+            productDetail.appendChild(productRate);
+            productRate.textContent = product.price / 100 + " €";
+        }
             
-        })
-    .catch(err => console.log('error : '+ err));
+    })
+    .catch(erreur => console.log('error : '+ erreur));
 }

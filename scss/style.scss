@@ -3,3 +3,6 @@
 @import "flex_overrides";
 @import "size_overrides";
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
+html, body {
+    overflow-x: hidden;
+}
