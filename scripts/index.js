@@ -44,7 +44,8 @@ function contentLoad()
             const productRate = document.createElement('p');
             productDetail.appendChild(productRate);
             productRate.className = 'product_rate';
-            productRate.textContent = product.price / 100 + " €";
+            const productPrice = product.price / 100;
+            productRate.textContent = productPrice.toFixed(2)+ " €";
         }
             
     })
