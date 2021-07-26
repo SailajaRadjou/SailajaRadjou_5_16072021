@@ -22,7 +22,7 @@ function contentLoad()
             const productLink = document.createElement("a");
             productImageDiv.appendChild(productLink);
             productLink.className = 'product_link';
-            productLink.href="#";
+            productLink.href="product.html";
             productLink.setAttribute('title', "L'ourson " + product.name + " vous attend !");
 
             const productImageImg = document.createElement("img");

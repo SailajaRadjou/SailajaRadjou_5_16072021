@@ -1,11 +1,35 @@
 @charset "UTF-8";
 h1, .h1 {
   color: mistyrose;
-  font-size: 1.5rem !important;
+  font-size: 2rem !important;
+  font-weight: bolder;
+}
+
+h2, .h2 {
+  color: mistyrose;
+  font-weight: bolder;
+  font-size: 1.8rem;
+}
+
+.logo_display {
+  width: 180px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 1.5rem;
+}
+
+.logo_shadow {
+  box-shadow: 0 0 0.4rem mistyrose;
 }
 
 .navbar-collapse {
   justify-content: flex-end;
+}
+
+.display_header {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
 }
 
 .title-center {
@@ -34,7 +58,7 @@ h1, .h1 {
 }
 
 .icon-size {
-  font-size: 2.2rem !important;
+  font-size: 2rem !important;
   color: mistyrose;
 }
 
