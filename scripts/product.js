@@ -117,8 +117,15 @@ function getProduct()
           productCost : (products.price / 100).toFixed(2)+ " €",
         };
         console.log(productAdded);
-        console.log(localStorage.setItem('productselect',JSON.stringify(productAdded)));
-        
+        let selectedProduct = JSON.parse(localStorage.getItem('productselect'));
+        //Pour utiliser la fonction push d'un Array, le variable doit être un Array.
+        selectedProduct=[];
+        //La méthode push() ajoute de nouveaux éléments à la fin d'un tableau
+        selectedProduct.push(productAdded);
+        localStorage.setItem('productselect',JSON.stringify(selectedProduct));
+        console.log(selectedProduct);
+        window.confirm(products.name + " " + colorList.value + ' a bien été ajouté.');
+      })
       })
     .catch(erreur => console.log('error : '+ erreur))
 } 
