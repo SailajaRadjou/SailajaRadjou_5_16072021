@@ -7,7 +7,7 @@ console.log(id);
 function getProduct()
 {
    // récupération des données de ourson sélectionné par son id
-    fetch('http://localhost:3000/api/teddies/' + id)
+   fetch('http://localhost:3000/api/teddies/' + id)
       .then(function (response)
       {
         return response.json();
@@ -17,10 +17,12 @@ function getProduct()
         const products = receivedData;
         console.log(products.colors);
 
+        //crée le tag div pour image
         const productImageDiv = document.createElement("div");
         document.querySelector(".product_description").appendChild(productImageDiv);
         productImageDiv.classList.add("product_display_container");
 
+        //crée le tag image et ses attribute 
         const productImageImg = document.createElement("img");
         productImageDiv.appendChild(productImageImg);
         productImageImg.classList.add("product_image");
@@ -28,6 +30,7 @@ function getProduct()
         productImageImg.setAttribute('alt', 'Ours en peluche ' + products.name);
         productImageImg.setAttribute('title', 'Ours en peluche ' + products.name);
 
+        //crée le tag div pour afficher le details de produits selectioné
         const productDetailDiv = document.createElement("div");
         document.querySelector(".product_description").appendChild(productDetailDiv);
         productDetailDiv.classList.add("product_details_display");
@@ -38,49 +41,62 @@ function getProduct()
         productTitle.classList.add("product_title");
         productTitle.innerHTML = products.name;
 
+        //création l'élement HTML label pour description
         const productLabelDescription = document.createElement("label");
         productLabelDescription.setAttribute("for","description");
         productLabelDescription.innerHTML = "Description :  ";
         productDetailDiv.appendChild(productLabelDescription);
         
+        //création l'élement HTML para pour afficher la description
         const productDescription = document.createElement("p");
         productDescription.setAttribute("name","description");
         productDescription.innerHTML = products.description;
         productLabelDescription.appendChild(productDescription);
 
+        //création l'élement HTML form pour afficher la description
         const productForm = document.createElement('form');
         productDetailDiv.appendChild(productForm);
+
         const productFormDiv = document.createElement('div');
         productForm.appendChild(productFormDiv);
         productFormDiv.className = 'colors_choices';
 
+        //création l'élement HTML label pour la couleur
         const productLabelColor = document.createElement("label");
         productLabelColor.innerHTML = "Color :  ";
         productFormDiv.appendChild(productLabelColor);
         productLabelColor.setAttribute('for', "colors available" + products.name);
 
+        //création l'élement HTML select pour afficher la couleur dans le drop down list box
         const colorList = document.createElement("select");
         productFormDiv.appendChild(colorList);
         colorList.setAttribute('name', "colors available" + products.name);
         colorList.setAttribute('id', "select_list ");
-        const colors = products.colors;
+
+        const colors = products.colors;//Récupérer les listes de couleurs
        
-        for (let i = 0; i < colors.length; i++) {
+        //création l'élement HTML option pour ajouter les values 
+        for (let i = 0; i < colors.length; i++)
+        {
             const selectOption = document.createElement('option');
             colorList.appendChild(selectOption);
             selectOption.textContent += colors[i];
             selectOption.setAttribute("value", colors[i]);
         }
+
+        //création l'élement HTML label pour le prix
         const productLabelRate = document.createElement("label");
         productLabelRate.innerHTML = "Price :  ";
         productFormDiv.appendChild(productLabelRate);
         productLabelRate.setAttribute('for', "price" + products.name);
 
+        //création l'élement HTML para pour afficher le prix
         const productRate = document.createElement('p');
         productLabelRate.appendChild(productRate);
         productRate.className = 'product_rate';
         productRate.setAttribute('name', "price" + products.name);
         const productPrice = products.price / 100;
+        //concatener 2 chiffres après la virgule pour afficher les centimes
         productRate.textContent = productPrice.toFixed(2)+ " €";
 
         // création bouton panier
@@ -91,9 +107,19 @@ function getProduct()
         addCart.setAttribute('id',"submit");
         addCart.textContent = "Ajouter au panier";
 
+        addCart.addEventListener("click", function (event) {
+        event.preventDefault(); //pour empêcher le lien de suivre l'URL 
 
+        let productAdded = {
+          productName : products.name,
+          productId : products._id,
+          productColor : colorList.value,
+          productCost : (products.price / 100).toFixed(2)+ " €",
+        };
+        console.log(productAdded);
+        console.log(localStorage.setItem('productselect',JSON.stringify(productAdded)));
+        
       })
-
-}      
-
+    .catch(erreur => console.log('error : '+ erreur))
+} 
 getProduct();

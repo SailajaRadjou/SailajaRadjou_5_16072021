@@ -1,20 +1,22 @@
 
-contentLoad();
-
-
 function contentLoad()
 {
+    //récupération des données de l'API via URL
     let url = 'http://localhost:3000/api/teddies';
+
     fetch(url)
     .then(function(Response){
         return Response.json();
     })
     .then(function(receivedData)
     {
+        //récupération tous les données de l'API
         const products = receivedData;
         console.log(products);
+
         for(let product of products)
         {
+            //Création de DOM et afficher les données de l'API que on avait recupérer 
             const productImageDiv = document.createElement("div");
             document.querySelector(".display_content").appendChild(productImageDiv);
             productImageDiv.classList.add("product_list");
@@ -45,9 +47,12 @@ function contentLoad()
             productDetail.appendChild(productRate);
             productRate.className = 'product_rate';
             const productPrice = product.price / 100;
+            //concatener 2 chiffres après la virgule pour afficher les centimes
             productRate.textContent = productPrice.toFixed(2)+ " €";
         }
             
     })
     .catch(erreur => console.log('error : '+ erreur));
 }
+//la fonction contentLoad est appellée
+contentLoad();
