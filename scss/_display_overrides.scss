@@ -79,4 +79,32 @@
     font-size: 1.5rem;
     color: rgb(44, 17, 41);
     font-weight: bold;
+    display: inline;
+}
+//product page
+.product_display_container{
+    margin: 5px;
+}
+.product_container{
+    display: flex;
+    justify-content: space-around;
+}
+.product_description{
+    display: flex;
+    align-items: center;
+    width: 80%;
+    height: 350px;
+    box-shadow: 0 0 10px #585555;
+
+}
+.product_details_display{
+    margin: 5px;
+}
+.display_submit{
+    font-size: 1.5rem;
+    font-weight: bolder;
+    margin: 20px 0px 20px 0;
+    width: 15rem;
+    height: 3rem;
+    border-radius: 2rem;
 }

@@ -51,7 +51,7 @@ function getProduct()
         const productDescription = document.createElement("p");
         productDescription.setAttribute("name","description");
         productDescription.innerHTML = products.description;
-        productLabelDescription.appendChild(productDescription);
+        productDetailDiv.appendChild(productDescription);
 
         //création l'élement HTML form pour afficher la description
         const productForm = document.createElement('form');
@@ -63,7 +63,7 @@ function getProduct()
 
         //création l'élement HTML label pour la couleur
         const productLabelColor = document.createElement("label");
-        productLabelColor.innerHTML = "Color :  ";
+        productLabelColor.innerHTML = "Color"+"&emsp; :"+"&emsp;";
         productFormDiv.appendChild(productLabelColor);
         productLabelColor.setAttribute('for', "colors available" + products.name);
 
@@ -71,7 +71,8 @@ function getProduct()
         const colorList = document.createElement("select");
         productFormDiv.appendChild(colorList);
         colorList.setAttribute('name', "colors available" + products.name);
-        colorList.setAttribute('id', "select_list ");
+        colorList.setAttribute('id', "select_list");
+        colorList.setAttribute('class', "form-select select_size");
 
         const colors = products.colors;//Récupérer les listes de couleurs
        
@@ -84,49 +85,61 @@ function getProduct()
             selectOption.setAttribute("value", colors[i]);
         }
 
+        const lineBreak = document.createElement('br');
+        productFormDiv.appendChild(lineBreak);
+
         //création l'élement HTML label pour le prix
         const productLabelRate = document.createElement("label");
-        productLabelRate.innerHTML = "Price :  ";
+        productLabelRate.innerHTML = "Price"+"&emsp; :"  +"&emsp;";
         productFormDiv.appendChild(productLabelRate);
         productLabelRate.setAttribute('for', "price" + products.name);
-
+        
         //création l'élement HTML para pour afficher le prix
         const productRate = document.createElement('p');
-        productLabelRate.appendChild(productRate);
+        productFormDiv.appendChild(productRate);
         productRate.className = 'product_rate';
         productRate.setAttribute('name', "price" + products.name);
         const productPrice = products.price / 100;
         //concatener 2 chiffres après la virgule pour afficher les centimes
         productRate.textContent = productPrice.toFixed(2)+ " €";
-
+                
         // création bouton panier
         let addCart = document.createElement('button');
         productForm.appendChild(addCart);
         addCart.setAttribute('type',"submit");
         addCart.setAttribute('name',"add");
         addCart.setAttribute('id',"submit");
+        addCart.setAttribute('class',"display_submit");
         addCart.textContent = "Ajouter au panier";
 
         addCart.addEventListener("click", function (event) {
-        event.preventDefault(); //pour empêcher le lien de suivre l'URL 
 
-        let productAdded = {
-          productName : products.name,
-          productId : products._id,
-          productColor : colorList.value,
-          productCost : (products.price / 100).toFixed(2)+ " €",
-        };
-        console.log(productAdded);
-        let selectedProduct = JSON.parse(localStorage.getItem('productselect'));
-        //Pour utiliser la fonction push d'un Array, le variable doit être un Array.
-        selectedProduct=[];
-        //La méthode push() ajoute de nouveaux éléments à la fin d'un tableau
-        selectedProduct.push(productAdded);
-        localStorage.setItem('productselect',JSON.stringify(selectedProduct));
-        console.log(selectedProduct);
-        window.confirm(products.name + " " + colorList.value + ' a bien été ajouté.');
+          event.preventDefault(); //pour empêcher le lien de suivre l'URL 
+
+          let productAdded = {
+            productName : products.name,
+            productId : products._id,
+            productColor : colorList.value,
+            productCost : (products.price / 100).toFixed(2)+ " €",
+          };
+          console.log(productAdded);
+
+          //Créer un localStorage et pour lire les données de localStorage
+          let selectedProduct = JSON.parse(localStorage.getItem('productselect'));
+
+          //Pour utiliser la fonction push d'un Array, le variable doit être un Array.
+          selectedProduct=[];
+
+          //La méthode push() ajoute de nouveaux éléments à la fin d'un tableau
+          selectedProduct.push(productAdded);
+
+          //pour ENREGISTRER les données sur localStorage
+          localStorage.setItem('productselect',JSON.stringify(selectedProduct));
+
+          console.log(selectedProduct);
+          window.confirm(products.name + " " + colorList.value + ' a bien été ajouté.');
+        })
       })
-      })
-    .catch(erreur => console.log('error : '+ erreur))
+      .catch(erreur => console.log('error : '+ erreur))
 } 
 getProduct();
