@@ -1,3 +1,3 @@
-let selectedProduct = JSON.parse(localStorage.getItem('productselect'));
+let selectedProduct = JSON.parse(localStorage.getItem('newProduct'));
 console.log(selectedProduct);
 
