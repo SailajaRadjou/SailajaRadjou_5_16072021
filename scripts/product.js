@@ -15,7 +15,7 @@ function getProduct()
       .then(function(receivedData)
       {
         const products = receivedData;
-        console.log(products.colors);
+        //console.log(products.colors);
 
         //crée le tag div pour image
         const productImageDiv = document.createElement("div");
@@ -126,18 +126,19 @@ function getProduct()
 
           //Créer un localStorage et pour lire les données de localStorage
           let selectedProduct = JSON.parse(localStorage.getItem('productselect'));
+          console.error(selectedProduct);
 
           //Pour utiliser la fonction push d'un Array, le variable doit être un Array.
-          selectedProduct=[];
-
+         // selectedProduct=[];
+          console.error(selectedProduct);
           //La méthode push() ajoute de nouveaux éléments à la fin d'un tableau
           selectedProduct.push(productAdded);
-
+          console.error(selectedProduct);
           //pour ENREGISTRER les données sur localStorage
           localStorage.setItem('productselect',JSON.stringify(selectedProduct));
 
           console.log(selectedProduct);
-          window.confirm(products.name + " " + colorList.value + ' a bien été ajouté.');
+          window.alert(products.name + " " + colorList.value + ' a bien été ajouté.');
         })
       })
       .catch(erreur => console.log('error : '+ erreur))
