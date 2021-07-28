@@ -21,12 +21,5 @@ label{
 }
 .select_size{
     width: 10rem !important;
-}
-/*select:focus > option:checked{ 
-    background: rgb(131, 175, 146) !important;
-}*/
-option {
-    -webkit-border-radius:25px; -moz-border-radius:25px; border-radius:25px;
-    color:blue;
-    background-color:yellow;
+    display: inline !important;
 }
