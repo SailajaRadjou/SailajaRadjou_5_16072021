@@ -3,6 +3,8 @@ const urlQuery = window.location.search;
 const urlParams = new URLSearchParams(urlQuery);
 const id = urlParams.get('id');
 console.log(id);
+//Créer un localStorage et pour lire les données de localStorage
+let selectedProduct = JSON.parse(localStorage.getItem('newProduct'));
 
 function getProduct()
 {
@@ -122,21 +124,24 @@ function getProduct()
             productColor : colorList.value,
             productCost : (product.price / 100).toFixed(2)+ " €",
           };
-          //Créer un localStorage et pour lire les données de localStorage
-          let selectedProduct = JSON.parse(localStorage.getItem('newProduct'));
-          if(selectedProduct)
+          const storageProducts = () =>
           {
             //La méthode push() ajoute de nouveaux éléments à la fin d'un tableau
             selectedProduct.push(productAdded);
-             //pour ENREGISTRER les données sur localStorage
+            //pour ENREGISTRER les données sur localStorage
             localStorage.setItem('newProduct', JSON.stringify(selectedProduct));
+
+          };
+          
+          if(selectedProduct)
+          {
+            storageProducts();
             console.log(selectedProduct);
           }
           else
           {
             selectedProduct = [];
-            selectedProduct.push(productAdded);
-            localStorage.setItem('newProduct', JSON.stringify(selectedProduct));
+            storageProducts();
             console.error(selectedProduct);
           }
           window.alert(product.name + " " + colorList.value + ' a bien été ajouté!');
@@ -145,4 +150,5 @@ function getProduct()
       })
       .catch(erreur => console.log('error : '+ erreur))
 } 
+
 getProduct();
