@@ -3,6 +3,7 @@ console.log(selectedProducts);
 const cartMain = document.getElementById('cart_page');
 const listProductOneByOne = document.getElementById("next_row");
 let showProductPanier = [];
+
 if(selectedProducts === null)
 {
     // si le panier est vide 
@@ -21,7 +22,7 @@ else {
             <th scope="row" id="product_count">${i}</th>
             <td id="product_name">${selectedProducts[i].productName}</td>
             <td id="product_color">${selectedProducts[i].productColor}</td>
-            <td id="product_quantity">${selectedProducts[i].productId}</td>
+            <td id="product_quantity">${selectedProducts[i].Quantity}</td>
             <td id="product_rate">${selectedProducts[i].productCost}</td>
         </tr>`;
     }

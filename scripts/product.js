@@ -86,7 +86,29 @@ function getProduct()
             selectOption.textContent += colors[i];
             selectOption.setAttribute("value", colors[i]);
         }
+        //création l'élement HTML label pour la quantity
+        const quantitySelectLabel = document.createElement("label");
+        
+        productFormDiv.appendChild(quantitySelectLabel);
+        quantitySelectLabel.innerHTML = "&emsp;"+"Quantité"+"&emsp; :"+"&emsp;";
+        quantitySelectLabel.setAttribute('for', "select-quantity");
 
+        //création l'élement HTML select pour afficher la couleur dans le drop down list box
+        const quantityList = document.createElement("select");
+        productFormDiv.appendChild(quantityList);
+        quantityList.setAttribute('name', "select-quantity");
+        quantityList.setAttribute('id', "select_list_quantity");
+        quantityList.setAttribute('class', "formselect");
+
+        for (let i = 1; i <= 10; i++)
+        {
+            const quantityOption = document.createElement('option');
+            quantityList.appendChild(quantityOption);
+            quantityOption.textContent += i;
+            quantityOption.setAttribute("value", i);
+        }
+       
+         
         const lineBreak = document.createElement('br');
         productFormDiv.appendChild(lineBreak);
 
@@ -94,13 +116,13 @@ function getProduct()
         const productLabelRate = document.createElement("label");
         productLabelRate.innerHTML = "Price"+"&emsp; :"  +"&emsp;";
         productFormDiv.appendChild(productLabelRate);
-        productLabelRate.setAttribute('for', "price" + product.name);
+        productLabelRate.setAttribute('for', "price");
         
         //création l'élement HTML para pour afficher le prix
         const productRate = document.createElement('p');
         productFormDiv.appendChild(productRate);
         productRate.className = 'product_rate';
-        productRate.setAttribute('name', "price" + product.name);
+        productRate.setAttribute('name', "price");
         const productPrice = product.price / 100;
         //concatener 2 chiffres après la virgule pour afficher les centimes
         productRate.textContent = productPrice.toFixed(2)+ " €";
@@ -122,6 +144,7 @@ function getProduct()
             productName : product.name,
             productId : product._id,
             productColor : colorList.value,
+            Quantity : quantityList.value,
             productCost : (product.price / 100).toFixed(2)+ " €",
           };
           const storageProducts = () =>
