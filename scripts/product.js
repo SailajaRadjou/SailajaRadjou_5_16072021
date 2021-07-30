@@ -137,7 +137,7 @@ function getProduct()
         addCart.addEventListener("click", function (event) {
 
           event.preventDefault(); //pour empêcher le lien de suivre l'URL 
-
+          
           let productAdded = {
             productName : product.name,
             productId : product._id,
@@ -145,13 +145,15 @@ function getProduct()
             Quantity : quantityList.value,
             productCost : (product.price / 100)+ " €",
           };
+          
+          
           const storageProducts = () =>
           {
             //La méthode push() ajoute de nouveaux éléments à la fin d'un tableau
             selectedProduct.push(productAdded);
             //pour ENREGISTRER les données sur localStorage
             localStorage.setItem('newProduct', JSON.stringify(selectedProduct));
-
+            
           };
           
           if(selectedProduct)
