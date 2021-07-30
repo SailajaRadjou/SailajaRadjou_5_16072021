@@ -19,13 +19,13 @@ else {
     {
         showProductPanier = showProductPanier + 
         `<tr>
-            <th scope="row" class="id_select">${i}</th>
+            
             <td>${selectedProducts[i].productName}</td>
             <td>${selectedProducts[i].productColor}</td>
             <td>${selectedProducts[i].Quantity}</td>
             <td>${selectedProducts[i].productCost}</td>
             <td class="">${(parseInt(selectedProducts[i].productCost)*parseInt(selectedProducts[i].Quantity)).toFixed(2)}€</td>
-            <td><button type = "submit" class="delete_article" onclick=SomeDeleteRowFunction(this)><i class="fas fa-trash-alt"></i></button></td>
+            
         </tr>`;
         
         const calculMontantCol = document.getElementById('calcul_montant');
@@ -56,28 +56,9 @@ deleteContent.addEventListener("click", function (event)
     emptyCart.className = "cart_empty";
     emptyCart.textContent = "Votre panier est vide !"
 })
- function SomeDeleteRowFunction(o) {
+/* function SomeDeleteRowFunction(o) {
             
             
                  var p=o.parentNode.parentNode;
                  p.parentNode.removeChild(p);
-  } 
-//pour supprimer les articles
-let deleteButton = document.querySelectorAll(".delete_article");
-const idSelect = document.getElementsByClassName("id_select");
-
-console.log(idSelect);
-for(let l=0;l < deleteButton.length;l++)
-{
-    deleteButton[l].addEventListener("click" , (event) => 
-    {
-        event.preventDefault();
-
-        //produit va supprimer en selection id
-        let productToDelete = selectedProducts[l].idSelect;
-        console.log(productToDelete);
-        localStorage.setItem(
-            'newProduct',JSON.stringify(selectedProducts)
-        );
-    })
-}
+  } */
