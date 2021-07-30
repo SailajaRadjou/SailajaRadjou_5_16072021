@@ -46,9 +46,7 @@ function contentLoad()
             const productRate = document.createElement('p');
             productDetail.appendChild(productRate);
             productRate.className = 'product_rate';
-            const productPrice = product.price / 100;
-            //concatener 2 chiffres après la virgule pour afficher les centimes
-            productRate.textContent = productPrice.toFixed(2)+ " €";
+            productRate.textContent = product.price / 100+ " €";
         }
             
     })

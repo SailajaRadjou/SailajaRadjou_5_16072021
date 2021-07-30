@@ -3,7 +3,7 @@ console.log(selectedProducts);
 const cartMain = document.getElementById('cart_page');
 const listProductOneByOne = document.getElementById("next_row");
 let showProductPanier = [];
-
+let calculMontant = 0;
 if(selectedProducts === null)
 {
     // si le panier est vide 
@@ -24,7 +24,15 @@ else {
             <td id="product_color">${selectedProducts[i].productColor}</td>
             <td id="product_quantity">${selectedProducts[i].Quantity}</td>
             <td id="product_rate">${selectedProducts[i].productCost}</td>
+            <td id="product_rate_total">${(parseInt(selectedProducts[i].productCost)*parseInt(selectedProducts[i].Quantity)).toFixed(2)}€</td>
+            <td><button><i class="fas fa-trash-alt"></i></button></td>
         </tr>`;
+        
+        const calculMontantCol = document.getElementById('calcul_montant');
+        calculMontant = calculMontant + parseInt(selectedProducts[i].productCost)*parseInt(selectedProducts[i].Quantity);
+        console.log(calculMontant);
+        calculMontantCol.innerText = calculMontant.toFixed(2) + '€';
+
     }
     if(i == selectedProducts.length)
     {
@@ -32,7 +40,8 @@ else {
     }
   
       
-}   
+}  
+ 
 
 //eventListener pour vider le panier
 const deleteContent = document.getElementById('delete');

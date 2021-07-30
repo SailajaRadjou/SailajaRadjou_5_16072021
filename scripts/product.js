@@ -123,9 +123,7 @@ function getProduct()
         productFormDiv.appendChild(productRate);
         productRate.className = 'product_rate';
         productRate.setAttribute('name', "price");
-        const productPrice = product.price / 100;
-        //concatener 2 chiffres après la virgule pour afficher les centimes
-        productRate.textContent = productPrice.toFixed(2)+ " €";
+        productRate.textContent = product.price / 100+ " €";
                 
         // création bouton panier
         let addCart = document.createElement('button');
@@ -145,7 +143,7 @@ function getProduct()
             productId : product._id,
             productColor : colorList.value,
             Quantity : quantityList.value,
-            productCost : (product.price / 100).toFixed(2)+ " €",
+            productCost : (product.price / 100)+ " €",
           };
           const storageProducts = () =>
           {

@@ -33,25 +33,28 @@
     </header>
     <main id="cart_page">
         <h2 class="title-center">Orinobears -- Take Me Home<br /> <br /> Teddies in your basket</h2>
-        <button id="delete">Vider</button>
+        
         <section id="cart_container">
           <table class="table table-striped">
             <thead>
               <tr>
                 <th scope="col" class="product_head">#</th>
                 <th scope="col" class="product_head">Produit</th>
-                <th scope="col" class="product_head">Couleur de votre choix</th>
+                <th scope="col" class="product_head">Couleur</th>
                 <th scope="col" class="product_head">Quantités</th>
-                <th scope="col" class="product_head">Prix</th>
+                <th scope="col" class="product_head">Prix Unitaire</th>
+                <th scope="col" class="product_head">Total</th>
+                <th></th>
               </tr>
             </thead>
             <tbody id="next_row">
               
             </tbody>
             <tfoot>
-              <tr><td colspan="3">Total</td> </tr>
+              <tr><td colspan="5">Montant à Payer&emsp;</td> <td id="calcul_montant"></td></tr>
             </tfoot>
           </table>
+          <button id="delete">Vider le Panier</button>
         </section>
     </main>
     <footer class="bg-light mt-5">
