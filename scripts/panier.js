@@ -24,15 +24,17 @@ else {
             <td>${selectedProducts[i].productColor}</td>
             <td>${selectedProducts[i].Quantity}</td>
             <td>${selectedProducts[i].productCost}</td>
-            <td class="">${(parseInt(selectedProducts[i].productCost)*parseInt(selectedProducts[i].Quantity)).toFixed(2)}€</td>
-            
+            <td>${(parseInt(selectedProducts[i].productCost)*parseInt(selectedProducts[i].Quantity)).toFixed(2)}€</td>
+           
         </tr>`;
+        
+        
         
         const calculMontantCol = document.getElementById('calcul_montant');
         calculMontant = calculMontant + parseInt(selectedProducts[i].productCost)*parseInt(selectedProducts[i].Quantity);
         console.log(calculMontant);
         calculMontantCol.innerText = calculMontant.toFixed(2) + '€';
-        let calculPrice = [];
+       
     }
     if(i == selectedProducts.length)
     {

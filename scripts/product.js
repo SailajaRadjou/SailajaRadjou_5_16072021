@@ -155,7 +155,7 @@ function getProduct()
             localStorage.setItem('newProduct', JSON.stringify(selectedProduct));
             
           };
-          
+         
           if(selectedProduct)
           {
             storageProducts();
@@ -165,10 +165,12 @@ function getProduct()
           {
             selectedProduct = [];
             storageProducts();
-            console.error(selectedProduct);
+            console.error(selectedProduct.length);
           }
           window.alert(product.name + " " + colorList.value + ' a bien été ajouté!');
-          console.table(selectedProduct);          
+          console.table(selectedProduct);  
+          const noOfProducts =  document.getElementById('count_articles'); 
+          noOfProducts.innerHTML =  selectedProduct.length + 'articles';     
         })
       })
       .catch(erreur => console.log('error : '+ erreur))
