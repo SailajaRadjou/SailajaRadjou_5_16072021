@@ -144,22 +144,19 @@ function loadPanier()
         {
             e.preventDefault();
             //recupère des valeurs du formilaire pour stocker dans le locale Storage
-            localStorage.setItem("nom",document.querySelector("#nom").value);
-            // window.alert(document.querySelector("#nom").value);   
-            localStorage.setItem("prenom",document.querySelector("#prenom").value);
-            localStorage.setItem("adressemail",document.querySelector("#adressemail").value);
-            localStorage.setItem("adressepostale",document.querySelector("#adressepostale").value);
-            localStorage.setItem("ville",document.querySelector("#ville").value);
-            localStorage.setItem("codepostale",document.querySelector("#codepostale").value);
             const formulaireDetails = {
-                nom : localStorage.getItem("nom"),
-                prenom : localStorage.getItem("prenom"),
-                adressemail : localStorage.getItem("adressemail"),
-                adressepostale : localStorage.getItem("adressepostale"),
-                ville : localStorage.getItem("ville"),
-                codepostale : localStorage.getItem("codepostale")
+                nom : document.querySelector("#nom").value,
+                prenom : document.querySelector("#prenom").value,
+                adressemail : document.querySelector("#adressemail").value,
+                adressepostale : document.querySelector("#adressepostale").value,
+                ville : document.querySelector("#ville").value,
+                codepostale : document.querySelector("#codepostale").value
             }
-            console.log("formulaireDetails");
+
+            //mettre le objet formulaireDetails dans le localStorage
+            localStorage.setItem("formulaireDetails",JSON.stringify(formulaireDetails));
+            
+            
             console.table(formulaireDetails);
 
             //crée un objet pour mettre les valeurs de formulaire
@@ -168,7 +165,8 @@ function loadPanier()
                 selectedProducts,formulaireDetails
             }
             console.table(commandeEnvoyer);
-            console.table(selectedProducts);
+            
+        
         });
         
        
