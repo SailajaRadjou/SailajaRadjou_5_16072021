@@ -52,8 +52,87 @@ else {
     if(i == selectedProducts.length)
     {
         listProductOneByOne.innerHTML = showProductPanier;
-    }     
-} }
+    } 
+    //Afficher le formulaire via JS
+
+
+const displaySectionForm = () => 
+{
+    //le positionnement du formulaire
+    const addForm = document.querySelector('#form_section');
+    console.log( addForm);
+    const displayForm = 
+    `<form class="needs-validation" novalidate>
+    <div class="form-row">
+      <div class="col-md-4 mb-3">
+        <label for="nom">Nom</label>
+        <input type="text" class="form-control" id="nom" placeholder="Votre nom" required>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+      <div class="col-md-4 mb-3">
+        <label for="prenom">Prénom</label>
+        <input type="text" class="form-control" id="prenom" placeholder="Votre prénom" required>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+      <div class="col-md-4 mb-3">
+        <label for="adressemail">Adresse E-mail</label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroupPrepend">@</span>
+          </div>
+          <input type="text" class="form-control" id="adressemail" placeholder="Votre valid adresse E-mail" aria-describedby="inputGroupPrepend" required>
+          <div class="invalid-feedback">
+            Please choose a username.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-md-6 mb-3">
+        <label for="adressepostale">Adresse</label>
+        <input type="text" class="form-control" id="adressepostale" placeholder="Votre adresse" required>
+        <div class="invalid-feedback">
+          Please provide a valid city.
+        </div>
+      </div>
+      <div class="col-md-3 mb-3">
+        <label for="ville">Ville</label>
+        <input type="text" class="form-control" id="ville" placeholder="Ville" required>
+        <div class="invalid-feedback">
+          Please provide a valid state.
+        </div>
+      </div>
+      <div class="col-md-3 mb-3">
+        <label for="codepostale">Code Postal</label>
+        <input type="text" class="form-control" id="codepostale" placeholder="Code Postal" required>
+        <div class="invalid-feedback">
+          Please provide a valid zip.
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+        <label class="form-check-label" for="invalidCheck">
+          Agree to terms and conditions
+        </label>
+        <div class="invalid-feedback">
+          You must agree before submitting.
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-primary" type="submit">Valider votre Commande</button>
+  </form>`;
+
+  addForm.insertAdjacentHTML("afterEnd",displayForm);
+}
+  displaySectionForm();  
+}
+}
 
 //eventListener pour vider le panier
 const deleteContent = document.getElementById('delete');
@@ -83,3 +162,4 @@ deleteContent.addEventListener("click", function (event)
                  var p=o.parentNode.parentNode;
                  p.parentNode.removeChild(p);
   } */
+

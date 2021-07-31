@@ -1,6 +1,6 @@
 let selectedProduct = JSON.parse(localStorage.getItem('newProduct'));
 const noOfProducts =  document.getElementById('count_articles'); 
-if(selectedProduct == null || selectedProducts.length === 0)
+if(selectedProduct == null || selectedProduct.length === 0)
 {
     // si le panier est vide 
     

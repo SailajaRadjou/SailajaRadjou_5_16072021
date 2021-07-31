@@ -5,7 +5,8 @@ const id = urlParams.get('id');
 console.log(id);
 //Créer un localStorage et pour lire les données de localStorage
 let selectedProduct = JSON.parse(localStorage.getItem('newProduct'));
-console.log(selectedProduct);
+
+console.table(selectedProduct);
 
 const noOfProducts =  document.getElementById('count_articles'); 
 
@@ -120,8 +121,25 @@ function getProduct()
             quantityOption.textContent += i;
             quantityOption.setAttribute("value", i);
         }
-       
-         
+        
+        quantityList.addEventListener('change', (event) => {
+            event.preventDefault(); 
+            
+            let productcount = {
+              
+              Quantity : quantityList.value,
+              
+            };
+            console.log(productcount.Quantity);
+          /* function addQuantity()
+            {
+              console.log(productAdded.noofarticles);
+  
+            }
+          addQuantity();*/
+          
+        });   
+        
         const lineBreak = document.createElement('br');
         productFormDiv.appendChild(lineBreak);
 
@@ -157,8 +175,14 @@ function getProduct()
             productColor : colorList.value,
             Quantity : quantityList.value,
             productCost : (product.price / 100)+ " €",
+           
           };
           
+         function addQuantity()
+          {
+            console.log(productAdded.noofarticles);
+
+          }
           
           const storageProducts = () =>
           {
@@ -182,15 +206,12 @@ function getProduct()
            
           }
           window.alert(product.name + " " + colorList.value + ' a bien été ajouté!');
-          console.table(selectedProduct);  
-          countArticles(); 
+          console.table(selectedProduct); 
+         
+          noOfProducts.innerHTML = selectedProduct.length + "&nbsp;&nbsp;"+'Articles'; 
         })
       })
       .catch(erreur => console.log('error : '+ erreur))
 } 
-function countArticles()
-{
-  
-  noOfProducts.innerHTML = selectedProduct.length + "&nbsp;&nbsp;"+'Articles';  
-}
+
 getProduct();
