@@ -65,52 +65,44 @@ function loadPanier()
             `<form class="needs-validation" novalidate>
                 <div class="form-row">
                     <div class="col-md-4 mb-3">
-                        <label for="nom">Nom</label>
-                        <input type="text" class="form-control" id="nom" placeholder="Votre nom" required>
+                        <label for="firstName">First Name  :</label>
+                        <input type="text" class="form-control" id="firstName" placeholder="Votre nom" required>
                         <div class="valid-feedback">
                         Looks good!
                         </div>
                     </div>
                     <div class="col-md-4 mb-3">
-                        <label for="prenom">Prénom</label>
-                        <input type="text" class="form-control" id="prenom" placeholder="Votre prénom" required>
+                        <label for="lastName">Last Name  :</label>
+                        <input type="text" class="form-control" id="lastName" placeholder="Votre prénom" required>
                         <div class="valid-feedback">
                         Looks good!
                         </div>
                     </div>
-                    <div class="col-md-4 mb-3">
-                        <label for="adressemail">Adresse E-mail</label>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroupPrepend">@</span>
-                            </div>
-                            <input type="text" class="form-control" id="adressemail" placeholder="Votre valid adresse E-mail" aria-describedby="inputGroupPrepend" required>
-                            <div class="invalid-feedback">
-                                Please choose a username.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="col-md-6 mb-3">
-                        <label for="adressepostale">Adresse</label>
-                        <input type="text" class="form-control" id="adressepostale" placeholder="Votre adresse" required>
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                        <label for="address">Address  :</label>
+                        <input type="text" class="form-control" id="address" placeholder="Votre adresse" required>
                         <div class="invalid-feedback">
                         Please provide a valid city.
                         </div>
                     </div>
                     <div class="col-md-3 mb-3">
-                        <label for="ville">Ville</label>
-                        <input type="text" class="form-control" id="ville" placeholder="Ville" required>
+                        <label for="city">City  :</label>
+                        <input type="text" class="form-control" id="city" placeholder="Ville" required>
                         <div class="invalid-feedback">
                         Please provide a valid state.
                         </div>
                     </div>
-                    <div class="col-md-3 mb-3">
-                        <label for="codepostale">Code Postal</label>
-                        <input type="text" class="form-control" id="codepostale" placeholder="Code Postal" required>
-                        <div class="invalid-feedback">
-                        Please provide a valid zip.
+                    <div class="col-md-4 mb-3">
+                        <label for="email">E-mail  :</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroupPrepend">@</span>
+                            </div>
+                            <input type="text" class="form-control" id="email" placeholder="Votre valid adresse E-mail" aria-describedby="inputGroupPrepend" required>
+                            <div class="invalid-feedback">
+                                Please choose a username.
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -145,35 +137,64 @@ function loadPanier()
             e.preventDefault();
             //recupère des valeurs du formilaire pour stocker dans le locale Storage
             const formulaireDetails = {
-                nom : document.querySelector("#nom").value,
-                prenom : document.querySelector("#prenom").value,
-                adressemail : document.querySelector("#adressemail").value,
-                adressepostale : document.querySelector("#adressepostale").value,
-                ville : document.querySelector("#ville").value,
-                codepostale : document.querySelector("#codepostale").value
-            }
+                firstName : document.querySelector("#firstName").value,
+                lastName : document.querySelector("#lastName").value,
+                address : document.querySelector("#address").value,
+                city : document.querySelector("#city").value,
+                email : document.querySelector("#email").value
+            };
 
             //mettre le objet formulaireDetails dans le localStorage
             localStorage.setItem("formulaireDetails",JSON.stringify(formulaireDetails));
             
             
+            console.table("formulaireDetails");
             console.table(formulaireDetails);
-
             //crée un objet pour mettre les valeurs de formulaire
             // et aussi les produits dans le panier
             const commandeEnvoyer = {
                 selectedProducts,formulaireDetails
-            }
+            };
             console.table(commandeEnvoyer);
-            
+
+            const post = {
+                method: "POST",
+                bodyData: JSON.stringify(commandeEnvoyer),
+               //headers: { "Content-Type": 'application/JSON' }
+              };
         
+              
+             let priceConfirmation = document.querySelector("#calcul_montant").innerText;
+             
+        
+              
+              
+              fetch('http://localhost:3000/api/teddies/order',post)
+              .then(function(Response){
+                return Response.json();
+                })
+                  
+                .then(postdata => {
+                    e.preventDefault();
+                 
+                  window.alert("welcome"+postdata.orderId);
+                  localStorage.setItem("responseOrder",postdata.orderId);
+                  localStorage.setItem("total", priceConfirmation);
+        
+                 
+                  // document.location.href = "confirmation.html";
+                })
+                 .catch((err) => {
+                  alert("Il y a eu une erreur : " + err);
+                });
         });
-        
-       
-       
+      
         
     }
 }
+                  
+        
+       
 
 //eventListener pour vider le panier
 const deleteContent = document.getElementById('delete');
