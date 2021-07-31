@@ -5,7 +5,20 @@ const id = urlParams.get('id');
 console.log(id);
 //Créer un localStorage et pour lire les données de localStorage
 let selectedProduct = JSON.parse(localStorage.getItem('newProduct'));
+console.log(selectedProduct);
 
+const noOfProducts =  document.getElementById('count_articles'); 
+
+if(selectedProduct == null || selectedProduct.length === 0)
+{
+    // si le panier est vide 
+    
+    noOfProducts.innerHTML =  0 + "&nbsp;&nbsp;"+'Articles';
+    
+} 
+else{
+  noOfProducts.innerHTML =  selectedProduct.length + "&nbsp;&nbsp;"+'Articles';  
+}
 function getProduct()
 {
    // récupération des données de ourson sélectionné par son id
@@ -159,21 +172,25 @@ function getProduct()
           if(selectedProduct)
           {
             storageProducts();
-            console.log(selectedProduct);
+           
           }
           else
           {
             selectedProduct = [];
             storageProducts();
             console.error(selectedProduct.length);
+           
           }
           window.alert(product.name + " " + colorList.value + ' a bien été ajouté!');
           console.table(selectedProduct);  
-          const noOfProducts =  document.getElementById('count_articles'); 
-          noOfProducts.innerHTML =  selectedProduct.length + 'articles';     
+          countArticles(); 
         })
       })
       .catch(erreur => console.log('error : '+ erreur))
 } 
-
+function countArticles()
+{
+  
+  noOfProducts.innerHTML = selectedProduct.length + "&nbsp;&nbsp;"+'Articles';  
+}
 getProduct();

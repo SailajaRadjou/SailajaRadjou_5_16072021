@@ -1,4 +1,16 @@
-
+let selectedProduct = JSON.parse(localStorage.getItem('newProduct'));
+const noOfProducts =  document.getElementById('count_articles'); 
+if(selectedProduct == null || selectedProducts.length === 0)
+{
+    // si le panier est vide 
+    
+    noOfProducts.innerHTML =  0 + "&nbsp;&nbsp;"+'Articles';
+    
+} 
+else
+{
+    noOfProducts.innerHTML =  selectedProduct.length + "&nbsp;&nbsp;"+'Articles';  
+}
 function contentLoad()
 {
     //récupération des données de l'API via URL
@@ -52,5 +64,7 @@ function contentLoad()
     })
     .catch(erreur => console.log('error : '+ erreur));
 }
+
 //la fonction contentLoad est appellée
 contentLoad();
+

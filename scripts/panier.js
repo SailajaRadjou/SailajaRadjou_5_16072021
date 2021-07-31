@@ -1,13 +1,25 @@
+
 let selectedProducts = JSON.parse(localStorage.getItem('newProduct'));
 console.log(selectedProducts);
+
 const cartMain = document.getElementById('cart_page');
 const listProductOneByOne = document.getElementById("next_row");
+const noOfProducts =  document.getElementById('count_articles'); 
+
 let showProductPanier = [];
 let calculMontant = 0;
-if(selectedProducts === null)
+//countArticles();
+loadPanier();
+
+
+function loadPanier()
+{
+if(selectedProducts == null || selectedProducts.length === 0)
 {
     // si le panier est vide 
     document.getElementById("cart_container").style.display = "none";
+    document.getElementById("form_section").style.display = "none";
+    noOfProducts.innerHTML =  0 + "&nbsp;&nbsp;"+'Articles';
     const emptyBasket = `
         <div class = "cart_content">
             <div class = "cart_empty">Votre panier est vide !</div>
@@ -15,6 +27,7 @@ if(selectedProducts === null)
     cartMain.innerHTML = emptyBasket; 
 } 
 else {
+    noOfProducts.innerHTML =  parseInt(selectedProducts.length) + "&nbsp;&nbsp;"+'Articles';
     for(i=0;i<selectedProducts.length;i++)
     {
         showProductPanier = showProductPanier + 
@@ -40,7 +53,8 @@ else {
     {
         listProductOneByOne.innerHTML = showProductPanier;
     }     
-}  
+} }
+
 //eventListener pour vider le panier
 const deleteContent = document.getElementById('delete');
 deleteContent.addEventListener("click", function (event)
@@ -48,6 +62,10 @@ deleteContent.addEventListener("click", function (event)
     localStorage.removeItem('newProduct');
 
     document.getElementById("cart_container").style.display = "none";
+    document.getElementById("form_section").style.display = "none";
+
+    noOfProducts.innerHTML = 0 + "&nbsp;&nbsp;"+'Articles'; 
+  
 
     const cartEmptyDiv = document.createElement('div');
     cartMain.appendChild(cartEmptyDiv);
@@ -57,6 +75,7 @@ deleteContent.addEventListener("click", function (event)
     cartEmptyDiv.appendChild(emptyCart);
     emptyCart.className = "cart_empty";
     emptyCart.textContent = "Votre panier est vide !"
+    
 })
 /* function SomeDeleteRowFunction(o) {
             
