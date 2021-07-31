@@ -151,8 +151,26 @@ function loadPanier()
             localStorage.setItem("adressepostale",document.querySelector("#adressepostale").value);
             localStorage.setItem("ville",document.querySelector("#ville").value);
             localStorage.setItem("codepostale",document.querySelector("#codepostale").value);
-            
+            const formulaireDetails = {
+                nom : localStorage.getItem("nom"),
+                prenom : localStorage.getItem("prenom"),
+                adressemail : localStorage.getItem("adressemail"),
+                adressepostale : localStorage.getItem("adressepostale"),
+                ville : localStorage.getItem("ville"),
+                codepostale : localStorage.getItem("codepostale")
+            }
+            console.log("formulaireDetails");
+            console.table(formulaireDetails);
+
+            //crée un objet pour mettre les valeurs de formulaire
+            // et aussi les produits dans le panier
+            const commandeEnvoyer = {
+                selectedProducts,formulaireDetails
+            }
+            console.table(commandeEnvoyer);
+            console.table(selectedProducts);
         });
+        
        
        
         
