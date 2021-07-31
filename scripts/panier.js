@@ -14,124 +14,149 @@ loadPanier();
 
 function loadPanier()
 {
-if(selectedProducts == null || selectedProducts.length === 0)
-{
-    // si le panier est vide 
-    document.getElementById("cart_container").style.display = "none";
-    document.getElementById("form_section").style.display = "none";
-    noOfProducts.innerHTML =  0 + "&nbsp;&nbsp;"+'Articles';
-    const emptyBasket = `
-        <div class = "cart_content">
-            <div class = "cart_empty">Votre panier est vide !</div>
-     `;
-    cartMain.innerHTML = emptyBasket; 
-} 
-else {
-    noOfProducts.innerHTML =  parseInt(selectedProducts.length) + "&nbsp;&nbsp;"+'Articles';
-    for(i=0;i<selectedProducts.length;i++)
+    if(selectedProducts == null || selectedProducts.length === 0)
     {
-        showProductPanier = showProductPanier + 
-        `<tr>
-            
-            <td>${selectedProducts[i].productName}</td>
-            <td>${selectedProducts[i].productColor}</td>
-            <td>${selectedProducts[i].Quantity}</td>
-            <td>${selectedProducts[i].productCost}</td>
-            <td>${(parseInt(selectedProducts[i].productCost)*parseInt(selectedProducts[i].Quantity)).toFixed(2)}€</td>
-           
-        </tr>`;
-        
-        
-        
-        const calculMontantCol = document.getElementById('calcul_montant');
-        calculMontant = calculMontant + parseInt(selectedProducts[i].productCost)*parseInt(selectedProducts[i].Quantity);
-        console.log(calculMontant);
-        calculMontantCol.innerText = calculMontant.toFixed(2) + '€';
-       
-    }
-    if(i == selectedProducts.length)
-    {
-        listProductOneByOne.innerHTML = showProductPanier;
+        // si le panier est vide 
+        document.getElementById("cart_container").style.display = "none";
+        document.getElementById("form_section").style.display = "none";
+        noOfProducts.innerHTML =  0 + "&nbsp;&nbsp;"+'Articles';
+        const emptyBasket = `
+            <div class = "cart_content">
+                <div class = "cart_empty">Votre panier est vide !</div>
+        `;
+        cartMain.innerHTML = emptyBasket; 
     } 
-    //Afficher le formulaire via JS
+    else {
+        noOfProducts.innerHTML =  parseInt(selectedProducts.length) + "&nbsp;&nbsp;"+'Articles';
+        for(i=0;i<selectedProducts.length;i++)
+        {
+            showProductPanier = showProductPanier + 
+            `<tr>
+                
+                <td>${selectedProducts[i].productName}</td>
+                <td>${selectedProducts[i].productColor}</td>
+                <td>${selectedProducts[i].Quantity}</td>
+                <td>${selectedProducts[i].productCost}</td>
+                <td>${(parseInt(selectedProducts[i].productCost)*parseInt(selectedProducts[i].Quantity)).toFixed(2)}€</td>
+            
+            </tr>`;
+            
+            
+            
+            const calculMontantCol = document.getElementById('calcul_montant');
+            calculMontant = calculMontant + parseInt(selectedProducts[i].productCost)*parseInt(selectedProducts[i].Quantity);
+            
+            calculMontantCol.innerText = calculMontant.toFixed(2) + '€';
+        
+        }
+        if(i == selectedProducts.length)
+        {
+            listProductOneByOne.innerHTML = showProductPanier;
+        } 
+        //Afficher le formulaire via JS
 
 
-const displaySectionForm = () => 
-{
-    //le positionnement du formulaire
-    const addForm = document.querySelector('#form_section');
-    console.log( addForm);
-    const displayForm = 
-    `<form class="needs-validation" novalidate>
-    <div class="form-row">
-      <div class="col-md-4 mb-3">
-        <label for="nom">Nom</label>
-        <input type="text" class="form-control" id="nom" placeholder="Votre nom" required>
-        <div class="valid-feedback">
-          Looks good!
-        </div>
-      </div>
-      <div class="col-md-4 mb-3">
-        <label for="prenom">Prénom</label>
-        <input type="text" class="form-control" id="prenom" placeholder="Votre prénom" required>
-        <div class="valid-feedback">
-          Looks good!
-        </div>
-      </div>
-      <div class="col-md-4 mb-3">
-        <label for="adressemail">Adresse E-mail</label>
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroupPrepend">@</span>
-          </div>
-          <input type="text" class="form-control" id="adressemail" placeholder="Votre valid adresse E-mail" aria-describedby="inputGroupPrepend" required>
-          <div class="invalid-feedback">
-            Please choose a username.
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="col-md-6 mb-3">
-        <label for="adressepostale">Adresse</label>
-        <input type="text" class="form-control" id="adressepostale" placeholder="Votre adresse" required>
-        <div class="invalid-feedback">
-          Please provide a valid city.
-        </div>
-      </div>
-      <div class="col-md-3 mb-3">
-        <label for="ville">Ville</label>
-        <input type="text" class="form-control" id="ville" placeholder="Ville" required>
-        <div class="invalid-feedback">
-          Please provide a valid state.
-        </div>
-      </div>
-      <div class="col-md-3 mb-3">
-        <label for="codepostale">Code Postal</label>
-        <input type="text" class="form-control" id="codepostale" placeholder="Code Postal" required>
-        <div class="invalid-feedback">
-          Please provide a valid zip.
-        </div>
-      </div>
-    </div>
-    <div class="form-group">
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-        <label class="form-check-label" for="invalidCheck">
-          Agree to terms and conditions
-        </label>
-        <div class="invalid-feedback">
-          You must agree before submitting.
-        </div>
-      </div>
-    </div>
-    <button class="btn btn-primary" type="submit">Valider votre Commande</button>
-  </form>`;
+        const displaySectionForm = () => 
+        {
+            //le positionnement du formulaire
+            const addForm = document.querySelector('#form_section');
+            
+            const displayForm = 
+            `<form class="needs-validation" novalidate>
+                <div class="form-row">
+                    <div class="col-md-4 mb-3">
+                        <label for="nom">Nom</label>
+                        <input type="text" class="form-control" id="nom" placeholder="Votre nom" required>
+                        <div class="valid-feedback">
+                        Looks good!
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="prenom">Prénom</label>
+                        <input type="text" class="form-control" id="prenom" placeholder="Votre prénom" required>
+                        <div class="valid-feedback">
+                        Looks good!
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="adressemail">Adresse E-mail</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroupPrepend">@</span>
+                            </div>
+                            <input type="text" class="form-control" id="adressemail" placeholder="Votre valid adresse E-mail" aria-describedby="inputGroupPrepend" required>
+                            <div class="invalid-feedback">
+                                Please choose a username.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-6 mb-3">
+                        <label for="adressepostale">Adresse</label>
+                        <input type="text" class="form-control" id="adressepostale" placeholder="Votre adresse" required>
+                        <div class="invalid-feedback">
+                        Please provide a valid city.
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="ville">Ville</label>
+                        <input type="text" class="form-control" id="ville" placeholder="Ville" required>
+                        <div class="invalid-feedback">
+                        Please provide a valid state.
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="codepostale">Code Postal</label>
+                        <input type="text" class="form-control" id="codepostale" placeholder="Code Postal" required>
+                        <div class="invalid-feedback">
+                        Please provide a valid zip.
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                        <label class="form-check-label" for="invalidCheck">
+                        Agree to terms and conditions
+                        </label>
+                        <div class="invalid-feedback">
+                        You must agree before submitting.
+                        </div>
+                    </div>
+                </div>
+                <button id="submit_button" class="btn btn-primary" type="submit">Valider votre Commande</button>
+            </form>`;
 
-  addForm.insertAdjacentHTML("afterEnd",displayForm);
-}
-  displaySectionForm();  
-}
+            //injection le formulaire
+            addForm.insertAdjacentHTML("afterEnd",displayForm);
+        }
+
+        //appellé pour affichage du formulaire
+        displaySectionForm(); 
+
+        //selectionner le bouton pour envoyer le formulaire
+        const submitFormButton = document.querySelector("#submit_button");
+        
+
+        //ajouter EventListener pour formulaire submit 
+        submitFormButton.addEventListener("click", (e) => 
+        {
+            e.preventDefault();
+            //recupère des valeurs du formilaire pour stocker dans le locale Storage
+            localStorage.setItem("nom",document.querySelector("#nom").value);
+            // window.alert(document.querySelector("#nom").value);   
+            localStorage.setItem("prenom",document.querySelector("#prenom").value);
+            localStorage.setItem("adressemail",document.querySelector("#adressemail").value);
+            localStorage.setItem("adressepostale",document.querySelector("#adressepostale").value);
+            localStorage.setItem("ville",document.querySelector("#ville").value);
+            localStorage.setItem("codepostale",document.querySelector("#codepostale").value);
+            
+        });
+       
+       
+        
+    }
 }
 
 //eventListener pour vider le panier
