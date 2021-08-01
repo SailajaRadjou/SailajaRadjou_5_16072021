@@ -136,13 +136,23 @@ function loadPanier()
         {
             e.preventDefault();
             //recupère des valeurs du formilaire pour stocker dans le locale Storage
-            const contact= {
+           /* const contact= {
                 firstName: document.querySelector("#firstName").value,
                 lastName: document.querySelector("#lastName").value,
                 address: document.querySelector("#address").value,
                 city: document.querySelector("#city").value,
                 email: document.querySelector("#email").value
+            };*/
+
+            const contact= {
+                firstName: "test",
+                lastName: "test",
+                address: "test",
+                city: "test",
+                email: "test"
             };
+
+            const products = ["5be9c8541c9d440000665243"];
 
             //mettre le objet contact dans le localStorage
             localStorage.setItem("contact",JSON.stringify(contact));
@@ -153,7 +163,7 @@ function loadPanier()
             //crée un objet pour mettre les valeurs de formulaire
             // et aussi les produits dans le panier
             const commandeEnvoyer = {
-                products,contact
+               contact, products
             };
             console.log("commandeEnvoyer");
             console.table(commandeEnvoyer);
@@ -165,18 +175,25 @@ function loadPanier()
                     "Content-Type": "application/json",
                 },
             });
-            let priceConfirmation = document.querySelector("#calcul_montant").innerText;
+            let amountPayable = document.querySelector("#calcul_montant").innerText;
             promisePost.then(async (response) => {
                 try {
-                    console.log(response);
-                    const contenu = await response.json();
-                    console.log(contenu);
-                   
-                        e.preventDefault();
-                     
-                      window.alert("welcome"+promisePost.orderId);
-                      localStorage.setItem("responseOrder",promisePost.orderId);
-                      localStorage.setItem("total", priceConfirmation);
+                    
+                    const contentResponse = await response.json();
+                    console.log("response contentResponse");
+                    console.log(contentResponse);
+                    if (response.ok){
+                        console.log(`response OK : ${response.ok}`);
+                        console.log("contentResponse ID");
+                        console.log(contentResponse.orderId);
+
+                        localStorage.setItem("responseOrderId",contentResponse.orderId);
+                    }
+                    else{
+                        console.log(`respose server : ${response.status}`);
+                        alert(`problem avec server : ${response.status}`);
+                    }                     
+                    localStorage.setItem("total", amountPayable);
             
                 }catch (e) {
                     console.log(e);
@@ -214,39 +231,3 @@ deleteContent.addEventListener("click", function (event)
     emptyCart.textContent = "Votre panier est vide !"
     
 })
-/* function SomeDeleteRowFunction(o) {
-            
-            
-                 var p=o.parentNode.parentNode;
-                 p.parentNode.removeChild(p);
-  } */
- /* const post = {
-                method: "POST",
-                bodyData: JSON.stringify(commandeEnvoyer),
-               headers: { "Content-Type": "application/json" }
-              };
-        
-              
-             let priceConfirmation = document.querySelector("#calcul_montant").innerText;
-             
-        
-              
-              
-              fetch('http://localhost:3000/api/teddies/order',post)
-              .then(function(Response){
-                return Response.json();
-                })
-                  
-                .then(postdata => {
-                    e.preventDefault();
-                 
-                  window.alert("welcome"+postdata.orderId);
-                  localStorage.setItem("responseOrder",postdata.orderId);
-                  localStorage.setItem("total", priceConfirmation);
-        
-                 
-                  // document.location.href = "confirmation.html";
-                })
-                 .catch((err) => {
-                  alert("Il y a eu une erreur : " + err);
-                });*/
