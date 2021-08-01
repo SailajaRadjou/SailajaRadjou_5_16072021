@@ -142,23 +142,110 @@ function loadPanier()
                 city: document.querySelector("#city").value,
                 email: document.querySelector("#email").value
             };
+
             //Form validity
+
+            //appellé le fonction pour afficher alert
+            function alertWindow(texteAlert)
+            {
+                window.alert(texteAlert+"Chiffre & le Symbole ne sont pas autorisé!");
+            }
+
+            //appellé le fonction pour tester Regular Expressions pour firstName,lastName & city
+            const regExForNameCity = (value) =>
+            {
+                return /^[A-Za-z\s,'-]{3,20}$/.test(value);
+            }
+
+            //appellé le fonction pour tester Regular Expressions pour adresse e-mail
+            const regExForEmail = (value) =>
+            {
+                return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value);
+            }
+
+            //appellé le fonction pour tester Regular Expressions pour adresse e-mail
+            const regExForAddress = (value) =>
+            {
+                return /^[a-z0-9\s,'-]*$/.test(value);
+            }
+            
+            //checking validity for first name
             function firstNameValidity()
             {
                 const firstNameValid = contact.firstName;
-                if(/^[A-Za-z]{3,20}$/.test(firstNameValid))
+                if(regExForNameCity(firstNameValid))
                 {
-                    console.log("firstnamevalid");
-                    console.log(firstNameValid);
                     return true;
                 }
                 else
                 {
-                    alert("chiffre & le symbole ne sont pas autorisé!");
+                    alertWindow(firstNameValid);
                     return false;
                 }
             }
-            if(firstNameValidity())
+
+            //checking validity for last name
+            function lastNameValidity()
+            {
+                const lastNameValid = contact.lastName;
+                if(regExForNameCity(lastNameValid))
+                {
+                    return true;
+                }
+                else
+                {
+                    alertWindow(lastNameValid);
+                    return false;
+                }
+            }
+
+            //checking validity for city name
+            function citytNameValidity()
+            {
+                const cityNameValid = contact.city;
+                if(regExForNameCity(cityNameValid))
+                {
+                    return true;
+                }
+                else
+                {
+                    alertWindow(cityNameValid);
+                    return false;
+                }
+            }
+
+            //checking validity for E-mail
+            function emailValidity()
+            {
+                const emailValid = contact.email;
+                if(regExForEmail(emailValid))
+                {
+                    return true;
+                }
+                else
+                {
+                    alertWindow(emailValid);
+                    return false;
+                }
+            }
+            
+            //checking validity for address
+            function addressValidity()
+            {
+                const addressValid = contact.address;
+                if(regExForAddress(addressValid))
+                {
+                    return true;
+                }
+                else
+                {
+                    alertWindow(addressValid);
+                    return false;
+                }
+            }
+
+            //pour controller les valeurs de formulaire si bon le object contact va stocker dans le localStorage
+            if(firstNameValidity() && lastNameValidity() && citytNameValidity() && addressValidity() && emailValidity())
             {
               //mettre le objet contact dans le localStorage
                localStorage.setItem("contact",JSON.stringify(contact));
@@ -169,8 +256,7 @@ function loadPanier()
             }
             
             
-             console.table("contact");
-             console.table(contact);
+             
 
             // création du tableau products ("_id" de teddies du panier)
              let products = [];
