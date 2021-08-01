@@ -1,6 +1,6 @@
 
-let selectedProducts = JSON.parse(localStorage.getItem('newProduct'));
-console.log(selectedProducts);
+let products = JSON.parse(localStorage.getItem('newProduct'));
+console.log(products);
 
 const cartMain = document.getElementById('cart_page');
 const listProductOneByOne = document.getElementById("next_row");
@@ -14,7 +14,7 @@ loadPanier();
 
 function loadPanier()
 {
-    if(selectedProducts == null || selectedProducts.length === 0)
+    if(products == null || products.length === 0)
     {
         // si le panier est vide 
         document.getElementById("cart_container").style.display = "none";
@@ -27,29 +27,29 @@ function loadPanier()
         cartMain.innerHTML = emptyBasket; 
     } 
     else {
-        noOfProducts.innerHTML =  parseInt(selectedProducts.length) + "&nbsp;&nbsp;"+'Articles';
-        for(i=0;i<selectedProducts.length;i++)
+        noOfProducts.innerHTML =  parseInt(products.length) + "&nbsp;&nbsp;"+'Articles';
+        for(i=0;i<products.length;i++)
         {
             showProductPanier = showProductPanier + 
             `<tr>
                 
-                <td>${selectedProducts[i].productName}</td>
-                <td>${selectedProducts[i].productColor}</td>
-                <td>${selectedProducts[i].Quantity}</td>
-                <td>${selectedProducts[i].productCost}</td>
-                <td>${(parseInt(selectedProducts[i].productCost)*parseInt(selectedProducts[i].Quantity)).toFixed(2)}€</td>
+                <td>${products[i].productName}</td>
+                <td>${products[i].productColor}</td>
+                <td>${products[i].Quantity}</td>
+                <td>${products[i].productCost}</td>
+                <td>${(parseInt(products[i].productCost)*parseInt(products[i].Quantity)).toFixed(2)}€</td>
             
             </tr>`;
             
             
             
             const calculMontantCol = document.getElementById('calcul_montant');
-            calculMontant = calculMontant + parseInt(selectedProducts[i].productCost)*parseInt(selectedProducts[i].Quantity);
+            calculMontant = calculMontant + parseInt(products[i].productCost)*parseInt(products[i].Quantity);
             
             calculMontantCol.innerText = calculMontant.toFixed(2) + '€';
         
         }
-        if(i == selectedProducts.length)
+        if(i == products.length)
         {
             listProductOneByOne.innerHTML = showProductPanier;
         } 
@@ -136,57 +136,53 @@ function loadPanier()
         {
             e.preventDefault();
             //recupère des valeurs du formilaire pour stocker dans le locale Storage
-            const formulaireDetails = {
-                firstName : document.querySelector("#firstName").value,
-                lastName : document.querySelector("#lastName").value,
-                address : document.querySelector("#address").value,
-                city : document.querySelector("#city").value,
-                email : document.querySelector("#email").value
+            const contact= {
+                firstName: document.querySelector("#firstName").value,
+                lastName: document.querySelector("#lastName").value,
+                address: document.querySelector("#address").value,
+                city: document.querySelector("#city").value,
+                email: document.querySelector("#email").value
             };
 
-            //mettre le objet formulaireDetails dans le localStorage
-            localStorage.setItem("formulaireDetails",JSON.stringify(formulaireDetails));
+            //mettre le objet contact dans le localStorage
+            localStorage.setItem("contact",JSON.stringify(contact));
             
             
-            console.table("formulaireDetails");
-            console.table(formulaireDetails);
+            console.table("contact");
+            console.table(contact);
             //crée un objet pour mettre les valeurs de formulaire
             // et aussi les produits dans le panier
             const commandeEnvoyer = {
-                selectedProducts,formulaireDetails
+                products,contact
             };
+            console.log("commandeEnvoyer");
             console.table(commandeEnvoyer);
 
-            const post = {
+            const promisePost = fetch("http://localhost:3000/api/teddies/order", {
                 method: "POST",
-                bodyData: JSON.stringify(commandeEnvoyer),
-               //headers: { "Content-Type": 'application/JSON' }
-              };
-        
-              
-             let priceConfirmation = document.querySelector("#calcul_montant").innerText;
-             
-        
-              
-              
-              fetch('http://localhost:3000/api/teddies/order',post)
-              .then(function(Response){
-                return Response.json();
-                })
-                  
-                .then(postdata => {
-                    e.preventDefault();
-                 
-                  window.alert("welcome"+postdata.orderId);
-                  localStorage.setItem("responseOrder",postdata.orderId);
-                  localStorage.setItem("total", priceConfirmation);
-        
-                 
-                  // document.location.href = "confirmation.html";
-                })
-                 .catch((err) => {
-                  alert("Il y a eu une erreur : " + err);
-                });
+                body: JSON.stringify(commandeEnvoyer),
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+            let priceConfirmation = document.querySelector("#calcul_montant").innerText;
+            promisePost.then(async (response) => {
+                try {
+                    console.log(response);
+                    const contenu = await response.json();
+                    console.log(contenu);
+                   
+                        e.preventDefault();
+                     
+                      window.alert("welcome"+promisePost.orderId);
+                      localStorage.setItem("responseOrder",promisePost.orderId);
+                      localStorage.setItem("total", priceConfirmation);
+            
+                }catch (e) {
+                    console.log(e);
+                }
+            });
+          
         });
       
         
@@ -224,4 +220,33 @@ deleteContent.addEventListener("click", function (event)
                  var p=o.parentNode.parentNode;
                  p.parentNode.removeChild(p);
   } */
-
+ /* const post = {
+                method: "POST",
+                bodyData: JSON.stringify(commandeEnvoyer),
+               headers: { "Content-Type": "application/json" }
+              };
+        
+              
+             let priceConfirmation = document.querySelector("#calcul_montant").innerText;
+             
+        
+              
+              
+              fetch('http://localhost:3000/api/teddies/order',post)
+              .then(function(Response){
+                return Response.json();
+                })
+                  
+                .then(postdata => {
+                    e.preventDefault();
+                 
+                  window.alert("welcome"+postdata.orderId);
+                  localStorage.setItem("responseOrder",postdata.orderId);
+                  localStorage.setItem("total", priceConfirmation);
+        
+                 
+                  // document.location.href = "confirmation.html";
+                })
+                 .catch((err) => {
+                  alert("Il y a eu une erreur : " + err);
+                });*/
