@@ -1,10 +1,10 @@
 
-let products = JSON.parse(localStorage.getItem('newProduct'));
-console.log(products);
+let storedProducts = JSON.parse(localStorage.getItem('newProduct'));
+console.log(storedProducts);
 
 const cartMain = document.getElementById('cart_page');
 const listProductOneByOne = document.getElementById("next_row");
-const noOfProducts =  document.getElementById('count_articles'); 
+const noOfStoredProducts =  document.getElementById('count_articles'); 
 
 let showProductPanier = [];
 let calculMontant = 0;
@@ -14,12 +14,12 @@ loadPanier();
 
 function loadPanier()
 {
-    if(products == null || products.length === 0)
+    if(storedProducts == null || storedProducts.length === 0)
     {
         // si le panier est vide 
         document.getElementById("cart_container").style.display = "none";
         document.getElementById("form_section").style.display = "none";
-        noOfProducts.innerHTML =  0 + "&nbsp;&nbsp;"+'Articles';
+        noOfStoredProducts.innerHTML =  0 + "&nbsp;&nbsp;"+'Articles';
         const emptyBasket = `
             <div class = "cart_content">
                 <div class = "cart_empty">Votre panier est vide !</div>
@@ -27,29 +27,29 @@ function loadPanier()
         cartMain.innerHTML = emptyBasket; 
     } 
     else {
-        noOfProducts.innerHTML =  parseInt(products.length) + "&nbsp;&nbsp;"+'Articles';
-        for(i=0;i<products.length;i++)
+        noOfStoredProducts.innerHTML =  parseInt(storedProducts.length) + "&nbsp;&nbsp;"+'Articles';
+        for(i=0;i<storedProducts.length;i++)
         {
             showProductPanier = showProductPanier + 
             `<tr>
                 
-                <td>${products[i].productName}</td>
-                <td>${products[i].productColor}</td>
-                <td>${products[i].Quantity}</td>
-                <td>${products[i].productCost}</td>
-                <td>${(parseInt(products[i].productCost)*parseInt(products[i].Quantity)).toFixed(2)}€</td>
+                <td>${storedProducts[i].productName}</td>
+                <td>${storedProducts[i].productColor}</td>
+                <td>${storedProducts[i].Quantity}</td>
+                <td>${storedProducts[i].productCost}</td>
+                <td>${(parseInt(storedProducts[i].productCost)*parseInt(storedProducts[i].Quantity)).toFixed(2)}€</td>
             
             </tr>`;
             
             
             
             const calculMontantCol = document.getElementById('calcul_montant');
-            calculMontant = calculMontant + parseInt(products[i].productCost)*parseInt(products[i].Quantity);
+            calculMontant = calculMontant + parseInt(storedProducts[i].productCost)*parseInt(storedProducts[i].Quantity);
             
             calculMontantCol.innerText = calculMontant.toFixed(2) + '€';
         
         }
-        if(i == products.length)
+        if(i == storedProducts.length)
         {
             listProductOneByOne.innerHTML = showProductPanier;
         } 
@@ -136,24 +136,23 @@ function loadPanier()
         {
             e.preventDefault();
             //recupère des valeurs du formilaire pour stocker dans le locale Storage
-           /* const contact= {
+           
+            const contact= {
                 firstName: document.querySelector("#firstName").value,
                 lastName: document.querySelector("#lastName").value,
                 address: document.querySelector("#address").value,
                 city: document.querySelector("#city").value,
                 email: document.querySelector("#email").value
-            };*/
-
-            const contact= {
-                firstName: "test",
-                lastName: "test",
-                address: "test",
-                city: "test",
-                email: "test"
             };
 
-            const products = ["5be9c8541c9d440000665243"];
-
+            // création du tableau products (id des teddies du panier)
+             let products = [];
+             for (storedProduct of storedProducts) {
+                 let storedProductId = storedProduct.productId;
+                 products.push((storedProductId));
+             }
+             console.log("productsId");
+             console.log(products);
             //mettre le objet contact dans le localStorage
             localStorage.setItem("contact",JSON.stringify(contact));
             
@@ -218,7 +217,7 @@ deleteContent.addEventListener("click", function (event)
     document.getElementById("cart_container").style.display = "none";
     document.getElementById("form_section").style.display = "none";
 
-    noOfProducts.innerHTML = 0 + "&nbsp;&nbsp;"+'Articles'; 
+    noOfstoredProducts.innerHTML = 0 + "&nbsp;&nbsp;"+'Articles'; 
   
 
     const cartEmptyDiv = document.createElement('div');
