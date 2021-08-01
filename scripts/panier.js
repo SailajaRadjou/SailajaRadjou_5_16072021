@@ -142,8 +142,33 @@ function loadPanier()
                 city: document.querySelector("#city").value,
                 email: document.querySelector("#email").value
             };
-            //mettre le objet contact dans le localStorage
-             localStorage.setItem("contact",JSON.stringify(contact));
+            //Form validity
+            function firstNameValidity()
+            {
+                const firstNameValid = contact.firstName;
+                if(/^[A-Za-z]{3,20}$/.test(firstNameValid))
+                {
+                    console.log("firstnamevalid");
+                    console.log(firstNameValid);
+                    return true;
+                }
+                else
+                {
+                    alert("chiffre & le symbole ne sont pas autorisé!");
+                    return false;
+                }
+            }
+            if(firstNameValidity())
+            {
+              //mettre le objet contact dans le localStorage
+               localStorage.setItem("contact",JSON.stringify(contact));
+            }
+            else
+            {
+                alert("Veuillez bien remplir le formulaire !")
+            }
+            
+            
              console.table("contact");
              console.table(contact);
 
@@ -164,7 +189,7 @@ function loadPanier()
             console.log("commandeEnvoyer");
             console.table(commandeEnvoyer);
             //envoie de l'objet "commandeEnvoyer" vers le serveur
-            const promisePost = fetch("http://localhost:3000/api/teddies/order", {
+          /*  const promisePost = fetch("http://localhost:3000/api/teddies/order", {
                 method: "POST",
                 body: JSON.stringify(commandeEnvoyer),
                 headers: {
@@ -177,10 +202,10 @@ function loadPanier()
             
              localStorage.setItem("totalAmount", amountPayable);
              const storagePrice = localStorage.getItem('totalAmount');
-             console.log(storagePrice);
+             console.log(storagePrice);*/
            
             //response du serveur dans le console
-            promisePost.then(async (response) => {
+     /*       promisePost.then(async (response) => {
                 try {
                     
                     const contentResponse = await response.json();
@@ -203,8 +228,8 @@ function loadPanier()
                             
                 }catch (e) {
                     console.log(e);
-                }
-            });
+               
+            });*/
         });
     }
 }
