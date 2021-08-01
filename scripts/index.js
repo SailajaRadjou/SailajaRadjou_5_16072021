@@ -31,7 +31,7 @@ function contentLoad()
             //Création de DOM et afficher les données de l'API que on avait recupérer 
             const productImageDiv = document.createElement("div");
             document.querySelector(".display_content").appendChild(productImageDiv);
-            productImageDiv.classList.add("product_list");
+            productImageDiv.classList.add("product_list","container-sm","container");
 
             const productLink = document.createElement("a");
             productImageDiv.appendChild(productLink);
@@ -48,7 +48,7 @@ function contentLoad()
 
             const productDetail = document.createElement('div');
             productImageDiv.appendChild(productDetail );
-            productDetail.className = 'product_detail';
+            productDetail.classList.add("product_detail","container-sm","container");
         
             const productName = document.createElement('h3');
             productDetail.appendChild(productName);

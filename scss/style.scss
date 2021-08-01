@@ -1,7 +1,11 @@
+@import "responsive_typo";
 @import "variable_overrides";
 @import "title_overrides";
 @import "display_overrides";
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
 html, body {
     overflow-x: hidden;
+}
+:root{
+    font-size: 85.5%;
 }

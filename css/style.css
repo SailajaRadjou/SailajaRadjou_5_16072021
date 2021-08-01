@@ -1,4 +1,25 @@
 @charset "UTF-8";
+html {
+  font-size: 1rem;
+}
+
+/*  @include media-breakpoint-up(sm) {
+    html {
+      font-size: 1.2rem;
+    }
+  }
+
+  @include media-breakpoint-up(md) {
+    html {
+      font-size: 1.4rem;
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    html {
+      font-size: 1.6rem;
+    }
+  }*/
 h1, .h1 {
   color: mistyrose;
   font-size: 2rem !important;
@@ -51,8 +72,7 @@ label {
 }
 
 .title-center {
-  height: 50px;
-  margin: 5rem;
+  height: 70px;
   text-align: center;
   font-size: 2rem;
   font-weight: bolder;
@@ -63,7 +83,6 @@ label {
 
 #content {
   max-width: 100%;
-  margin: 5rem;
   border: none;
   box-shadow: 1rem 1rem 1rem 1rem mistyrose !important;
 }
@@ -98,7 +117,7 @@ label {
 .product_list {
   display: flex;
   justify-content: space-around;
-  width: 60%;
+  width: 60% !important;
   height: 350px;
   object-fit: cover;
   padding: 3.5rem;
@@ -10906,6 +10925,10 @@ textarea.form-control-lg {
 }
 html, body {
   overflow-x: hidden;
+}
+
+:root {
+  font-size: 85.5%;
 }
 
 /*# sourceMappingURL=style.css.map */

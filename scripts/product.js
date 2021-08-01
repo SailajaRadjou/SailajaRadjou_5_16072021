@@ -37,11 +37,11 @@ function getProduct()
         const productImageDiv = document.createElement("div");
         document.querySelector(".product_description").appendChild(productImageDiv);
         productImageDiv.classList.add("product_display_container");
-
+        productImageDiv.classList.add("container","container-sm");
         //crée le tag image et ses attribute 
         const productImageImg = document.createElement("img");
         productImageDiv.appendChild(productImageImg);
-        productImageImg.classList.add("product_image");
+        productImageImg.classList.add("product_image","img-fluid");
         productImageImg.setAttribute('src', product.imageUrl);
         productImageImg.setAttribute('alt', 'Ours en peluche ' + product.name);
         productImageImg.setAttribute('title', 'Ours en peluche ' + product.name);
@@ -50,6 +50,7 @@ function getProduct()
         const productDetailDiv = document.createElement("div");
         document.querySelector(".product_description").appendChild(productDetailDiv);
         productDetailDiv.classList.add("product_details_display");
+        productDetailDiv.classList.add("cotainer","container-sm");
 
         // Pour afficher le nom de l'ourson selectionné
         const productTitle = document.createElement("h3");

@@ -1,4 +1,4 @@
-
+//récupération les données de localStorage
 let storedProducts = JSON.parse(localStorage.getItem('newProduct'));
 console.log(storedProducts);
 
@@ -8,9 +8,8 @@ const noOfStoredProducts =  document.getElementById('count_articles');
 
 let showProductPanier = [];
 let calculMontant = 0;
-//countArticles();
-loadPanier();
 
+loadPanier();
 
 function loadPanier()
 {
@@ -21,12 +20,14 @@ function loadPanier()
         document.getElementById("form_section").style.display = "none";
         noOfStoredProducts.innerHTML =  0 + "&nbsp;&nbsp;"+'Articles';
         const emptyBasket = `
-            <div class = "cart_content">
-                <div class = "cart_empty">Votre panier est vide !</div>
+            <div class = "cart_content container container-sm">
+                <div class = "cart_empty container container-sm">Votre panier est vide !</div>
         `;
         cartMain.innerHTML = emptyBasket; 
     } 
     else {
+         // si le panier a des produits => récupération des éléments du panier
+
         noOfStoredProducts.innerHTML =  parseInt(storedProducts.length) + "&nbsp;&nbsp;"+'Articles';
         for(i=0;i<storedProducts.length;i++)
         {
@@ -40,9 +41,7 @@ function loadPanier()
                 <td>${(parseInt(storedProducts[i].productCost)*parseInt(storedProducts[i].Quantity)).toFixed(2)}€</td>
             
             </tr>`;
-            
-            
-            
+             //calcul du montant total           
             const calculMontantCol = document.getElementById('calcul_montant');
             calculMontant = calculMontant + parseInt(storedProducts[i].productCost)*parseInt(storedProducts[i].Quantity);
             
@@ -53,9 +52,8 @@ function loadPanier()
         {
             listProductOneByOne.innerHTML = showProductPanier;
         } 
+
         //Afficher le formulaire via JS
-
-
         const displaySectionForm = () => 
         {
             //le positionnement du formulaire
@@ -144,8 +142,12 @@ function loadPanier()
                 city: document.querySelector("#city").value,
                 email: document.querySelector("#email").value
             };
+            //mettre le objet contact dans le localStorage
+             localStorage.setItem("contact",JSON.stringify(contact));
+             console.table("contact");
+             console.table(contact);
 
-            // création du tableau products (id des teddies du panier)
+            // création du tableau products ("_id" de teddies du panier)
              let products = [];
              for (storedProduct of storedProducts) {
                  let storedProductId = storedProduct.productId;
@@ -153,12 +155,7 @@ function loadPanier()
              }
              console.log("productsId");
              console.log(products);
-            //mettre le objet contact dans le localStorage
-            localStorage.setItem("contact",JSON.stringify(contact));
             
-            
-            console.table("contact");
-            console.table(contact);
             //crée un objet pour mettre les valeurs de formulaire
             // et aussi les produits dans le panier
             const commandeEnvoyer = {
@@ -166,7 +163,7 @@ function loadPanier()
             };
             console.log("commandeEnvoyer");
             console.table(commandeEnvoyer);
-
+            //envoie de l'objet "commandeEnvoyer" vers le serveur
             const promisePost = fetch("http://localhost:3000/api/teddies/order", {
                 method: "POST",
                 body: JSON.stringify(commandeEnvoyer),
@@ -174,39 +171,43 @@ function loadPanier()
                     "Content-Type": "application/json",
                 },
             });
+
+             // envoie du prix total au localStorage
             let amountPayable = document.querySelector("#calcul_montant").innerText;
+            
+             localStorage.setItem("totalAmount", amountPayable);
+             const storagePrice = localStorage.getItem('totalAmount');
+             console.log(storagePrice);
+           
+            //response du serveur dans le console
             promisePost.then(async (response) => {
                 try {
                     
                     const contentResponse = await response.json();
-                    console.log("response contentResponse");
+                    console.log("response");
                     console.log(contentResponse);
                     if (response.ok){
                         console.log(`response OK : ${response.ok}`);
-                        console.log("contentResponse ID");
+                        console.log("Response from serveur OrderId");
                         console.log(contentResponse.orderId);
 
                         localStorage.setItem("responseOrderId",contentResponse.orderId);
+
+                        window.location.href = "confirmation.html";
+                        //localStorage.removeItem("newArticle");
                     }
                     else{
                         console.log(`respose server : ${response.status}`);
                         alert(`problem avec server : ${response.status}`);
                     }                     
-                    localStorage.setItem("total", amountPayable);
-            
+                            
                 }catch (e) {
                     console.log(e);
                 }
             });
-          
         });
-      
-        
     }
 }
-                  
-        
-       
 
 //eventListener pour vider le panier
 const deleteContent = document.getElementById('delete');
@@ -219,7 +220,6 @@ deleteContent.addEventListener("click", function (event)
 
     noOfstoredProducts.innerHTML = 0 + "&nbsp;&nbsp;"+'Articles'; 
   
-
     const cartEmptyDiv = document.createElement('div');
     cartMain.appendChild(cartEmptyDiv);
     cartEmptyDiv.className = 'cart_content';
@@ -229,4 +229,4 @@ deleteContent.addEventListener("click", function (event)
     emptyCart.className = "cart_empty";
     emptyCart.textContent = "Votre panier est vide !"
     
-})
+});
