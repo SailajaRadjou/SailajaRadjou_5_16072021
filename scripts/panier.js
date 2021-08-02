@@ -255,10 +255,7 @@ function loadPanier()
                 alert("Veuillez bien remplir le formulaire !")
             }
             
-            
-             
-
-            // création du tableau products ("_id" de teddies du panier)
+           // création du tableau products ("_id" de teddies du panier)
              let products = [];
              for (storedProduct of storedProducts) {
                  let storedProductId = storedProduct.productId;
@@ -274,8 +271,9 @@ function loadPanier()
             };
             console.log("commandeEnvoyer");
             console.table(commandeEnvoyer);
+
             //envoie de l'objet "commandeEnvoyer" vers le serveur
-          /*  const promisePost = fetch("http://localhost:3000/api/teddies/order", {
+            const promisePost = fetch("http://localhost:3000/api/teddies/order", {
                 method: "POST",
                 body: JSON.stringify(commandeEnvoyer),
                 headers: {
@@ -288,10 +286,10 @@ function loadPanier()
             
              localStorage.setItem("totalAmount", amountPayable);
              const storagePrice = localStorage.getItem('totalAmount');
-             console.log(storagePrice);*/
+             console.log(storagePrice);
            
             //response du serveur dans le console
-     /*       promisePost.then(async (response) => {
+            promisePost.then(async (response) => {
                 try {
                     
                     const contentResponse = await response.json();
@@ -314,8 +312,8 @@ function loadPanier()
                             
                 }catch (e) {
                     console.log(e);
-               
-            });*/
+                }
+            });
         });
     }
 }

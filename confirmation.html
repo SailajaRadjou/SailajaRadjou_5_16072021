@@ -1,17 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://kit.fontawesome.com/2bc10c45b1.js" crossorigin="anonymous"></script>
+    <script type='text/javascript' src="scripts/confirmation.js" defer></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
     <title>Commande Valider</title>
 </head>
 <body>
-    <div class="container">
-        <!-- HEADER -->
-        
-        <!-- HEADER -->
-    
+    <header class="bg-dark">
+        <div class="container">
+          <div class="row">
+            <nav class="col navbar navbar-expand-lg navbar-dark">
+              <div class="navbar-header">
+              <a class="navbar-brand display_header" href="index.html">
+                <img src="images/orinoco-logo.png" class="logo_display logo_shadow img-fluid" alt="Info Logo" />
+                <h1>&nbsp;&nbsp;Entreprise de commerce en ligne</h1>
+              </a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+            </div> 
+              <div id="navbarContent" class="collapse navbar-collapse">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link icon-size" href="index.html"><h2>Accueil&emsp;&emsp;</h2></a>
+                  </li>
+                  <li class="nav-item active">
+                    <a id="icon" class="nav-link" href="panier.html"><h2><i class="fas fa-cart-arrow-down"></i></h2><span id="count_articles"></span>&emsp;&emsp;</a>
+                  </li>
+                  <li class="nav-item active">
+                    <a id="icon" class="nav-link" href="panier.html"><h2>&emsp;&emsp;<button id="delete"><i class="fas fa-trash-alt"></i></button></h2></a>
+                  </li>
+                 
+                </ul>
+              </div>
+            </nav>
+          </div>
+        </div>
+    </header>
+        <main id="product_page">
+            <h1>Oribears</h1>
+            <h2>Récapitulatif de votre commande</h2>
+        </main>
+        <div class="back">
+            <button><a href="index.html" title="Retour sur la page d'accueil">Retour à l'accueil</a></button>
+        </div>
         <main class="container">
           <p class="">Félicitation, votre commande à bien été prise en compte !</p>
           <p class="">Identifiant de votre commande : <span class="" id="order_id"></span></p>
