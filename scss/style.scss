@@ -1,11 +1,27 @@
-@import "responsive_typo";
-@import "variable_overrides";
-@import "title_overrides";
-@import "display_overrides";
+@import "./utils/responsive_typo";
+@import "./utils/animation";
+@import "./utils/variable_overrides";
+@import "./utils/mixins_overrides";
+@import "./base/title_overrides";
+@import "./layouts/display_overrides";
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
-html, body {
-    overflow-x: hidden;
-}
-:root{
+
+/*:root{
     font-size: 85.5%;
+}*/
+*,::before,::after{
+    box-sizing: border-box;
 }
+html,body{
+    overflow-x:hidden;
+}
+body{
+    position: relative;
+    color: $font-color;
+    width: 100%;
+   /* @include for-mobile{
+        margin: 0;
+        position: relative;
+    }  */  
+}
+

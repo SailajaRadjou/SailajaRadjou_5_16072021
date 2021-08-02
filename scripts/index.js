@@ -49,14 +49,23 @@ function contentLoad()
             const productDetail = document.createElement('div');
             productImageDiv.appendChild(productDetail );
             productDetail.classList.add("product_detail","container-sm","container");
+
+            const productDetailButton = document.createElement('button');
+            productDetail.appendChild(productDetailButton);
+            productDetailButton.classList.add("display_submit");
+            productDetailButton.textContent="Voir le Produit >";
         
+            const productNameRate = document.createElement('div');
+            productDetail.appendChild(productNameRate);
+            productNameRate.classList.add("product_name_rate");
+
             const productName = document.createElement('h3');
-            productDetail.appendChild(productName);
+            productNameRate.appendChild(productName);
             productName.className = 'product_name';
             productName.textContent = product.name;
             
             const productRate = document.createElement('p');
-            productDetail.appendChild(productRate);
+            productNameRate.appendChild(productRate);
             productRate.className = 'product_rate';
             productRate.textContent = product.price / 100+ " €";
         }

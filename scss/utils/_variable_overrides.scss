@@ -1,0 +1,29 @@
+$headings-font-family: 'Roboto', sans-serif,'Times New Roman', Times, serif;
+$primary-color:mistyrose;
+$title-color :rgb(44, 17, 41);
+$font-color:rgba(0, 0, 0);
+$box-shadow-title :darkgray;
+$product-title-color :#941546;
+$label-color:rgb(94, 34, 32);
+
+//maps for font-size
+$text-font-size:(
+    "for-title-center":2rem,
+    "icon-size":2rem,
+    "product-name-rate":1.5rem,
+    "header-h1":2rem,
+    "header-h2":1.8rem,
+    "header-h3":1.6rem,
+    "header-h4":1.4rem,
+    "header-h5":1.2rem,
+    "product-title-size":2rem,
+    "product-label-size":1.5rem,
+    "button-text-size":1.5rem
+);
+
+/*media resposive*/
+$breakpoints: (
+    small-screen-mobile: 340px,
+    mobile: 767px,
+    tablet: 1025px
+);

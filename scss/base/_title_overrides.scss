@@ -1,0 +1,25 @@
+h1{
+    color: $primary-color;
+    font-size: map-get($text-font-size , "header-h1") !important;
+    @include font-weight-text;
+}
+h2{
+    color: $primary-color;
+    @include font-weight-text;
+    font-size: map-get($text-font-size , "header-h2");
+}
+.product_title{
+    text-align: left;
+    color: $product-title-color;
+    @include font-weight-text;
+    font-size:map-get($text-font-size , "product-title-size");
+}
+label{
+    color: $label-color;
+    @include font-weight-text;
+    font-size: map-get($text-font-size , "product-label-size");
+}
+.select_size{
+    width: 10rem !important;
+    display: inline !important;
+}

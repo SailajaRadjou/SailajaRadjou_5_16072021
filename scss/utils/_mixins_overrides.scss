@@ -1,0 +1,76 @@
+@mixin flex-align-end {
+    display: flex;
+    align-items: flex-end;
+}
+@mixin flex-align-center {
+    display: flex;
+    align-items: center;
+}
+@mixin flex-justify-space-around{
+    display: flex;
+    justify-content: space-around;
+} 
+
+/*Font Weight*/
+@mixin font-weight-text {
+    font-weight: bolder;  
+}
+/*Background Color*/
+@mixin bg-color($colour:$dark-gray){
+    background-color: lighten($colour,67%);
+}
+@mixin location-bg-color($colour:$dark-gray){
+    background-color: lighten($colour,60%);
+}
+@mixin bg-color-white {
+    background-color: $white-color;  
+}
+@mixin footer-bg-color {
+    background-color: $dark-gray;
+    color: $white-color;
+}
+
+/* Shadows */
+
+@mixin header-shadow {
+    box-shadow: 0px 0px 6px $dark-gray;
+}
+
+@mixin title-box-shadow {
+    box-shadow: 0 5px 6px $box-shadow-title;
+}
+@mixin logo-box-shadow {
+    box-shadow: 0 0 .4rem $primary-color;
+}
+
+@mixin container-box-shadow {
+    box-shadow: 1rem 1rem 1rem 1rem $primary-color !important;
+}
+
+@mixin product-display-acceuil {
+    box-shadow: 0 0 10px #585555;
+}
+
+@mixin product-description-display {
+    box-shadow: 0 0 10px #585555;
+}
+
+@mixin border-radius-2 {
+    border-radius: 2rem;  
+}
+@mixin banner-border-radius {
+    border-radius: 0rem 0rem 2rem 2rem;
+}
+
+/*For buttons*/
+@mixin button-display {
+    font-size: map-get($text-font-size , "button-text-size");
+    font-weight: bolder;
+    margin: 20px 0px 20px 0;
+    width: 15rem;
+    height: 3rem;
+    background-color: $primary-color;
+    @include border-radius-2;
+   
+}
+ 
