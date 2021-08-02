@@ -247,73 +247,73 @@ function loadPanier()
             //pour controller les valeurs de formulaire si bon le object contact va stocker dans le localStorage
             if(firstNameValidity() && lastNameValidity() && citytNameValidity() && addressValidity() && emailValidity())
             {
-              //mettre le objet contact dans le localStorage
-               localStorage.setItem("contact",JSON.stringify(contact));
+                //mettre le objet contact dans le localStorage
+                localStorage.setItem("contact",JSON.stringify(contact));
+                            
+                // création du tableau products ("_id" de teddies du panier)
+                let products = [];
+                for (storedProduct of storedProducts) {
+                    let storedProductId = storedProduct.productId;
+                    products.push((storedProductId));
+                }
+                console.log("productsId");
+                console.log(products);
+                
+                //crée un objet pour mettre les valeurs de formulaire
+                // et aussi les produits dans le panier
+                const commandeEnvoyer = {
+                contact, products
+                };
+                console.log("commandeEnvoyer");
+                console.table(commandeEnvoyer);
+
+                //envoie de l'objet "commandeEnvoyer" vers le serveur
+                const promisePost = fetch("http://localhost:3000/api/teddies/order", {
+                    method: "POST",
+                    body: JSON.stringify(commandeEnvoyer),
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                });
+
+                // envoie du prix total au localStorage
+                let amountPayable = document.querySelector("#calcul_montant").innerText;
+                
+                localStorage.setItem("totalAmount", amountPayable);
+                const storagePrice = localStorage.getItem('totalAmount');
+                console.log(storagePrice);
+            
+                //response du serveur dans le console
+                promisePost.then(async (response) => {
+                    try {
+                        
+                        const contentResponse = await response.json();
+                        console.log("response");
+                        console.log(contentResponse);
+                        if (response.ok){
+                            console.log(`response OK : ${response.ok}`);
+                            console.log("Response from serveur OrderId");
+                            console.log(contentResponse.orderId);
+
+                            localStorage.setItem("responseOrderId",contentResponse.orderId);
+
+                            window.location.href = "confirmation.html";
+                            //localStorage.removeItem("newProduct");
+                        }
+                        else{
+                            console.log(`respose server : ${response.status}`);
+                            alert(`problem avec server : ${response.status}`);
+                        }                     
+                                
+                    }catch (e) {
+                        console.log(e);
+                    }
+                });
             }
             else
             {
                 alert("Veuillez bien remplir le formulaire !")
             }
-            
-           // création du tableau products ("_id" de teddies du panier)
-             let products = [];
-             for (storedProduct of storedProducts) {
-                 let storedProductId = storedProduct.productId;
-                 products.push((storedProductId));
-             }
-             console.log("productsId");
-             console.log(products);
-            
-            //crée un objet pour mettre les valeurs de formulaire
-            // et aussi les produits dans le panier
-            const commandeEnvoyer = {
-               contact, products
-            };
-            console.log("commandeEnvoyer");
-            console.table(commandeEnvoyer);
-
-            //envoie de l'objet "commandeEnvoyer" vers le serveur
-            const promisePost = fetch("http://localhost:3000/api/teddies/order", {
-                method: "POST",
-                body: JSON.stringify(commandeEnvoyer),
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            });
-
-             // envoie du prix total au localStorage
-            let amountPayable = document.querySelector("#calcul_montant").innerText;
-            
-             localStorage.setItem("totalAmount", amountPayable);
-             const storagePrice = localStorage.getItem('totalAmount');
-             console.log(storagePrice);
-           
-            //response du serveur dans le console
-            promisePost.then(async (response) => {
-                try {
-                    
-                    const contentResponse = await response.json();
-                    console.log("response");
-                    console.log(contentResponse);
-                    if (response.ok){
-                        console.log(`response OK : ${response.ok}`);
-                        console.log("Response from serveur OrderId");
-                        console.log(contentResponse.orderId);
-
-                        localStorage.setItem("responseOrderId",contentResponse.orderId);
-
-                        window.location.href = "confirmation.html";
-                        //localStorage.removeItem("newArticle");
-                    }
-                    else{
-                        console.log(`respose server : ${response.status}`);
-                        alert(`problem avec server : ${response.status}`);
-                    }                     
-                            
-                }catch (e) {
-                    console.log(e);
-                }
-            });
         });
     }
 }
