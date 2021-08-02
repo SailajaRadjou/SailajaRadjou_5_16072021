@@ -3,6 +3,9 @@
     height:60px;
     object-fit: cover;
     border-radius: 1.5rem;
+    @include for-large-screen {
+        height : 60px !important;
+    }
 }
 .logo_shadow{
    @include logo-box-shadow;
@@ -12,16 +15,38 @@
 }  
 .display_header{
     @include flex-align-end;
+    @include for-mobile{
+        align-items: flex-start;
+        flex-direction: column;
+    }
 }
 .title-center{
     height: 70px;
-    //margin: 5rem;
+    margin: 5rem;
     text-align: center;
     font-size: map-get($text-font-size , "for-title-center");
     background-color: $primary-color;
     color: $title-color;
+    line-height: 2.5;
     @include title-box-shadow;
     @include font-weight-text;
+    @include for-mobile{
+        font-size: 1.3rem !important;
+        margin: 0rem;
+        line-height: 1.5;
+    }
+
+}
+.title_div{
+    display: flex;
+    justify-content: center;
+    @include for-mobile{
+       flex-direction: column;
+    }
+    @include for-tablet{
+        flex-direction: column;
+        line-height: 1.5;
+    }
 }
 #content{
     max-width: 100%;
@@ -39,27 +64,52 @@
 }
 .banner-size{
     width : 100%;
-    height : 320px;
+    
     object-fit: cover;
     @include banner-border-radius;
+    @include for-large-screen {
+        height : 320px !important;
+    }
 }
 .product_image{
-    width: 350px;
+    
     height: auto;
     object-fit: cover;
     padding: 1rem;
     @include border-radius-2;
+    @include for-large-screen{
+        width: 100% !important;
+        height: auto;
+        object-fit: cover;
+        padding: 1rem;
+    }
 }
 .product_list{
     width: 60% !important;
-    height: 350px;
+    //height: 350px;
     object-fit: cover;
     padding: 3.5rem;
     margin: 5rem;
     background-color: $primary-color;
     @include border-radius-2;
-    @include product-display-acceuil;  
+    @include product-display;  
     @include flex-justify-space-around;  
+    transition: transform 200ms;
+    &:hover{
+        transform: scale(1.2);
+    }  
+    @include for-mobile {
+        flex-direction: column;
+        justify-content: center;
+        width: 100% !important;
+        margin: 2rem;
+    } 
+    @include for-tablet{
+        flex-direction: column;
+        justify-content: center;
+        width: 100% !important;
+        margin: 2rem;
+    } 
 }
 .resize{
     width: 100% !important;
@@ -69,12 +119,23 @@
     flex-flow: column;
     justify-content: space-between;
     width: auto;
+    @include for-mobile {
+        flex-direction: row;
+    } 
+    @include for-tablet{
+        flex-direction: row;
+    } 
 }
 .product_name, .product_rate{
     font-size: map-get($text-font-size , "product-name-rate");
     color: $title-color;
     font-weight: bold;
     display: inline;
+}
+.voir_produit{
+    line-height: 2.5;
+    font-size: 1.3rem !important;
+    width:12rem !important;
 }
 //product page
 .product_display_container{
@@ -87,14 +148,20 @@
     @include flex-align-center;
     width: 80%;
     height: 350px;
-    @include product-description-display;
+    @include product-display;
 }
 .product_details_display{
     margin: 5px;
 }
 .display_submit{
     @include button-display;
+    transition: transform 300ms;
+    &:hover{
+        transform: scale(1.2);
+        @include button-color;
+    }
 }
+
 .product_name_rate{
     display: flex;
     flex-direction: column;

@@ -25,16 +25,28 @@ html {
 /*Background Color*/
 /* Shadows */
 /*For buttons*/
+/*for media queries*/
 h1, .h1 {
   color: mistyrose;
   font-size: 2rem !important;
   font-weight: bolder;
+}
+@media screen and (max-width: 767px) {
+  h1, .h1 {
+    font-size: 1.5rem !important;
+  }
 }
 
 h2, .h2 {
   color: mistyrose;
   font-weight: bolder;
   font-size: 1.8rem;
+}
+
+@media screen and (max-width: 767px) {
+  h3, .h3 {
+    font-size: 1.5rem !important;
+  }
 }
 
 .product_title {
@@ -55,11 +67,22 @@ label {
   display: inline !important;
 }
 
+a {
+  text-decoration: none !important;
+  text-align: center;
+  color: #2c1129 !important;
+}
+
 .logo_display {
   width: 180px;
   height: 60px;
   object-fit: cover;
   border-radius: 1.5rem;
+}
+@media screen and (min-width: 1026px) and (max-width: 2400px) {
+  .logo_display {
+    height: 60px !important;
+  }
 }
 
 .logo_shadow {
@@ -74,15 +97,46 @@ label {
   display: flex;
   align-items: flex-end;
 }
+@media screen and (max-width: 767px) {
+  .display_header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
 
 .title-center {
   height: 70px;
+  margin: 5rem;
   text-align: center;
   font-size: 2rem;
   background-color: mistyrose;
   color: #2c1129;
+  line-height: 2.5;
   box-shadow: 0 5px 6px darkgray;
   font-weight: bolder;
+}
+@media screen and (max-width: 767px) {
+  .title-center {
+    font-size: 1.3rem !important;
+    margin: 0rem;
+    line-height: 1.5;
+  }
+}
+
+.title_div {
+  display: flex;
+  justify-content: center;
+}
+@media screen and (max-width: 767px) {
+  .title_div {
+    flex-direction: column;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .title_div {
+    flex-direction: column;
+    line-height: 1.5;
+  }
 }
 
 #content {
@@ -105,22 +159,32 @@ label {
 
 .banner-size {
   width: 100%;
-  height: 320px;
   object-fit: cover;
   border-radius: 0rem 0rem 2rem 2rem;
 }
+@media screen and (min-width: 1026px) and (max-width: 2400px) {
+  .banner-size {
+    height: 320px !important;
+  }
+}
 
 .product_image {
-  width: 350px;
   height: auto;
   object-fit: cover;
   padding: 1rem;
   border-radius: 2rem;
 }
+@media screen and (min-width: 1026px) and (max-width: 2400px) {
+  .product_image {
+    width: 100% !important;
+    height: auto;
+    object-fit: cover;
+    padding: 1rem;
+  }
+}
 
 .product_list {
   width: 60% !important;
-  height: 350px;
   object-fit: cover;
   padding: 3.5rem;
   margin: 5rem;
@@ -129,6 +193,26 @@ label {
   box-shadow: 0 0 10px #585555;
   display: flex;
   justify-content: space-around;
+  transition: transform 200ms;
+}
+.product_list:hover {
+  transform: scale(1.2);
+}
+@media screen and (max-width: 767px) {
+  .product_list {
+    flex-direction: column;
+    justify-content: center;
+    width: 100% !important;
+    margin: 2rem;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .product_list {
+    flex-direction: column;
+    justify-content: center;
+    width: 100% !important;
+    margin: 2rem;
+  }
 }
 
 .resize {
@@ -142,12 +226,28 @@ label {
   justify-content: space-between;
   width: auto;
 }
+@media screen and (max-width: 767px) {
+  .product_detail {
+    flex-direction: row;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .product_detail {
+    flex-direction: row;
+  }
+}
 
 .product_name, .product_rate {
   font-size: 1.5rem;
   color: #2c1129;
   font-weight: bold;
   display: inline;
+}
+
+.voir_produit {
+  line-height: 2.5;
+  font-size: 1.3rem !important;
+  width: 12rem !important;
 }
 
 .product_display_container {
@@ -177,8 +277,15 @@ label {
   margin: 20px 0px 20px 0;
   width: 15rem;
   height: 3rem;
-  background-color: mistyrose;
+  background-color: #f0d6f0;
+  border: none;
   border-radius: 2rem;
+  box-shadow: 0 0 10px #585555;
+  transition: transform 300ms;
+}
+.display_submit:hover {
+  transform: scale(1.2);
+  background: linear-gradient(to bottom right, mistyrose, #f89ef8, #dd846d);
 }
 
 .product_name_rate {
@@ -10934,9 +11041,10 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-/*:root{
-    font-size: 85.5%;
-}*/
+:root {
+  font-size: 85.5%;
+}
+
 *, ::before, ::after {
   box-sizing: border-box;
 }

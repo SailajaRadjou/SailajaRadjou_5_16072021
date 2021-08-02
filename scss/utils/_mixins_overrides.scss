@@ -47,12 +47,12 @@
     box-shadow: 1rem 1rem 1rem 1rem $primary-color !important;
 }
 
-@mixin product-display-acceuil {
-    box-shadow: 0 0 10px #585555;
+@mixin button-shadow {
+    box-shadow: 0 0 10px $box-shadow-product;
 }
 
-@mixin product-description-display {
-    box-shadow: 0 0 10px #585555;
+@mixin product-display {
+    box-shadow: 0 0 10px $box-shadow-product;
 }
 
 @mixin border-radius-2 {
@@ -69,8 +69,34 @@
     margin: 20px 0px 20px 0;
     width: 15rem;
     height: 3rem;
-    background-color: $primary-color;
+    background-color: $button-color;
+    border: none;
     @include border-radius-2;
-   
+   @include button-shadow;
+}
+@mixin button-color {
+    background: linear-gradient(to bottom right,$primary-color, $secondary-color, $teritary-color);
+}
+
+/*for media queries*/
+@mixin for-tablet {
+    @media screen and (min-width:map-get($breakpoints, mobile)+1) and (max-width:map-get($breakpoints, tablet)-1){
+      @content;
+    }
+}
+@mixin for-mobile {
+    @media screen and (max-width:map-get($breakpoints, mobile)){
+      @content;
+    }
+}
+@mixin for-small-screen-mobile {
+    @media screen and (max-width:map-get($breakpoints, small-screen-mobile)){
+        @content;
+    }    
+}
+@mixin for-large-screen {
+    @media screen and (min-width:map-get($breakpoints, tablet)+1) and (max-width:map-get($breakpoints, large-screen)){
+      @content;
+    }
 }
  

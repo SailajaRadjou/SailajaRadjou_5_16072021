@@ -2,11 +2,19 @@ h1{
     color: $primary-color;
     font-size: map-get($text-font-size , "header-h1") !important;
     @include font-weight-text;
+    @include for-mobile{
+        font-size: 1.5rem !important;
+    }
 }
 h2{
     color: $primary-color;
     @include font-weight-text;
     font-size: map-get($text-font-size , "header-h2");
+}
+h3{
+    @include for-mobile{
+        font-size: 1.5rem !important;
+    }
 }
 .product_title{
     text-align: left;
@@ -22,4 +30,9 @@ label{
 .select_size{
     width: 10rem !important;
     display: inline !important;
+}
+a{
+    text-decoration: none !important;
+    text-align: center;
+    color:$title-color !important;
 }

@@ -41,7 +41,7 @@ function contentLoad()
 
             const productImageImg = document.createElement("img");
             productLink.appendChild(productImageImg);
-            productImageImg.classList.add("product_image");
+            productImageImg.classList.add("product_image","img-fluid");
             productImageImg.setAttribute('src', product.imageUrl);
             productImageImg.setAttribute('alt', 'Ours en peluche ' + product.name);
             productImageImg.setAttribute('title', 'Ours en peluche ' + product.name);
@@ -50,10 +50,16 @@ function contentLoad()
             productImageDiv.appendChild(productDetail );
             productDetail.classList.add("product_detail","container-sm","container");
 
-            const productDetailButton = document.createElement('button');
+            const productDetailButton = document.createElement('a');
             productDetail.appendChild(productDetailButton);
-            productDetailButton.classList.add("display_submit");
-            productDetailButton.textContent="Voir le Produit >";
+            productDetailButton.classList.add("display_submit","voir_produit");
+            productDetailButton.innerHTML="Voir le Produit"+"&nbsp;";
+                       
+            const chevronButtonIcon = document.createElement('i');
+            productDetailButton.appendChild(chevronButtonIcon);
+            chevronButtonIcon.classList.add("fas","fa-chevron-right");
+            productDetailButton.href="product.html?id=" + product._id;
+
         
             const productNameRate = document.createElement('div');
             productDetail.appendChild(productNameRate);
