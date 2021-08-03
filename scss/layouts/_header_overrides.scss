@@ -20,3 +20,23 @@
         flex-direction: column;
     }
 }
+.icon-size{
+    font-size: map-get($text-font-size , "icon-size") !important;
+    color : $primary-color;
+}
+.total_articles{
+    color: $primary-color;
+    @include font-weight-text;
+}
+.navbar_override{
+    align-items: flex-end;
+    @include for-mobile{
+        @include navbar-override-responsive;
+    }
+    @include for-tablet{
+        @include navbar-override-responsive;
+    }
+}
+.navbar_display{
+    display: flex;
+}

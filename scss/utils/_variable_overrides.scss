@@ -2,7 +2,7 @@ $headings-font-family: 'Roboto', sans-serif,'Times New Roman', Times, serif;
 $primary-color:mistyrose;
 $secondary-color:rgb(248, 158, 248);
 $teritary-color :rgb(221, 132, 109);
-$title-color :rgb(44, 17, 41);
+$title-color :rgb(117, 13, 117);
 $font-color:rgba(0, 0, 0);
 $button-color:rgb(240, 214, 240);
 $box-shadow-title :darkgray;
@@ -11,11 +11,12 @@ $product-title-color :#941546;
 $label-color:rgb(94, 34, 32);
 $footer-color:rgb(95, 26, 8);
 
+
 //maps for font-size
 $text-font-size:(
     "for-title-center":2rem,
     "icon-size":2rem,
-    "product-name-rate":1.5rem,
+    "product-name-rate":2rem,
     "header-h1":2rem,
     "header-h2":1.8rem,
     "header-h3":1.6rem,
@@ -31,6 +32,6 @@ $text-font-size:(
 $breakpoints: (
     small-screen-mobile: 340px,
     mobile: 767px,
-    tablet: 1025px,
+    tablet: 1024px,
     large-screen:2400px
 );

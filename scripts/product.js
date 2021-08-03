@@ -67,6 +67,7 @@ function getProduct()
         //création l'élement HTML para pour afficher la description
         const productDescription = document.createElement("p");
         productDescription.setAttribute("name","description");
+        productDescription.classList.add("description");
         productDescription.innerHTML = product.description;
         productDetailDiv.appendChild(productDescription);
 

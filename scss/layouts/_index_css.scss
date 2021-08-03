@@ -4,7 +4,7 @@
     text-align: center;
     font-size: map-get($text-font-size , "for-title-center");
     background-color: $primary-color;
-    color: $title-color;
+    color: $title-color !important;
     line-height: 2.5;
     @include title-box-shadow;
     @include font-weight-text;
@@ -13,17 +13,27 @@
         margin: 0rem;
         line-height: 1.5;
     }
+    @include for-tablet{
+        font-size: 1.3rem !important;
+        margin: 0rem;
+        line-height: 1.5;
+    }
 
 }
 .title_div{
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
+    margin: 0;
+    width: 100%;
+    align-items: baseline;
     @include for-mobile{
        flex-direction: column;
+       align-items: stretch;
     }
     @include for-tablet{
         flex-direction: column;
         line-height: 1.5;
+        align-items: stretch;
     }
 }
 #content{
@@ -36,22 +46,7 @@
     @include flex-align-center;
     flex-flow: column;
 } 
-.icon-size{
-    font-size: map-get($text-font-size , "icon-size") !important;
-    color : $primary-color;
-}
-.total_articles{
-    color: $primary-color;
-    @include font-weight-text;
-}
-.navbar_override{
-    @include for-mobile{
-        @include navbar-override-responsive;
-    }
-    @include for-tablet{
-        @include navbar-override-responsive;
-    }
-}
+
 .banner-size{
     width : 100%;
     
@@ -133,4 +128,19 @@
     line-height: 2.5;
     font-size: 1.3rem !important;
     width:12rem !important;
+}
+.icon_chevron{
+    text-align: center;
+    font-size: 3rem;
+    color : $title-color;
+    transform: scale(1.0);
+    transition: transform 300ms;
+    @include font-weight-text;
+    &:hover{
+        color: rgb(219, 88, 202);
+        
+        transform: scale(1.5);
+    }
+    
+   
 }

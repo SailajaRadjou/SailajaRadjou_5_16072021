@@ -1,20 +1,40 @@
 
 
 //product page
+
+.product_page_display{
+    margin-top: 4rem;
+}
 .product_display_container{
     margin: 5px;
 }
 .product_container{
     @include flex-justify-space-around;
+    margin-top: 5rem;
+}
+.title-center-product{
+    line-height: 3.5;
+    @include for-large-screen{
+        line-height: 2.5;
+    }
 }
 .product_description{
     @include flex-align-center;
     width: 80%;
-    height: 350px;
+    height: 500px;
     @include product-display;
+    @include for-mobile{
+        height: auto;
+        flex-direction: column;
+    }
 }
 .product_details_display{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: stretch;
     margin: 5px;
+    height: 400px;
 }
 .display_submit{
     @include button-display;
@@ -35,4 +55,7 @@
         justify-content: space-between;
     } 
     
+}
+.description{
+    font-size: 1.5rem;
 }

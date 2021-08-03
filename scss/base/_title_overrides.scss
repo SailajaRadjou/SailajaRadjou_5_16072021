@@ -36,3 +36,6 @@ a{
     text-align: center;
     color:$title-color !important;
 }
+.title_index_page{
+    @include font-weight-text;
+}
