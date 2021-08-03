@@ -78,6 +78,11 @@
     background: linear-gradient(to bottom right,$primary-color, $secondary-color, $teritary-color);
 }
 
+@mixin navbar-override-responsive {
+    flex-direction: row !important; 
+    justify-content: space-evenly;
+}
+
 /*for media queries*/
 @mixin for-tablet {
     @media screen and (min-width:map-get($breakpoints, mobile)+1) and (max-width:map-get($breakpoints, tablet)-1){

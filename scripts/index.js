@@ -52,7 +52,7 @@ function contentLoad()
 
             const productDetailButton = document.createElement('a');
             productDetail.appendChild(productDetailButton);
-            productDetailButton.classList.add("display_submit","voir_produit");
+            productDetailButton.classList.add("display_submit","voir_produit","order-1");
             productDetailButton.innerHTML="Voir le Produit"+"&nbsp;";
                        
             const chevronButtonIcon = document.createElement('i');
@@ -63,7 +63,7 @@ function contentLoad()
         
             const productNameRate = document.createElement('div');
             productDetail.appendChild(productNameRate);
-            productNameRate.classList.add("product_name_rate");
+            productNameRate.classList.add("product_name_rate","order-sm-1","order-md-1");
 
             const productName = document.createElement('h3');
             productNameRate.appendChild(productName);

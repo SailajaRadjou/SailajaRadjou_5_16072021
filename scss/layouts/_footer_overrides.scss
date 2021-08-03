@@ -1,0 +1,17 @@
+.footer_text{
+    font-size: map-get($text-font-size , "footer-font-size");
+    color: $footer-color !important;
+    font-weight: bolder;
+    @include for-mobile{
+        font-size: 1.2rem;
+    }
+   
+}
+.footer_deco{
+    transform: scale(1.0);
+    transition: transform 200ms;
+    &:hover{
+        text-decoration: underline;
+        transform: scale(1.05);
+    }
+}

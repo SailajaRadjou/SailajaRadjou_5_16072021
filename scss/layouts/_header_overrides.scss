@@ -1,0 +1,22 @@
+.logo_display{
+    width:180px;
+    height:60px;
+    object-fit: cover;
+    border-radius: 1.5rem;
+    @include for-large-screen {
+        height : 60px !important;
+    }
+}
+.logo_shadow{
+   @include logo-box-shadow;
+}
+.navbar-collapse {
+    justify-content: flex-end;
+}  
+.display_header{
+    @include flex-align-end;
+    @include for-mobile{
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}

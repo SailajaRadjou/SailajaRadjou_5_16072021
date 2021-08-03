@@ -3,7 +3,10 @@
 @import "./utils/variable_overrides";
 @import "./utils/mixins_overrides";
 @import "./base/title_overrides";
-@import "./layouts/display_overrides";
+@import "./layouts/header_overrides";
+@import "./layouts/index_css";
+@import "./layouts/product_css";
+@import "./layouts/footer_overrides";
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
 
 :root{
@@ -19,9 +22,15 @@ body{
     position: relative;
     color: $font-color;
     width: 100%;
-   /* @include for-mobile{
-        margin: 0;
+    margin: 0;
+    @include for-small-screen-mobile{
+        margin: auto;
         position: relative;
-    }  */  
+    }  
+}
+.main{
+    max-width: 1800px;
+    height: 100vh;
+    margin: auto;
 }
 

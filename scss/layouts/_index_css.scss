@@ -1,25 +1,3 @@
-.logo_display{
-    width:180px;
-    height:60px;
-    object-fit: cover;
-    border-radius: 1.5rem;
-    @include for-large-screen {
-        height : 60px !important;
-    }
-}
-.logo_shadow{
-   @include logo-box-shadow;
-}
-.navbar-collapse {
-    justify-content: flex-end;
-}  
-.display_header{
-    @include flex-align-end;
-    @include for-mobile{
-        align-items: flex-start;
-        flex-direction: column;
-    }
-}
 .title-center{
     height: 70px;
     margin: 5rem;
@@ -62,6 +40,18 @@
     font-size: map-get($text-font-size , "icon-size") !important;
     color : $primary-color;
 }
+.total_articles{
+    color: $primary-color;
+    @include font-weight-text;
+}
+.navbar_override{
+    @include for-mobile{
+        @include navbar-override-responsive;
+    }
+    @include for-tablet{
+        @include navbar-override-responsive;
+    }
+}
 .banner-size{
     width : 100%;
     
@@ -69,6 +59,11 @@
     @include banner-border-radius;
     @include for-large-screen {
         height : 320px !important;
+    }
+}
+.container_content{
+    @include for-mobile{
+        padding: 0 !important;
     }
 }
 .product_image{
@@ -94,15 +89,16 @@
     @include border-radius-2;
     @include product-display;  
     @include flex-justify-space-around;  
-    transition: transform 200ms;
+    transition: transform 300ms;
     &:hover{
-        transform: scale(1.2);
+        transform: scale(1.102);
     }  
     @include for-mobile {
         flex-direction: column;
         justify-content: center;
         width: 100% !important;
         margin: 2rem;
+        padding: 0;
     } 
     @include for-tablet{
         flex-direction: column;
@@ -120,7 +116,8 @@
     justify-content: space-between;
     width: auto;
     @include for-mobile {
-        flex-direction: row;
+        //flex-direction: column;
+        align-items: center;
     } 
     @include for-tablet{
         flex-direction: row;
@@ -136,33 +133,4 @@
     line-height: 2.5;
     font-size: 1.3rem !important;
     width:12rem !important;
-}
-//product page
-.product_display_container{
-    margin: 5px;
-}
-.product_container{
-    @include flex-justify-space-around;
-}
-.product_description{
-    @include flex-align-center;
-    width: 80%;
-    height: 350px;
-    @include product-display;
-}
-.product_details_display{
-    margin: 5px;
-}
-.display_submit{
-    @include button-display;
-    transition: transform 300ms;
-    &:hover{
-        transform: scale(1.2);
-        @include button-color;
-    }
-}
-
-.product_name_rate{
-    display: flex;
-    flex-direction: column;
 }

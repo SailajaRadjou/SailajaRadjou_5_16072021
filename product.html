@@ -16,6 +16,7 @@
     <script type='text/javascript' src="scripts/product.js" defer></script>
   </head>
   <body>
+    <div class="main">
     <header class="bg-dark">
       <div class="container">
         <div class="row">
@@ -30,12 +31,12 @@
             </button>
           </div> 
             <div id="navbarContent" class="collapse navbar-collapse">
-              <ul class="navbar-nav">
+              <ul class="navbar-nav navbar_override">
                 <li class="nav-item">
                   <a class="nav-link icon-size" href="index.html"><h2>Accueil&emsp;&emsp;</h2></a>
                 </li>
                 <li class="nav-item active">
-                  <a class="nav-link" href="panier.html"><h2><i class="fas fa-cart-arrow-down"></i></h2><span id="count_articles"></span>&emsp;&emsp;</a>
+                  <a class="nav-link" href="panier.html"><h2><i class="fas fa-cart-arrow-down"></i></h2><span id="count_articles" class="total_articles"></span>&emsp;&emsp;</a>
                 </li>
                 <li class="nav-item active">
                   <a class="nav-link" href="panier.html"><h2>&emsp;&emsp;<button id="delete"><i class="fas fa-trash-alt"></i></button></h2></a>
@@ -60,17 +61,17 @@
         <div class="row pt-4 pb-3">
           <div class="col">
             <ul class="list-inline text-center">
-              <li class="list-inline-item"><a href="#">À propos</a></li>
+              <li class="list-inline-item footer_deco"><a href="#" class="footer_text">À propos</a></li>
               <li class="list-inline-item">&middot;</li>
-              <li class="list-inline-item"><a href="#">Vie privée</a></li>
-              <li class="list-inline-item">&middot;</li>
-              <li class="list-inline-item"><a href="#">Conditions d'utilisations</a></li>
+              <li class="list-inline-item footer_deco"><a href="#" class="footer_text">Vie privée</a></li>
+              <li class="list-inline-item ">&middot;</li>
+              <li class="list-inline-item footer_deco"><a href="#" class="footer_text">Conditions d'utilisations</a></li>
             </ul>
           </div>
         </div>
       </div>
     </footer>
-    
+  </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

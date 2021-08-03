@@ -18,6 +18,7 @@
       </style>   
     </head>
     <body>
+      <div class="main">
       <!--Header + nav menu-->
       <header class="bg-dark">
         <div class="container">
@@ -33,15 +34,12 @@
               </button>
             </div> 
               <div id="navbarContent" class="collapse navbar-collapse">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav navbar_override">
                   <li class="nav-item">
                     <a class="nav-link icon-size" href="index.html"><h2>Accueil&emsp;&emsp;</h2></a>
                   </li>
                   <li class="nav-item active">
-                    <a class="nav-link" href="panier.html"><h2><i class="fas fa-cart-arrow-down"></i></h2><span id="count_articles"></span>&emsp;&emsp;</a>
-                  </li>
-                  <li class="nav-item active">
-                    <a class="nav-link" href="panier.html"><h2>&emsp;&emsp;<button id="delete"><i class="fas fa-trash-alt"></i></button></h2></a>
+                    <a class="nav-link" href="panier.html"><h2><i class="fas fa-cart-arrow-down"></i></h2><span id="count_articles" class="total_articles"></span>&emsp;&emsp;</a>
                   </li>
                 
                 </ul>
@@ -59,7 +57,7 @@
           <section class="row">
               <div class="resize col-12 col-lg-4 container">
                   <div class="title_div title-center card-title"> <h3 class="">Cherished Teddies Galarie</h3> <span>-- peluches 100% faits à la main</span> </div>
-                  <div id="content" class="card mb-4 mb-lg-0 border-primary shadow container-sm">
+                  <div id="content" class="card mb-4 mb-lg-0 border-primary shadow container-sm container_content">
                     <div class="display_content card-body shadow-sm container"></div>
                   </div>
               </div>
@@ -70,21 +68,23 @@
               <div class="row pt-4 pb-3 container">
                   <div class="col container">
                       <ul class="list-inline text-center">
-                          <li class="list-inline-item"><a href="#">À propos</a></li>
+                          <li class="list-inline-item footer_deco"><a href="#" class="footer_text">À propos</a></li>
                           <li class="list-inline-item">&middot;</li>
-                          <li class="list-inline-item"><a href="#">Vie privée</a></li>
-                          <li class="list-inline-item">&middot;</li>
-                          <li class="list-inline-item"><a href="#">Conditions d'utilisations</a></li>
+                          <li class="list-inline-item footer_deco"><a href="#" class="footer_text">Vie privée</a></li>
+                          <li class="list-inline-item ">&middot;</li>
+                          <li class="list-inline-item footer_deco"><a href="#" class="footer_text">Conditions d'utilisations</a></li>
                       </ul>
                   </div>
               </div>
           </div>
       </footer>
       
-      <!-- Optional JavaScript -->
-      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-      <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    </div>  
+         <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+     
   </body>
 </html>

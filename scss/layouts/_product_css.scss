@@ -1,0 +1,38 @@
+
+
+//product page
+.product_display_container{
+    margin: 5px;
+}
+.product_container{
+    @include flex-justify-space-around;
+}
+.product_description{
+    @include flex-align-center;
+    width: 80%;
+    height: 350px;
+    @include product-display;
+}
+.product_details_display{
+    margin: 5px;
+}
+.display_submit{
+    @include button-display;
+    transition: transform 300ms;
+    &:hover{
+        transform: scale(1.2);
+        @include button-color;
+    }
+}
+
+.product_name_rate{
+    display: flex;
+    flex-direction: column;
+    @include for-mobile {
+        width: 100%;
+        flex-direction: row;
+        align-items: baseline;
+        justify-content: space-between;
+    } 
+    
+}

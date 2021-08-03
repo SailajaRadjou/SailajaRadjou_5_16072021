@@ -157,6 +157,24 @@ a {
   color: mistyrose;
 }
 
+.total_articles {
+  color: mistyrose;
+  font-weight: bolder;
+}
+
+@media screen and (max-width: 767px) {
+  .navbar_override {
+    flex-direction: row !important;
+    justify-content: space-evenly;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .navbar_override {
+    flex-direction: row !important;
+    justify-content: space-evenly;
+  }
+}
+
 .banner-size {
   width: 100%;
   object-fit: cover;
@@ -165,6 +183,12 @@ a {
 @media screen and (min-width: 1026px) and (max-width: 2400px) {
   .banner-size {
     height: 320px !important;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .container_content {
+    padding: 0 !important;
   }
 }
 
@@ -193,10 +217,10 @@ a {
   box-shadow: 0 0 10px #585555;
   display: flex;
   justify-content: space-around;
-  transition: transform 200ms;
+  transition: transform 300ms;
 }
 .product_list:hover {
-  transform: scale(1.2);
+  transform: scale(1.102);
 }
 @media screen and (max-width: 767px) {
   .product_list {
@@ -204,6 +228,7 @@ a {
     justify-content: center;
     width: 100% !important;
     margin: 2rem;
+    padding: 0;
   }
 }
 @media screen and (min-width: 768px) and (max-width: 1024px) {
@@ -228,7 +253,7 @@ a {
 }
 @media screen and (max-width: 767px) {
   .product_detail {
-    flex-direction: row;
+    align-items: center;
   }
 }
 @media screen and (min-width: 768px) and (max-width: 1024px) {
@@ -291,6 +316,34 @@ a {
 .product_name_rate {
   display: flex;
   flex-direction: column;
+}
+@media screen and (max-width: 767px) {
+  .product_name_rate {
+    width: 100%;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+}
+
+.footer_text {
+  font-size: 1.5rem;
+  color: #5f1a08 !important;
+  font-weight: bolder;
+}
+@media screen and (max-width: 767px) {
+  .footer_text {
+    font-size: 1.2rem;
+  }
+}
+
+.footer_deco {
+  transform: scale(1);
+  transition: transform 200ms;
+}
+.footer_deco:hover {
+  text-decoration: underline;
+  transform: scale(1.05);
 }
 
 /*!
@@ -11057,10 +11110,19 @@ body {
   position: relative;
   color: black;
   width: 100%;
-  /* @include for-mobile{
-       margin: 0;
-       position: relative;
-   }  */
+  margin: 0;
+}
+@media screen and (max-width: 340px) {
+  body {
+    margin: auto;
+    position: relative;
+  }
+}
+
+.main {
+  max-width: 1800px;
+  height: 100vh;
+  margin: auto;
 }
 
 /*# sourceMappingURL=style.css.map */
