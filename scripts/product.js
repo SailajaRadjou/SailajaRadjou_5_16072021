@@ -74,6 +74,7 @@ function getProduct()
         //création l'élement HTML form pour afficher la description
         const productForm = document.createElement('form');
         productDetailDiv.appendChild(productForm);
+        productForm.classList.add("color_quantity");
 
         const productFormDiv = document.createElement('div');
         productForm.appendChild(productFormDiv);
@@ -81,7 +82,7 @@ function getProduct()
 
         //création l'élement HTML label pour la couleur
         const productLabelColor = document.createElement("label");
-        productLabelColor.innerHTML = "Color"+"&emsp; :"+"&emsp;";
+        productLabelColor.innerHTML = "Color"+"&nbsp;&nbsp; :"+"&emsp;";
         productFormDiv.appendChild(productLabelColor);
         productLabelColor.setAttribute('for', "colors available" + product.name);
 
@@ -108,13 +109,14 @@ function getProduct()
         productFormDiv.appendChild(quantitySelectLabel);
         quantitySelectLabel.innerHTML = "&emsp;"+"Quantité"+"&emsp; :"+"&emsp;";
         quantitySelectLabel.setAttribute('for', "select-quantity");
+        quantitySelectLabel.setAttribute('class', "select_quantity_label");
 
         //création l'élement HTML select pour afficher la couleur dans le drop down list box
         const quantityList = document.createElement("select");
         productFormDiv.appendChild(quantityList);
         quantityList.setAttribute('name', "select-quantity");
         quantityList.setAttribute('id', "select_list_quantity");
-        quantityList.setAttribute('class', "formselect");
+        quantityList.setAttribute('class', "formselect select_quantity");
 
         for (let i = 1; i <= 10; i++)
         {

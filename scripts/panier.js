@@ -20,8 +20,10 @@ function loadPanier()
         document.getElementById("form_section").style.display = "none";
         noOfStoredProducts.innerHTML =  0 + "&nbsp;&nbsp;"+'Articles';
         const emptyBasket = `
-            <div class = "cart_content container container-sm">
-                <div class = "cart_empty container container-sm">Votre panier est vide !</div>
+            <div class = "cart_content container container-sm panier_vide_container">
+                <div class = "cart_empty container container-sm"><h2 class="panier_vide_text">Votre panier est actuellement vide !</h2></div>
+                <button class="display_submit panier_display_button"><a href="index.html">Retour à la Boutique</a></button>
+            </div>    
         `;
         cartMain.innerHTML = emptyBasket; 
     } 

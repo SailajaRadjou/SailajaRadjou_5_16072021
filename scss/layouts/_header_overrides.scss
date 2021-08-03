@@ -30,6 +30,7 @@
 }
 .navbar_override{
     align-items: flex-end;
+    width: 100%;
     @include for-mobile{
         @include navbar-override-responsive;
     }

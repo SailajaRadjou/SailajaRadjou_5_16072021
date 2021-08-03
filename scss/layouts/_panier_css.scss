@@ -1,3 +1,35 @@
+.panier_vide_container{
+    width: 100%;
+    padding: 2rem;
+    height: 330px;
+    @include container-box-shadow;
+}
+.panier_vide_text{
+    display: table; 
+    width: 100%;
+    text-align: center;
+    margin-top: 8rem;
+    font-size:4rem;
+    @include font-weight-text;
+    color: $product-title-color;
+    @include for-tablet{
+       font-size: 2.5rem; 
+       margin-top: 5rem;
+    }
+    @include for-mobile{
+        margin-top: 5rem; 
+        font-size: 1.4rem;
+    }
+}
+.panier_display_button{
+    display: table;
+    width: 25rem;
+    margin: 0px auto 0px auto;
+    margin-top:3rem;
+    @include for-mobile{
+        width: 100%;
+    }
+}
 .panier_title_display{
     margin-bottom: 5rem !important;
     margin-top: 2rem;
@@ -93,6 +125,7 @@
     color: $title-color !important;
     border: none !important;
     transition: transform 300ms;
+    height: 50px;
     &:hover{
         transform: scale(1.2);
         @include button-color;

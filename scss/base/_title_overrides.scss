@@ -30,6 +30,15 @@ label{
 .select_size{
     width: 10rem !important;
     display: inline !important;
+    font-size: 1.3rem !important;
+    font-weight: bold !important;
+}
+.select_quantity{
+    font-size: 1.3rem !important;
+    font-weight: bold !important;
+}
+.select_quantity_label{
+    display: inline;
 }
 a{
     text-decoration: none !important;

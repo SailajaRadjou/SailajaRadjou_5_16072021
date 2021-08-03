@@ -11,6 +11,7 @@
 .product_container{
     @include flex-justify-space-around;
     margin-top: 5rem;
+    height: 650px;
 }
 .title-center-product{
     line-height: 3.5;
@@ -35,6 +36,9 @@
     align-items: stretch;
     margin: 5px;
     height: 400px;
+}
+.color_quantity{
+    margin-top: 1rem;
 }
 .display_submit{
     @include button-display;

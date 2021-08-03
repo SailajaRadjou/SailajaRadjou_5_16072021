@@ -44,6 +44,17 @@ label {
 .select_size {
   width: 10rem !important;
   display: inline !important;
+  font-size: 1.3rem !important;
+  font-weight: bold !important;
+}
+
+.select_quantity {
+  font-size: 1.3rem !important;
+  font-weight: bold !important;
+}
+
+.select_quantity_label {
+  display: inline;
 }
 
 a {
@@ -99,6 +110,7 @@ a {
 
 .navbar_override {
   align-items: flex-end;
+  width: 100%;
 }
 @media screen and (max-width: 767px) {
   .navbar_override {
@@ -302,6 +314,7 @@ a {
   display: flex;
   justify-content: space-around;
   margin-top: 5rem;
+  height: 650px;
 }
 
 .title-center-product {
@@ -336,6 +349,10 @@ a {
   height: 400px;
 }
 
+.color_quantity {
+  margin-top: 1rem;
+}
+
 .display_submit {
   font-size: 1.5rem;
   font-weight: bolder;
@@ -368,6 +385,47 @@ a {
 
 .description {
   font-size: 1.5rem;
+}
+
+.panier_vide_container {
+  width: 100%;
+  padding: 2rem;
+  height: 330px;
+  box-shadow: 1rem 1rem 1rem 1rem mistyrose !important;
+}
+
+.panier_vide_text {
+  display: table;
+  width: 100%;
+  text-align: center;
+  margin-top: 8rem;
+  font-size: 4rem;
+  font-weight: bolder !important;
+  color: #941546;
+}
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .panier_vide_text {
+    font-size: 2.5rem;
+    margin-top: 5rem;
+  }
+}
+@media screen and (max-width: 767px) {
+  .panier_vide_text {
+    margin-top: 5rem;
+    font-size: 1.4rem;
+  }
+}
+
+.panier_display_button {
+  display: table;
+  width: 25rem;
+  margin: 0px auto 0px auto;
+  margin-top: 3rem;
+}
+@media screen and (max-width: 767px) {
+  .panier_display_button {
+    width: 100%;
+  }
 }
 
 .panier_title_display {
@@ -487,6 +545,7 @@ a {
   color: #750d75 !important;
   border: none !important;
   transition: transform 300ms;
+  height: 50px;
 }
 .form_button_display:hover {
   transform: scale(1.2);
@@ -496,6 +555,59 @@ a {
   .form_button_display {
     font-size: 1.5rem !important;
   }
+}
+
+.confirmation_display {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 100%;
+  padding: 2rem;
+  height: 550px;
+  box-shadow: 1rem 1rem 1rem 1rem mistyrose !important;
+}
+
+.highlight_details {
+  display: inline-table;
+  /* keep the background color wrapped tight */
+  padding: 5px;
+  font-size: 2rem;
+  background-color: #e5bdba;
+  border-radius: 0.5rem;
+}
+
+.confirmation_container_section {
+  padding: 0 !important;
+  margin-top: 2rem;
+}
+
+.order_detail_display {
+  color: #941546;
+  font-weight: bolder !important;
+  font-size: 2rem;
+}
+
+.title_confirmation_header {
+  margin-bottom: 3rem;
+}
+
+.confirmation_title_center {
+  line-height: 2;
+  border-radius: 1rem;
+}
+
+.confirmation_title {
+  display: table;
+  /* keep the background color wrapped tight */
+  margin: 0px auto 15px auto;
+  /* keep the table centered */
+  font-size: 2rem;
+  font-weight: bolder !important;
+  color: #941546;
+}
+
+.text_confirmation {
+  font-size: 1.3rem;
 }
 
 .footer_text {

@@ -1,0 +1,45 @@
+.confirmation_display{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 100%;
+    padding: 2rem;
+    height: 550px;
+    @include container-box-shadow;
+}
+.highlight_details{
+  display: inline-table; /* keep the background color wrapped tight */
+  padding:5px;
+  font-size:2rem;
+  background-color:rgb(229, 189, 186);
+  border-radius: .5rem; 
+}
+.confirmation_container_section{
+  padding: 0 !important;
+  margin-top: 2rem;
+}
+
+.order_detail_display{
+  color: $product-title-color;
+  @include font-weight-text;
+  font-size: 2rem;
+}
+.title_confirmation_header{
+  margin-bottom: 3rem;
+}
+.confirmation_title_center{
+  line-height: 2.0;
+  border-radius: 1rem;
+}
+.confirmation_title{
+  display: table; /* keep the background color wrapped tight */
+  margin: 0px auto 15px auto; /* keep the table centered */
+  //padding:5px;
+  font-size:2rem;
+  @include font-weight-text;
+  color: $product-title-color;
+
+}
+.text_confirmation{
+  font-size: 1.3rem;
+}
