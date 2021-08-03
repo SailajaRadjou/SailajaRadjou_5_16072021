@@ -34,11 +34,11 @@ function loadPanier()
             showProductPanier = showProductPanier + 
             `<tr>
                 
-                <td>${storedProducts[i].productName}</td>
-                <td>${storedProducts[i].productColor}</td>
-                <td>${storedProducts[i].Quantity}</td>
-                <td>${storedProducts[i].productCost}</td>
-                <td>${(parseInt(storedProducts[i].productCost)*parseInt(storedProducts[i].Quantity)).toFixed(2)}€</td>
+                <td class="table_items">${storedProducts[i].productName}</td>
+                <td class="table_items">${storedProducts[i].productColor}</td>
+                <td class="table_items">${storedProducts[i].Quantity}</td>
+                <td class="table_items">${storedProducts[i].productCost}</td>
+                <td class="table_items">${(parseInt(storedProducts[i].productCost)*parseInt(storedProducts[i].Quantity)).toFixed(2)}€</td>
             
             </tr>`;
              //calcul du montant total           
@@ -60,66 +60,46 @@ function loadPanier()
             const addForm = document.querySelector('#form_section');
             
             const displayForm = 
-            `<form class="needs-validation" novalidate>
-                <div class="form-row">
-                    <div class="col-md-4 mb-3">
+            `<form class="needs-validation form_display" novalidate>
+                <div class="form-row form_content_display">
+                    <div class="col-md-4 mb-3 form_items_display">
                         <label for="firstName">First Name  :</label>
-                        <input type="text" class="form-control" id="firstName" placeholder="Votre nom" required>
-                        <div class="valid-feedback">
-                        Looks good!
-                        </div>
+                        <input type="text" class="form-control form_text_input" id="firstName" placeholder="Votre nom" required>
                     </div>
-                    <div class="col-md-4 mb-3">
+                    <div class="col-md-4 mb-3 form_items_display">
                         <label for="lastName">Last Name  :</label>
-                        <input type="text" class="form-control" id="lastName" placeholder="Votre prénom" required>
-                        <div class="valid-feedback">
-                        Looks good!
-                        </div>
+                        <input type="text" class="form-control form_text_input" id="lastName" placeholder="Votre prénom" required>
                     </div>
-                    <div class="form-row">
+                    <div class="form-row form_items_display">
                         <div class="col-md-6 mb-3">
                         <label for="address">Address  :</label>
-                        <input type="text" class="form-control" id="address" placeholder="Votre adresse" required>
-                        <div class="invalid-feedback">
-                        Please provide a valid city.
-                        </div>
+                        <input type="text" class="form-control form_text_input" id="address" placeholder="Votre adresse" required>
                     </div>
-                    <div class="col-md-3 mb-3">
+                    <div class="col-md-3 mb-3 form_items_display">
                         <label for="city">City  :</label>
-                        <input type="text" class="form-control" id="city" placeholder="Ville" required>
-                        <div class="invalid-feedback">
-                        Please provide a valid state.
-                        </div>
+                        <input type="text" class="form-control form_text_input" id="city" placeholder="Ville" required>
                     </div>
-                    <div class="col-md-4 mb-3">
+                    <div class="col-md-4 mb-3 form_items_display">
                         <label for="email">E-mail  :</label>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroupPrepend">@</span>
-                            </div>
-                            <input type="text" class="form-control" id="email" placeholder="Votre valid adresse E-mail" aria-describedby="inputGroupPrepend" required>
-                            <div class="invalid-feedback">
-                                Please choose a username.
-                            </div>
-                        </div>
+                        <input type="text" class="form-control form_text_input" id="email" placeholder="Votre valid adresse E-mail" aria-describedby="inputGroupPrepend" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                        <input class="form-check-input form_check_display" type="checkbox" value="" id="invalidCheck" required>
                         <label class="form-check-label" for="invalidCheck">
-                        Agree to terms and conditions
+                        &nbsp;&nbsp;Agree to terms and conditions
                         </label>
                         <div class="invalid-feedback">
                         You must agree before submitting.
                         </div>
                     </div>
                 </div>
-                <button id="submit_button" class="btn btn-primary" type="submit">Valider votre Commande</button>
+                <button id="submit_button" class="btn btn-primary form_button_display" type="submit">Valider votre Commande</button>
             </form>`;
 
             //injection le formulaire
-            addForm.insertAdjacentHTML("afterEnd",displayForm);
+            addForm.insertAdjacentHTML("beforeEnd",displayForm);
         }
 
         //appellé pour affichage du formulaire

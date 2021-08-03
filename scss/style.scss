@@ -1,4 +1,4 @@
-@import "./utils/responsive_typo";
+
 @import "./utils/animation";
 @import "./utils/variable_overrides";
 @import "./utils/mixins_overrides";
@@ -6,6 +6,7 @@
 @import "./layouts/header_overrides";
 @import "./layouts/index_css";
 @import "./layouts/product_css";
+@import "./layouts/panier_css";
 @import "./layouts/footer_overrides";
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
 
@@ -17,6 +18,7 @@
 }
 html,body{
     overflow-x:hidden;
+    font-size: 1rem;
 }
 body{
     position: relative;

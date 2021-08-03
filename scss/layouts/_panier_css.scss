@@ -1,0 +1,104 @@
+.panier_title_display{
+    margin-bottom: 5rem !important;
+    margin-top: 2rem;
+}
+.table_header{
+    font-size: 1.2rem;
+    @include font-weight-text;
+    @include for-large-screen{
+        font-size: 1.5rem;
+    }
+}
+.table_items{
+    font-size: 1.1rem;
+    @include for-tablet{
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+    @include for-large-screen{
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+}
+.montant_align{
+    text-align: right;
+}
+.montant_payer{
+    
+    @include for-tablet{
+        font-size: 1.5rem;
+        @include font-weight-text;  
+    }
+    @include for-large-screen{
+        font-size: 1.5rem;
+        @include font-weight-text;
+    }
+}
+.form_text_input{
+    font-size: 1.5rem !important;
+    width: 700px !important;
+    border-radius: 1rem !important;
+    box-shadow: 0 0 10px rgb(190, 145, 139);
+    @include for-mobile{
+        width: 100% !important; 
+    }
+    
+}
+.form_check_display{
+    width: 20px !important;
+    height: 20px !important;
+    box-shadow: 0 0 10px rgb(190, 145, 139); 
+}
+.form_section_display{
+    width: 100%;
+    @include flex-align-center;
+    flex-direction: column;
+    
+}
+
+.form_display{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 2rem;
+    height: 650px;
+    @include container-box-shadow;
+    @include for-large-screen{
+      width: 80%;
+    }
+   
+}
+.title_commande_header{
+    width:100%;
+}
+.title_commande{
+    height: 60px;
+    line-height: 3.5;
+    border-radius: 1rem 1rem 1rem 1rem;
+    @include for-large-screen{
+        line-height: 2;
+    }
+}
+.form_content_display{
+    height: 500px;
+}
+.form_button_display{
+    margin-top: 1.3rem !important;
+    margin-left: auto;
+   @include font-weight-text;
+   @include button-shadow;
+   @include border-radius-2;
+   font-size: 1.3rem !important;
+    background-color: $primary-color !important;
+    color: $title-color !important;
+    border: none !important;
+    transition: transform 300ms;
+    &:hover{
+        transform: scale(1.2);
+        @include button-color;
+    }
+    @include for-large-screen{
+        
+        font-size: 1.5rem !important;
+    }
+}

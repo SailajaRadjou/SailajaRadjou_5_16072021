@@ -49,59 +49,37 @@
           </div>
       </header>
       <main id="cart_page">
-          <h2 class="title-center">Orinobears -- Take Me Home<br /> <br /> Teddies in your basket</h2>
-          
+          <div class="title_div title-center card-title panier_title_display"> <h3 class="title_index_page">Orinobears -- Take Me Home</h3> <span><i class="fab fa-pagelines"></i> Teddies in your basket <i class="fab fa-pagelines"></i></span> </div>
           <section id="cart_container">
             <table class="table table-striped">
               <thead>
                 <tr>
-                
-                  <th scope="col">Produit</th>
-                  <th scope="col">Couleur</th>
-                  <th scope="col">Quantités</th>
-                  <th scope="col">Prix Unitaire</th>
-                  <th scope="col">Total</th>
-                  
+                  <th scope="col" class="table_header">Produit</th>
+                  <th scope="col" class="table_header">Couleur</th>
+                  <th scope="col" class="table_header">Quantités</th>
+                  <th scope="col" class="table_header">Prix Unitaire</th>
+                  <th scope="col" class="table_header">Total</th>
                 </tr>
               </thead>
               <tbody id="next_row">
               
               </tbody>
               <tfoot>
-                <tr><td colspan="4">Montant à Payer&emsp;</td> <td id="calcul_montant"></td></tr>
+                <tr><td colspan="4" class="table_header montant_align">Montant à Payer&emsp;=>&emsp;</td> <td id="calcul_montant" class="table_items montant_payer"></td></tr>
               </tfoot>
             </table>
             
           </section>
-          <section id="form_section">
-            <header>
-              <h3>Passer la Commande</h3>
+          <section id="form_section" class="form_section_display">
+            <header class="title_commande_header">
+              <h3 class="title-center title_commande">Passer la Commande</h3>
             </header>
           
         </section>
-        <!--  <script>
-          // Example starter JavaScript for disabling form submissions if there are invalid fields
-          (function() {
-            'use strict';
-            window.addEventListener('load', function() {
-              // Fetch all the forms we want to apply custom Bootstrap validation styles to
-              var forms = document.getElementsByClassName('needs-validation');
-              // Loop over them and prevent submission
-              var validation = Array.prototype.filter.call(forms, function(form) {
-                form.addEventListener('submit', function(event) {
-                  if (form.checkValidity() === false) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                  }
-                  form.classList.add('was-validated');
-                }, false);
-              });
-            }, false);
-          })();
-          </script>-->
+        
       </main>
       <footer class="bg-light mt-5">
-          <div class="container">
+          <div class="container footer_display">
             <div class="row pt-4 pb-3">
               <div class="col">
                 <ul class="list-inline text-center">

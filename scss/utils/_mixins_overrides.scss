@@ -13,7 +13,7 @@
 
 /*Font Weight*/
 @mixin font-weight-text {
-    font-weight: bolder;  
+    font-weight: bolder !important;  
 }
 /*Background Color*/
 @mixin bg-color($colour:$dark-gray){
@@ -48,7 +48,7 @@
 }
 
 @mixin button-shadow {
-    box-shadow: 0 0 10px $box-shadow-product;
+    box-shadow: 0 0 10px $box-shadow-product !important;
 }
 
 @mixin product-display {
@@ -56,7 +56,7 @@
 }
 
 @mixin border-radius-2 {
-    border-radius: 2rem;  
+    border-radius: 2rem !important;  
 }
 @mixin banner-border-radius {
     border-radius: 0rem 0rem 2rem 2rem;
