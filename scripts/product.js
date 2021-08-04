@@ -2,13 +2,18 @@
 const urlQuery = window.location.search;
 const urlParams = new URLSearchParams(urlQuery);
 const id = urlParams.get('id');
+console.log("id");
 console.log(id);
+const noOfProducts =  document.getElementById('count_articles'); 
 //Créer un localStorage et pour lire les données de localStorage
 let selectedProduct = JSON.parse(localStorage.getItem('newProduct'));
+let storageQuantity = JSON.parse(localStorage.getItem('countProducts'));
 
+console.log("products dans le panier");
 console.table(selectedProduct);
 
-const noOfProducts =  document.getElementById('count_articles'); 
+console.log("No of Products in the basket");
+console.log(storageQuantity);
 
 if(selectedProduct == null || selectedProduct.length === 0)
 {
@@ -18,7 +23,7 @@ if(selectedProduct == null || selectedProduct.length === 0)
     
 } 
 else{
-  noOfProducts.innerHTML =  selectedProduct.length + "&nbsp;&nbsp;"+'Articles';  
+  noOfProducts.innerHTML = storageQuantity + "&nbsp;&nbsp;"+'Articles'; 
 }
 function getProduct()
 {
@@ -154,6 +159,21 @@ function getProduct()
         addCart.addEventListener("click", function (event) {
 
           event.preventDefault(); //pour empêcher le lien de suivre l'URL 
+          let added=parseInt(quantityList.value);
+         if(selectedProduct == null || selectedProduct.length === 0)
+          {
+             console.log("panier vide");
+
+          }else{ 
+          
+          for(i=0;i<selectedProduct.length;i++)
+          {
+            const quantities =parseInt(selectedProduct[i].Quantity);
+            console.log("quantities new");
+            console.log(quantities);
+            added= added + parseInt(selectedProduct[i].Quantity);
+            console.log(added);
+          }}
           
           let productAdded = {
             productName : product.name,
@@ -161,7 +181,7 @@ function getProduct()
             productColor : colorList.value,
             Quantity : quantityList.value,
             productCost : (product.price / 100)+ " €",
-           
+            TotalQuantity : added
           };
           
          function addQuantity()
@@ -176,7 +196,7 @@ function getProduct()
             selectedProduct.push(productAdded);
             //pour ENREGISTRER les données sur localStorage
             localStorage.setItem('newProduct', JSON.stringify(selectedProduct));
-            
+            localStorage.setItem('countProducts', productAdded.TotalQuantity);
           };
          
           if(selectedProduct)
@@ -190,11 +210,12 @@ function getProduct()
             storageProducts();
             console.error(selectedProduct.length);
            
-          }
+          } 
+          let refreshQuantity= JSON.parse(localStorage.getItem('countProducts'));      
           window.alert(product.name + " " + colorList.value + ' a bien été ajouté!');
           console.table(selectedProduct); 
-         
-          noOfProducts.innerHTML = selectedProduct.length + "&nbsp;&nbsp;"+'Articles'; 
+          noOfProducts.innerHTML = refreshQuantity + "&nbsp;&nbsp;"+'Articles';
+          console.error(refreshQuantity);
         })
       })
       .catch(erreur => console.log('error : '+ erreur))

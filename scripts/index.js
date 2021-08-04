@@ -1,4 +1,5 @@
 let selectedProduct = JSON.parse(localStorage.getItem('newProduct'));
+let refreshQuantity= JSON.parse(localStorage.getItem('countProducts'));
 const noOfProducts =  document.getElementById('count_articles'); 
 if(selectedProduct == null || selectedProduct.length === 0)
 {
@@ -9,7 +10,7 @@ if(selectedProduct == null || selectedProduct.length === 0)
 } 
 else
 {
-    noOfProducts.innerHTML =  selectedProduct.length + "&nbsp;&nbsp;"+'Articles';  
+    noOfProducts.innerHTML =  refreshQuantity + "&nbsp;&nbsp;"+'Articles';  
 }
 function contentLoad()
 {

@@ -1,7 +1,7 @@
 //récupération les données de localStorage
 let storedProducts = JSON.parse(localStorage.getItem('newProduct'));
 console.log(storedProducts);
-
+let storageQuantity = JSON.parse(localStorage.getItem('countProducts'));
 const cartMain = document.getElementById('cart_page');
 const listProductOneByOne = document.getElementById("next_row");
 const noOfStoredProducts =  document.getElementById('count_articles'); 
@@ -31,7 +31,7 @@ function loadPanier()
     else {
          // si le panier a des produits => récupération des éléments du panier
 
-        noOfStoredProducts.innerHTML =  parseInt(storedProducts.length) + "&nbsp;&nbsp;"+'Articles';
+        noOfStoredProducts.innerHTML = storageQuantity + "&nbsp;&nbsp;"+'Articles';
         for(i=0;i<storedProducts.length;i++)
         {
             showProductPanier = showProductPanier + 
@@ -319,7 +319,7 @@ deleteContent.addEventListener("click", function (event)
     if (confirm("Êtes-vous sure de vider tous vos panier ?"))
     {
         localStorage.removeItem('newProduct');
-
+        localStorage.clear();
         document.getElementById("cart_container").style.display = "none";
         document.getElementById("form_section").style.display = "none";
 
