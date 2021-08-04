@@ -77,7 +77,12 @@ function contentLoad()
         }
             
     })
-    .catch(erreur => console.log('error : '+ erreur));
+    .catch(erreur => {
+        const serveurErrorDiv = document.querySelector('#galerie_section_failure');
+    const erreurServer =
+    `<p class="error_message_connexion container">La connexion au serveur n'a pas pu être effectué.<br /> Verifier bien que vous avez lancé le serveur local (Port 3000) ?<br /> Puis vous réessayez !</p>`
+    serveurErrorDiv.insertAdjacentHTML("beforeEnd",erreurServer);
+    });
 }
 
 //la fonction contentLoad est appellée

@@ -36,4 +36,14 @@ body{
     height: 100vh;
     margin: auto;
 }
+.error_message_connexion{
+    text-align: center;
+    display: inline-table; /* keep the background color wrapped tight */
+    padding:5px;
+    font-size:2rem;
+    background-color:rgb(229, 189, 186);
+    border-radius: .5rem; 
+    color: red;
+    @include font-weight-text;
+}
 

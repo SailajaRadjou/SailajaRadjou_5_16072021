@@ -315,6 +315,7 @@ function loadPanier()
 const deleteContent = document.getElementById('delete');
 deleteContent.addEventListener("click", function (event)
 {
+    //ajouter une boite de dialog de confirmation pour vider le panier
     if (confirm("Êtes-vous sure de vider tous vos panier ?"))
     {
         localStorage.removeItem('newProduct');

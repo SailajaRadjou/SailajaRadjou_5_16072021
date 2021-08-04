@@ -11422,4 +11422,16 @@ body {
   margin: auto;
 }
 
+.error_message_connexion {
+  text-align: center;
+  display: inline-table;
+  /* keep the background color wrapped tight */
+  padding: 5px;
+  font-size: 2rem;
+  background-color: #e5bdba;
+  border-radius: 0.5rem;
+  color: red;
+  font-weight: bolder !important;
+}
+
 /*# sourceMappingURL=style.css.map */
