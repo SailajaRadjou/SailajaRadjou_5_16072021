@@ -66,24 +66,24 @@ function loadPanier()
             `<form class="needs-validation form_display" novalidate>
                 <div class="form-row form_content_display">
                     <div class="col-md-4 mb-3 form_items_display">
-                        <label for="firstName">First Name  :</label>
+                        <label for="firstName">Nom  :</label>
                         <input type="text" class="form-control form_text_input" id="firstName" placeholder="Votre nom" required>
                     </div>
                     <div class="col-md-4 mb-3 form_items_display">
-                        <label for="lastName">Last Name  :</label>
+                        <label for="lastName">Prénom  :</label>
                         <input type="text" class="form-control form_text_input" id="lastName" placeholder="Votre prénom" required>
                     </div>
                     <div class="form-row form_items_display">
                         <div class="col-md-6 mb-3">
-                        <label for="address">Address  :</label>
+                        <label for="address">Adresse  :</label>
                         <input type="text" class="form-control form_text_input" id="address" placeholder="Votre adresse" required>
                     </div>
                     <div class="col-md-3 mb-3 form_items_display">
-                        <label for="city">City  :</label>
+                        <label for="city">Ville  :</label>
                         <input type="text" class="form-control form_text_input" id="city" placeholder="Ville" required>
                     </div>
                     <div class="col-md-4 mb-3 form_items_display">
-                        <label for="email">E-mail  :</label>
+                        <label for="email">Adresse e-mail  :</label>
                         <input type="text" class="form-control form_text_input" id="email" placeholder="Votre valid adresse E-mail" aria-describedby="inputGroupPrepend" required>
                     </div>
                 </div>
