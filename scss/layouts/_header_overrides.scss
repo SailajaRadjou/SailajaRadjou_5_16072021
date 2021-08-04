@@ -1,11 +1,17 @@
 .logo_display{
     width:180px;
-    height:60px;
+    height : 60px !important;
     object-fit: cover;
     border-radius: 1.5rem;
-    @include for-large-screen {
-        height : 60px !important;
+    @include for-mobile {
+        height : 50px !important;
     }
+}
+.logo_title{
+    @include for-mobile{
+    font-size: 1.3rem !important;
+    padding-top: 10px;
+  }
 }
 .logo_shadow{
    @include logo-box-shadow;
@@ -30,6 +36,7 @@
 }
 .navbar_override{
     align-items: flex-end;
+    justify-content: flex-end;
     width: 100%;
     @include for-mobile{
         @include navbar-override-responsive;

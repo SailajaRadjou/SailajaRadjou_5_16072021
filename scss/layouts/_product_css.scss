@@ -22,10 +22,10 @@
 .product_description{
     @include flex-align-center;
     width: 80%;
-    height: 500px;
+    height: 650px;
     @include product-display;
     @include for-mobile{
-        height: auto;
+        //height: auto;
         flex-direction: column;
     }
 }
@@ -45,7 +45,9 @@
     transition: transform 300ms;
     &:hover{
        transform: scale(1.2);
-        @include button-color;
+       @include button-color;
+       // background: linear-gradient(to right, #B892EB 0, #B892EB 100%) no-repeat left bottom/0 100% !important;
+       // transition: 250ms ease-in-out;
     }
 }
 

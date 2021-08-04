@@ -18,6 +18,7 @@ function loadPanier()
         // si le panier est vide 
         document.getElementById("cart_container").style.display = "none";
         document.getElementById("form_section").style.display = "none";
+        document.getElementById("delete").style.display = "none";
         noOfStoredProducts.innerHTML =  0 + "&nbsp;&nbsp;"+'Articles';
         const emptyBasket = `
             <div class = "cart_content container container-sm panier_vide_container">
@@ -109,8 +110,7 @@ function loadPanier()
 
         //selectionner le bouton pour envoyer le formulaire
         const submitFormButton = document.querySelector("#submit_button");
-        
-
+       
         //ajouter EventListener pour formulaire submit 
         submitFormButton.addEventListener("click", (e) => 
         {
@@ -130,13 +130,13 @@ function loadPanier()
             //appellé le fonction pour afficher alert
             function alertWindow(texteAlert)
             {
-                window.alert(texteAlert+"Chiffre & le Symbole ne sont pas autorisé!");
+                window.alert(texteAlert+"\nle Chiffre & le Symbole ne sont pas autorisés!\nContient obligatoirement minimum 2 characters");
             }
 
             //appellé le fonction pour tester Regular Expressions pour firstName,lastName & city
             const regExForNameCity = (value) =>
             {
-                return /^[A-Za-z\s,'-]{3,20}$/.test(value);
+                return /^[A-Za-z\s,'-]{2,20}$/.test(value);
             }
 
             //appellé le fonction pour tester Regular Expressions pour adresse e-mail
@@ -152,6 +152,7 @@ function loadPanier()
             }
             
             //checking validity for first name
+             
             function firstNameValidity()
             {
                 const firstNameValid = contact.firstName;
@@ -161,6 +162,8 @@ function loadPanier()
                 }
                 else
                 {
+                    firstName.style.border = 'solid 2px red'
+                    firstName.style.boxShadow = '0px 0px 4px red'
                     alertWindow(firstNameValid);
                     return false;
                 }
@@ -176,6 +179,8 @@ function loadPanier()
                 }
                 else
                 {
+                    lastName.style.border = 'solid 2px red'
+                    lastName.style.boxShadow = '0px 0px 4px red'
                     alertWindow(lastNameValid);
                     return false;
                 }
@@ -191,6 +196,8 @@ function loadPanier()
                 }
                 else
                 {
+                    city.style.border = 'solid 2px red'
+                    city.style.boxShadow = '0px 0px 4px red'
                     alertWindow(cityNameValid);
                     return false;
                 }
@@ -206,7 +213,9 @@ function loadPanier()
                 }
                 else
                 {
-                    alertWindow(emailValid);
+                    email.style.border = 'solid 2px red'
+                    email.style.boxShadow = '0px 0px 4px red'
+                    alert("Veuillez saisir une valide adresse mail (exemple : abcd@mail.com).");
                     return false;
                 }
             }
@@ -221,7 +230,9 @@ function loadPanier()
                 }
                 else
                 {
-                    alertWindow(addressValid);
+                    address.style.border = 'solid 2px red'
+                    address.style.boxShadow = '0px 0px 4px red'
+                    alert("Aucun symbole n'est autorisé pour l'adresse");
                     return false;
                 }
             }
@@ -280,7 +291,7 @@ function loadPanier()
                             localStorage.setItem("responseOrderId",contentResponse.orderId);
 
                             window.location.href = "confirmation.html";
-                            //localStorage.removeItem("newProduct");
+                            localStorage.removeItem("newProduct");
                         }
                         else{
                             console.log(`respose server : ${response.status}`);
@@ -304,6 +315,7 @@ function loadPanier()
 const deleteContent = document.getElementById('delete');
 deleteContent.addEventListener("click", function (event)
 {
+    
     localStorage.removeItem('newProduct');
 
     document.getElementById("cart_container").style.display = "none";

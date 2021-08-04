@@ -134,7 +134,12 @@ function getProduct()
               Quantity : quantityList.value,
               
             };
-            console.log(productcount.Quantity);
+            console.log("productcount.Quantity");
+            /*alert(productcount.Quantity);
+            productcount.Quantity=parseInt(productcount.Quantity)+ parseInt(selectedProduct.length);
+           console.log("productcount.Quantity");
+           console.log(productcount.Quantity);*/
+          // noOfProducts.innerHTML =  productcount.Quantity + "&nbsp;&nbsp;"+'Articles'; 
           /* function addQuantity()
             {
               console.log(productAdded.noofarticles);

@@ -69,13 +69,20 @@ a {
 
 .logo_display {
   width: 180px;
-  height: 60px;
+  height: 60px !important;
   object-fit: cover;
   border-radius: 1.5rem;
 }
-@media screen and (min-width: 1025px) and (max-width: 2400px) {
+@media screen and (max-width: 767px) {
   .logo_display {
-    height: 60px !important;
+    height: 50px !important;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .logo_title {
+    font-size: 1.3rem !important;
+    padding-top: 10px;
   }
 }
 
@@ -110,6 +117,7 @@ a {
 
 .navbar_override {
   align-items: flex-end;
+  justify-content: flex-end;
   width: 100%;
 }
 @media screen and (max-width: 767px) {
@@ -330,12 +338,11 @@ a {
   display: flex;
   align-items: center;
   width: 80%;
-  height: 500px;
+  height: 650px;
   box-shadow: 0 0 10px #585555;
 }
 @media screen and (max-width: 767px) {
   .product_description {
-    height: auto;
     flex-direction: column;
   }
 }
@@ -391,6 +398,7 @@ a {
   width: 100%;
   padding: 2rem;
   height: 330px;
+  margin-top: 5rem;
   box-shadow: 1rem 1rem 1rem 1rem mistyrose !important;
 }
 
