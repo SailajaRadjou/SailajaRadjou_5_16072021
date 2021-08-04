@@ -315,21 +315,23 @@ function loadPanier()
 const deleteContent = document.getElementById('delete');
 deleteContent.addEventListener("click", function (event)
 {
+    if (confirm("Êtes-vous sure de vider tous vos panier ?"))
+    {
+        localStorage.removeItem('newProduct');
+
+        document.getElementById("cart_container").style.display = "none";
+        document.getElementById("form_section").style.display = "none";
+
+        noOfstoredProducts.innerHTML = 0 + "&nbsp;&nbsp;"+'Articles'; 
     
-    localStorage.removeItem('newProduct');
+        const cartEmptyDiv = document.createElement('div');
+        cartMain.appendChild(cartEmptyDiv);
+        cartEmptyDiv.className = 'cart_content';
 
-    document.getElementById("cart_container").style.display = "none";
-    document.getElementById("form_section").style.display = "none";
-
-    noOfstoredProducts.innerHTML = 0 + "&nbsp;&nbsp;"+'Articles'; 
-  
-    const cartEmptyDiv = document.createElement('div');
-    cartMain.appendChild(cartEmptyDiv);
-    cartEmptyDiv.className = 'cart_content';
-
-    const emptyCart = document.createElement('p');
-    cartEmptyDiv.appendChild(emptyCart);
-    emptyCart.className = "cart_empty";
-    emptyCart.textContent = "Votre panier est vide !"
-    
+        const emptyCart = document.createElement('p');
+        cartEmptyDiv.appendChild(emptyCart);
+        emptyCart.className = "cart_empty";
+        emptyCart.textContent = "Votre panier est vide !"
+    }
+        
 });
