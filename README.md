@@ -2,9 +2,9 @@
 
 ## Construire un site e-commerce!
 
-   Il s'agit d'un MVP (Produit Minimum Viable) d'une application thématique ne vendant qu'un seul type de produits (ici des appareils photos) ;
+   Il s'agit d'un MVP (Produit Minimum Viable) d'une application thématique ne vendant qu'un seul type de produits (ici des Nounours) ;
 
-   la partie back-end est fournie et l'objectif est de créer la partie front-end par la consommation d'une API fournie.
+   La partie back-end est fournie et l'objectif est de créer la partie front-end par la consommation d'une API fournie.
    Aucune maquette n'est fournie, et aucune gestion réelle de transactions n'est effectuée.
 
 ## Bienvenue sur Orinoco !
