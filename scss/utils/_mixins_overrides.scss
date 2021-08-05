@@ -10,6 +10,11 @@
     display: flex;
     justify-content: space-around;
 } 
+@mixin flex-justify-align-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 /*Font Weight*/
 @mixin font-weight-text {
@@ -75,7 +80,10 @@
    @include button-shadow;
 }
 @mixin button-color {
-    background: linear-gradient(to bottom right,$primary-color, $secondary-color, $teritary-color);
+    background: linear-gradient(to bottom right,$primary-color, $secondary-color, $primary-color);
+}
+@mixin loader-color {
+    background: linear-gradient(to bottom right, $secondary-color, $title-color, $secondary-color);
 }
 
 @mixin navbar-override-responsive {

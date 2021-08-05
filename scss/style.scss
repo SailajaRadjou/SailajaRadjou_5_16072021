@@ -1,7 +1,8 @@
 
-@import "./utils/animation";
 @import "./utils/variable_overrides";
 @import "./utils/mixins_overrides";
+@import "./utils/keyframes_mixins_animation";
+@import "./utils/animation";
 @import "./base/title_overrides";
 @import "./layouts/header_overrides";
 @import "./layouts/index_css";
