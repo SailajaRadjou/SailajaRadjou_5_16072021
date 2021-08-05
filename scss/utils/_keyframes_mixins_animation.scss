@@ -21,3 +21,18 @@
         z-index: -10;
     }
 }
+
+@keyframes shake {
+    10%, 90% {
+      transform: rotate(-18deg);
+    }
+    20%, 80% {
+      transform: rotate(1deg);
+    }
+    30%, 50%, 70% {
+      transform: rotate(-18deg);
+    }
+    40%, 60% {
+      transform: rotate(1deg);
+    }
+  }
