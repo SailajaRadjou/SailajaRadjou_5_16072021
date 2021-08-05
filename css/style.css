@@ -142,6 +142,10 @@ a {
   font-weight: bolder !important;
 }
 
+.cart_icon {
+  font-size: 2.5rem;
+  color: mistyrose;
+}
 .cart_icon:hover {
   animation: 2.2s shake linear;
 }
@@ -851,7 +855,7 @@ abbr[title],
 abbr[data-bs-original-title] {
   text-decoration: underline dotted;
   cursor: help;
-  text-decoration-skip-ink: none;
+  /*text-decoration-skip-ink: none;*/
 }
 
 address {
@@ -1141,9 +1145,9 @@ legend + * {
   padding: 0;
 }
 
-::file-selector-button {
+/*::file-selector-button {
   font: inherit;
-}
+}*/
 
 ::-webkit-file-upload-button {
   font: inherit;
@@ -1354,16 +1358,16 @@ progress {
   --bs-gutter-y: 0;
   display: flex;
   flex-wrap: wrap;
-  margin-top: calc(var(--bs-gutter-y) * -1);
+ /* margin-top: calc(var(--bs-gutter-y) * -1);
   margin-right: calc(var(--bs-gutter-x) * -.5);
-  margin-left: calc(var(--bs-gutter-x) * -.5);
+  margin-left: calc(var(--bs-gutter-x) * -.5);*/
 }
 .row > * {
   flex-shrink: 0;
   width: 100%;
   max-width: 100%;
-  padding-right: calc(var(--bs-gutter-x) * .5);
-  padding-left: calc(var(--bs-gutter-x) * .5);
+ /* padding-right: calc(var(--bs-gutter-x) * .5);
+  padding-left: calc(var(--bs-gutter-x) * .5);*/
   margin-top: var(--bs-gutter-y);
 }
 
@@ -2911,7 +2915,7 @@ progress {
   color: #6c757d;
   opacity: 1;
 }
-.form-control:disabled, .form-control[readonly] {
+/*.form-control:disabled, .form-control[readonly] {
   background-color: #e9ecef;
   opacity: 1;
 }
@@ -2933,7 +2937,7 @@ progress {
   .form-control::file-selector-button {
     transition: none;
   }
-}
+}*/
 .form-control:hover:not(:disabled):not([readonly])::file-selector-button {
   background-color: #dde0e3;
 }
@@ -2982,11 +2986,11 @@ progress {
   font-size: 0.875rem;
   border-radius: 0.2rem;
 }
-.form-control-sm::file-selector-button {
+/*.form-control-sm::file-selector-button {
   padding: 0.25rem 0.5rem;
   margin: -0.25rem -0.5rem;
   margin-inline-end: 0.5rem;
-}
+}*/
 .form-control-sm::-webkit-file-upload-button {
   padding: 0.25rem 0.5rem;
   margin: -0.25rem -0.5rem;
@@ -2999,11 +3003,11 @@ progress {
   font-size: 1.25rem;
   border-radius: 0.3rem;
 }
-.form-control-lg::file-selector-button {
+/*.form-control-lg::file-selector-button {
   padding: 0.5rem 1rem;
   margin: -0.5rem -1rem;
   margin-inline-end: 1rem;
-}
+}*/
 .form-control-lg::-webkit-file-upload-button {
   padding: 0.5rem 1rem;
   margin: -0.5rem -1rem;
@@ -5100,7 +5104,7 @@ textarea.form-control-lg {
   background-color: #fff;
   border: 0;
   border-radius: 0;
-  overflow-anchor: none;
+  /*overflow-anchor: none;*/
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, border-radius 0.15s ease;
 }
 @media (prefers-reduced-motion: reduce) {

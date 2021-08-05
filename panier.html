@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="css/style.css" />
     <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
     <script src="https://kit.fontawesome.com/2bc10c45b1.js" crossorigin="anonymous"></script>
-    <script type='text/javascript' src="scripts/panier.js" defer></script>
+    <script src="scripts/panier.js" defer></script>
   </head>
   <body>
     <div class="loader">
@@ -35,7 +35,7 @@
                   <img src="images/orinoco-logo.png" class="logo_display logo_shadow" alt="Info Logo" />
                   <h1 class="logo_title">&nbsp;&nbsp;Entreprise de commerce en ligne</h1>
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
                 </button>
               </div> 
@@ -45,10 +45,10 @@
                       <a class="nav-link icon-size" href="index.html"><h2 title="Aller à la page d'accueil">Accueil&emsp;&emsp;</h2></a>
                     </li>
                     <li class="nav-item active">
-                      <a class="nav-link" href="panier.html"><h2><i class="fas fa-cart-arrow-down cart_icon"></i></h2><span id="count_articles" class="total_articles"></span>&emsp;&emsp;</a>
+                      <a class="nav-link" href="panier.html"><i class="fas fa-cart-arrow-down cart_icon"></i><span id="count_articles" class="total_articles"></span>&emsp;&emsp;</a>
                     </li>
                     <li class="nav-item active">
-                      <a class="nav-link" href="panier.html"><h2>&emsp;&emsp;<button id="delete" title="Vider tous le panier"><i class="fas fa-trash-alt"></i></button></h2></a>
+                      <a class="nav-link" href="panier.html"><h2>&emsp;&emsp;<i class="fas fa-trash-alt" id="delete" title="Vider tous le panier"></i></h2></a>
                     </li>
                   
                   </ul>
@@ -59,7 +59,7 @@
       </header>
       <main id="cart_page">
           <div class="title_div title-center card-title panier_title_display"> <h3 class="title_index_page">Orinobears -- Take Me Home</h3> <span><i class="fab fa-pagelines"></i> Teddies in your basket <i class="fab fa-pagelines"></i></span> </div>
-          <section id="cart_container">
+          <div id="cart_container">
             <table class="table table-striped">
               <thead>
                 <tr>
@@ -78,7 +78,7 @@
               </tfoot>
             </table>
             
-          </section>
+          </div>
           <section id="form_section" class="form_section_display">
             <header class="title_commande_header">
               <h3 class="title-center title_commande">Passer la Commande</h3>
