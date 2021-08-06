@@ -1,32 +1,37 @@
-//récupération de l'id de l'ourson de la pageweb
-const urlQuery = window.location.search;
-const urlParams = new URLSearchParams(urlQuery);
-const id = urlParams.get('id');
-console.log("id");
-console.log(id);
-const noOfProducts =  document.getElementById('count_articles'); 
-//Créer un localStorage et pour lire les données de localStorage
-let selectedProduct = JSON.parse(localStorage.getItem('newProduct'));
-let storageQuantity = JSON.parse(localStorage.getItem('countProducts'));
 
-console.log("products dans le panier");
-console.table(selectedProduct);
+    const noOfProducts =  document.getElementById('count_articles'); 
+    //Créer un localStorage et pour lire les données de localStorage
+    let selectedProduct = JSON.parse(localStorage.getItem('newProduct'));
+    let storageQuantity = JSON.parse(localStorage.getItem('countProducts'));
 
-console.log("No of Products in the basket");
-console.log(storageQuantity);
+    console.log("products dans le panier");
+    console.table(selectedProduct);
 
-if(selectedProduct == null || selectedProduct.length === 0)
-{
-    // si le panier est vide 
+    console.log("No of Products in the basket");
+    console.log(storageQuantity);
+
+    if(selectedProduct == null || selectedProduct.length === 0)
+    {
+        // si le panier est vide 
+        
+        noOfProducts.innerHTML =  0 + "&nbsp;&nbsp;"+'Articles';
+        
+    } 
+    else{
+      noOfProducts.innerHTML = storageQuantity + "&nbsp;&nbsp;"+'Articles'; 
+    }
+    //la fonction getOneProduct est appellée
+    getOneProduct();
     
-    noOfProducts.innerHTML =  0 + "&nbsp;&nbsp;"+'Articles';
-    
-} 
-else{
-  noOfProducts.innerHTML = storageQuantity + "&nbsp;&nbsp;"+'Articles'; 
-}
-function getProduct()
+function getOneProduct()
 {
+
+   //récupération de l'id de l'ourson de URL pageweb
+   const urlQuery = window.location.search;
+   const urlParams = new URLSearchParams(urlQuery);
+   const id = urlParams.get('id');
+   console.log("Selected Product Id");
+   console.log(id);
    // récupération des données de ourson sélectionné par son id
    fetch('http://localhost:3000/api/teddies/' + id)
       .then(function (response)
@@ -36,13 +41,15 @@ function getProduct()
       .then(function(receivedData)
       {
         const product = receivedData;
-        //console.log(products.colors);
+        console.log("Selected Product Details");
+        console.table(product);
 
         //crée le tag div pour image
         const productImageDiv = document.createElement("div");
         document.querySelector(".product_description").appendChild(productImageDiv);
         productImageDiv.classList.add("product_display_container");
         productImageDiv.classList.add("container","container-sm");
+
         //crée le tag image et ses attribute 
         const productImageImg = document.createElement("img");
         productImageDiv.appendChild(productImageImg);
@@ -87,7 +94,7 @@ function getProduct()
 
         //création l'élement HTML label pour la couleur
         const productLabelColor = document.createElement("label");
-        productLabelColor.innerHTML = "Color"+"&nbsp;&nbsp; :"+"&emsp;";
+        productLabelColor.innerHTML = "Couleur"+"&nbsp;&nbsp; :"+"&emsp;";
         productFormDiv.appendChild(productLabelColor);
         productLabelColor.setAttribute('for', "colors available" + product.name);
 
@@ -136,7 +143,7 @@ function getProduct()
 
         //création l'élement HTML label pour le prix
         const productLabelRate = document.createElement("label");
-        productLabelRate.innerHTML = "Price"+"&emsp; :"  +"&emsp;";
+        productLabelRate.innerHTML = "Prix"+"&emsp; :"  +"&emsp;";
         productFormDiv.appendChild(productLabelRate);
         productLabelRate.setAttribute('for', "price");
         
@@ -159,21 +166,21 @@ function getProduct()
         addCart.addEventListener("click", function (event) {
 
           event.preventDefault(); //pour empêcher le lien de suivre l'URL 
-          let added=parseInt(quantityList.value);
-         if(selectedProduct == null || selectedProduct.length === 0)
+          let calculQuantityPanier=parseInt(quantityList.value);
+          if(selectedProduct == null || selectedProduct.length === 0)
           {
-             console.log("panier vide");
-
-          }else{ 
-          
-          for(i=0;i<selectedProduct.length;i++)
-          {
-            const quantities =parseInt(selectedProduct[i].Quantity);
-            console.log("quantities new");
-            console.log(quantities);
-            added= added + parseInt(selectedProduct[i].Quantity);
-            console.log(added);
-          }}
+             console.log("Le Panier est Vide");
+          }else
+          {           
+            for(i=0;i<selectedProduct.length;i++)
+            {
+              const quantities =parseInt(selectedProduct[i].Quantity);
+              console.log("quantities new");
+              console.log(quantities);
+              calculQuantityPanier= calculQuantityPanier + parseInt(selectedProduct[i].Quantity);
+              console.log(calculQuantityPanier);
+            }
+          }
           
           let productAdded = {
             productName : product.name,
@@ -181,15 +188,9 @@ function getProduct()
             productColor : colorList.value,
             Quantity : quantityList.value,
             productCost : (product.price / 100)+ " €",
-            TotalQuantity : added
+            TotalQuantity : calculQuantityPanier
           };
-          
-         function addQuantity()
-          {
-            console.log(productAdded.noofarticles);
 
-          }
-          
           const storageProducts = () =>
           {
             //La méthode push() ajoute de nouveaux éléments à la fin d'un tableau
@@ -208,17 +209,15 @@ function getProduct()
           {
             selectedProduct = [];
             storageProducts();
-            console.error(selectedProduct.length);
+            console.log(selectedProduct.length);
            
           } 
           let refreshQuantity= JSON.parse(localStorage.getItem('countProducts'));      
           window.alert(product.name + " " + colorList.value + ' a bien été ajouté!');
           console.table(selectedProduct); 
           noOfProducts.innerHTML = refreshQuantity + "&nbsp;&nbsp;"+'Articles';
-          console.error(refreshQuantity);
+          console.log(refreshQuantity);
         })
       })
       .catch(erreur => console.log('error : '+ erreur))
 } 
-
-getProduct();

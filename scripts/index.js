@@ -1,18 +1,27 @@
-let selectedProduct = JSON.parse(localStorage.getItem('newProduct'));
-let refreshQuantity= JSON.parse(localStorage.getItem('countProducts'));
-const noOfProducts =  document.getElementById('count_articles'); 
-if(selectedProduct == null || selectedProduct.length === 0)
+main();
+
+function main()
 {
-    // si le panier est vide 
     
-    noOfProducts.innerHTML =  0 + "&nbsp;&nbsp;"+'Articles';
-    
-} 
-else
-{
-    noOfProducts.innerHTML =  refreshQuantity + "&nbsp;&nbsp;"+'Articles';  
+    let selectedProduct = JSON.parse(localStorage.getItem('newProduct'));
+    let refreshQuantity= JSON.parse(localStorage.getItem('countProducts'));
+    const noOfProducts =  document.getElementById('count_articles'); 
+    if(selectedProduct == null || selectedProduct.length === 0)
+    {
+        // si le panier est vide 
+        
+        noOfProducts.innerHTML =  0 + "&nbsp;&nbsp;"+'Articles';
+        
+    } 
+    else
+    {
+        noOfProducts.innerHTML =  refreshQuantity + "&nbsp;&nbsp;"+'Articles';  
+    }
+
+    //la fonction getAllProducts est appellée
+    getAllProducts();
 }
-function contentLoad()
+function getAllProducts()
 {
     //récupération des données de l'API via URL
     let url = 'http://localhost:3000/api/teddies';
@@ -25,7 +34,8 @@ function contentLoad()
     {
         //récupération tous les données de l'API
         const products = receivedData;
-        console.log(products);
+        console.log("Received Products");
+        console.table(products);
 
         for(let product of products)
         {
@@ -85,7 +95,4 @@ function contentLoad()
     serveurErrorDiv.insertAdjacentHTML("beforeEnd",erreurServer);
     });
 }
-
-//la fonction contentLoad est appellée
-contentLoad();
 

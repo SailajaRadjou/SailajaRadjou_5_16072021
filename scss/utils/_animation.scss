@@ -38,3 +38,10 @@
 .animation .rect5 {
     animation-delay: -0.8s;
 }
+
+.anim_accueil{
+    transition: transform 300ms;
+    &:hover{
+       transform: scale(0.8);           
+    }
+}

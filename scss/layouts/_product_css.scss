@@ -40,16 +40,6 @@
 .color_quantity{
     margin-top: 1rem;
 }
-.display_submit{
-    @include button-display;
-    transition: transform 300ms;
-    &:hover{
-       transform: scale(1.2);
-       @include button-color;
-       // background: linear-gradient(to right, #B892EB 0, #B892EB 100%) no-repeat left bottom/0 100% !important;
-       // transition: 250ms ease-in-out;
-    }
-}
 
 .product_name_rate{
     display: flex;
