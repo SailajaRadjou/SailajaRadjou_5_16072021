@@ -18,7 +18,7 @@
 
   2.Telechargez et ouvrez Node.js.
   
-  3.Tapez la commande suivante : "npm start".
+  3.Tapez la commande suivante : "npm install".
   
   4.Puis lancez le serveur en tapant la commande : "node server".
   
