@@ -1,23 +1,11 @@
+let refreshQuantity= JSON.parse(localStorage.getItem('countProducts'));
+const noOfProducts =  document.getElementById('count_articles'); 
 main();
 
 function main()
 {
-    
-    let productsInLocalStorage = JSON.parse(localStorage.getItem('newProduct'));
-    let refreshQuantity= JSON.parse(localStorage.getItem('countProducts'));
-    const noOfProducts =  document.getElementById('count_articles'); 
-    if(productsInLocalStorage == null || productsInLocalStorage.length === 0)
-    {
-        // si le panier est vide 
-        
-        noOfProducts.innerHTML =  0 + "&nbsp;&nbsp;"+'Articles';
-        
-    } 
-    else
-    {
-        noOfProducts.innerHTML =  refreshQuantity + "&nbsp;&nbsp;"+'Articles';  
-    }
-
+     //pour afficher nombres de articles dans le panier
+     storageQuantity();
     //la fonction getAllProducts est appellée
     getAllProducts();
 }

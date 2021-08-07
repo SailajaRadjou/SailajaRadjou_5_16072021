@@ -1,35 +1,24 @@
+
 const noOfProducts =  document.getElementById('count_articles'); 
 let refreshQuantity= JSON.parse(localStorage.getItem('countProducts'));
 main();
 
 function main()
 {
-    //Créer un localStorage et pour lire les données de localStorage
-    let productsInLocalStorage = JSON.parse(localStorage.getItem('newProduct'));
-    
-    console.log("products dans le panier");
-    console.table(productsInLocalStorage);
-
-    console.log("No of Products in the basket");
-    console.log(refreshQuantity);
-
-    if(productsInLocalStorage == null || productsInLocalStorage.length === 0)
-    {
-        // si le panier est vide        
-        noOfProducts.innerHTML =  0 + "&nbsp;&nbsp;"+'Articles';        
-    } 
-    else{
-      noOfProducts.innerHTML = refreshQuantity + "&nbsp;&nbsp;"+'Articles'; 
-    }
-    //la fonction getOneProduct est appellée
-    getOneProduct();
+  //pour afficher nombres de articles dans le panier
+  storageQuantity();
+  //la fonction getOneProduct est appellée
+  getOneProduct();
 }   
 function getOneProduct()
 {
   let selectedProduct = JSON.parse(localStorage.getItem('newProduct'));
    //récupération de l'id de l'ourson de URL pageweb
+   //La partie de l'URL qui suit le symbole « ? », avec ce symbole inclus
    const urlQuery = window.location.search;
+   //Retourne un objet URLSearchParams  permettant d'accéder aux arguments de requête GET contenus dans l'URL.
    const urlParams = new URLSearchParams(urlQuery);
+   //Retourne la première valeur associée au paramètre de recherche donné.
    const id = urlParams.get('id');
    console.log("Selected Product Id");
    console.log(id);

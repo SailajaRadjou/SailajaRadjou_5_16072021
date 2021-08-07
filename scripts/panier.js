@@ -1,7 +1,9 @@
 //récupération les données de localStorage
 let storedProducts = JSON.parse(localStorage.getItem('newProduct'));
 console.log(storedProducts);
+
 let storageQuantity = JSON.parse(localStorage.getItem('countProducts'));
+
 const cartMain = document.getElementById('cart_page');
 const listProductOneByOne = document.getElementById("next_row");
 const noOfStoredProducts =  document.getElementById('count_articles'); 
