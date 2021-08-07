@@ -1,31 +1,32 @@
+const noOfProducts =  document.getElementById('count_articles'); 
+let refreshQuantity= JSON.parse(localStorage.getItem('countProducts'));
+main();
 
-    const noOfProducts =  document.getElementById('count_articles'); 
+function main()
+{
     //Créer un localStorage et pour lire les données de localStorage
-    let selectedProduct = JSON.parse(localStorage.getItem('newProduct'));
-    let storageQuantity = JSON.parse(localStorage.getItem('countProducts'));
-
+    let productsInLocalStorage = JSON.parse(localStorage.getItem('newProduct'));
+    
     console.log("products dans le panier");
-    console.table(selectedProduct);
+    console.table(productsInLocalStorage);
 
     console.log("No of Products in the basket");
-    console.log(storageQuantity);
+    console.log(refreshQuantity);
 
-    if(selectedProduct == null || selectedProduct.length === 0)
+    if(productsInLocalStorage == null || productsInLocalStorage.length === 0)
     {
-        // si le panier est vide 
-        
-        noOfProducts.innerHTML =  0 + "&nbsp;&nbsp;"+'Articles';
-        
+        // si le panier est vide        
+        noOfProducts.innerHTML =  0 + "&nbsp;&nbsp;"+'Articles';        
     } 
     else{
-      noOfProducts.innerHTML = storageQuantity + "&nbsp;&nbsp;"+'Articles'; 
+      noOfProducts.innerHTML = refreshQuantity + "&nbsp;&nbsp;"+'Articles'; 
     }
     //la fonction getOneProduct est appellée
     getOneProduct();
-    
+}   
 function getOneProduct()
 {
-
+  let selectedProduct = JSON.parse(localStorage.getItem('newProduct'));
    //récupération de l'id de l'ourson de URL pageweb
    const urlQuery = window.location.search;
    const urlParams = new URLSearchParams(urlQuery);
@@ -209,10 +210,9 @@ function getOneProduct()
           {
             selectedProduct = [];
             storageProducts();
-            console.log(selectedProduct.length);
-           
+            console.log(selectedProduct.length);           
           } 
-          let refreshQuantity= JSON.parse(localStorage.getItem('countProducts'));      
+          refreshQuantity= JSON.parse(localStorage.getItem('countProducts'));      
           window.alert(product.name + " " + colorList.value + ' a bien été ajouté!');
           console.table(selectedProduct); 
           noOfProducts.innerHTML = refreshQuantity + "&nbsp;&nbsp;"+'Articles';

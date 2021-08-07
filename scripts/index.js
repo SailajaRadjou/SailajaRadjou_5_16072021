@@ -3,10 +3,10 @@ main();
 function main()
 {
     
-    let selectedProduct = JSON.parse(localStorage.getItem('newProduct'));
+    let productsInLocalStorage = JSON.parse(localStorage.getItem('newProduct'));
     let refreshQuantity= JSON.parse(localStorage.getItem('countProducts'));
     const noOfProducts =  document.getElementById('count_articles'); 
-    if(selectedProduct == null || selectedProduct.length === 0)
+    if(productsInLocalStorage == null || productsInLocalStorage.length === 0)
     {
         // si le panier est vide 
         
@@ -95,4 +95,3 @@ function getAllProducts()
     serveurErrorDiv.insertAdjacentHTML("beforeEnd",erreurServer);
     });
 }
-
