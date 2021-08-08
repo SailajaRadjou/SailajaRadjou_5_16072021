@@ -29,5 +29,3 @@ const displayConfirmationCommande = () =>
 }
 //appellé pour affichage de confirmation commande
 displayConfirmationCommande(); 
-// Efface localStorage
-//localStorage.clear();

@@ -1,6 +1,6 @@
 function storageQuantity()
 {
-    //Créer un localStorage et pour lire les données de localStorage
+    //pour lire les données de localStorage
     let productsInLocalStorage = JSON.parse(localStorage.getItem('newProduct'));
     
     console.log("products dans le panier");

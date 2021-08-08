@@ -201,11 +201,12 @@ function getOneProduct()
             storageProducts();
             console.log(selectedProduct.length);           
           } 
-          refreshQuantity= JSON.parse(localStorage.getItem('countProducts'));      
+          //refreshQuantity= JSON.parse(localStorage.getItem('countProducts'));      
           window.alert(product.name + " " + colorList.value + ' a bien été ajouté!');
           console.table(selectedProduct); 
-          noOfProducts.innerHTML = refreshQuantity + "&nbsp;&nbsp;"+'Articles';
-          console.log(refreshQuantity);
+          window.location.reload();
+         /* noOfProducts.innerHTML = refreshQuantity + "&nbsp;&nbsp;"+'Articles';
+          console.log(refreshQuantity);*/
         })
       })
       .catch(erreur => console.log('error : '+ erreur))
