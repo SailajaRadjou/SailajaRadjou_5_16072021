@@ -13,11 +13,13 @@ function getAllProducts()
 {
     //récupération des données de l'API via URL
     let url = 'http://localhost:3000/api/teddies';
-
+    
     fetch(url)
     .then(function(Response){
+        //pour récupérer le résultat de la requête au format json
         return Response.json();
     })
+    //récupérons sa vraie valeur
     .then(function(receivedData)
     {
         //récupération tous les données de l'API
@@ -76,6 +78,7 @@ function getAllProducts()
         }
             
     })
+    //appelée s’il y a une erreur qui est survenue lors de la requête
     .catch(erreur => {
         const serveurErrorDiv = document.querySelector('#galerie_section_failure');
     const erreurServer =

@@ -86,20 +86,10 @@ function loadPanier()
                     </div>
                     <div class="col-md-4 mb-3 form_items_display">
                         <label for="email">Adresse e-mail  :</label>
-                        <input type="text" class="form-control form_text_input" id="email" placeholder="Votre valid adresse E-mail" aria-describedby="inputGroupPrepend" required>
+                        <input type="email" class="form-control form_text_input" id="email" placeholder="Votre valid adresse E-mail" aria-describedby="inputGroupPrepend" required>
                     </div>
                 </div>
-                <div class="form-group">
-                    <div class="form-check">
-                        <input class="form-check-input form_check_display" type="checkbox" value="" id="invalidCheck" required>
-                        <label class="form-check-label" for="invalidCheck">
-                        &nbsp;&nbsp;Agree to terms and conditions
-                        </label>
-                        <div class="invalid-feedback">
-                        You must agree before submitting.
-                        </div>
-                    </div>
-                </div>
+                
                 <button id="submit_button" class="btn btn-primary form_button_display" type="submit">Valider votre Commande</button>
             </form>`;
 
@@ -262,7 +252,7 @@ function loadPanier()
                 console.log("commandeEnvoyer");
                 console.table(commandeEnvoyer);
 
-                //envoie de l'objet "commandeEnvoyer" vers le serveur
+                //envoie de l'objet "commandeEnvoyer" vers le serveur et transformer notre objet JavaScript en JSON
                 const promisePost = fetch("http://localhost:3000/api/teddies/order", {
                     method: "POST",
                     body: JSON.stringify(commandeEnvoyer),
@@ -283,7 +273,7 @@ function loadPanier()
                     try {
                         
                         const contentResponse = await response.json();
-                        console.log("response");
+                        console.log("Server Response");
                         console.log(contentResponse);
                         if (response.ok){
                             console.log(`response OK : ${response.ok}`);
@@ -300,7 +290,9 @@ function loadPanier()
                             alert(`problem avec server : ${response.status}`);
                         }                     
                                 
-                    }catch (e) {
+                    }
+                    //appelée s’il y a une erreur qui est survenue lors de la requête
+                    catch (e) {
                         console.log(e);
                     }
                 });
