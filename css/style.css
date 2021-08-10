@@ -102,6 +102,7 @@
 
 .anim_accueil {
   transition: transform 300ms;
+  line-height: 0.5;
 }
 .anim_accueil:hover {
   transform: scale(0.8);
@@ -166,6 +167,7 @@ a {
 }
 
 .title_index_page {
+  color: #750d75;
   font-weight: bolder !important;
 }
 
@@ -178,7 +180,10 @@ a {
 }
 
 .panier_vider_anim {
+  font-size: 2rem;
+  color: mistyrose;
   transition: transform 300ms;
+  line-height: 0;
 }
 .panier_vider_anim:hover {
   animation: vibrate 0.4s linear infinite both;
@@ -250,6 +255,7 @@ a {
 }
 
 .navbar_override {
+  align-items: flex-end;
   justify-content: flex-end;
   width: 100%;
 }
@@ -656,6 +662,11 @@ a {
 
 .form_content_display {
   height: 500px;
+}
+@media screen and (max-width: 767px) {
+  .form_content_display {
+    width: 100%;
+  }
 }
 
 .form_button_display {

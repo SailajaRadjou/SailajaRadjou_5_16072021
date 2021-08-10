@@ -41,6 +41,7 @@
 
 .anim_accueil{
     transition: transform 300ms;
+    line-height: 0.5;
     &:hover{
        transform: scale(0.8);           
     }

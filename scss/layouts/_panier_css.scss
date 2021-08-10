@@ -114,6 +114,9 @@
 }
 .form_content_display{
     height: 500px;
+    @include for-mobile{
+        width: 100%;
+    }
 }
 .form_button_display{
     margin-top: 1.3rem !important;

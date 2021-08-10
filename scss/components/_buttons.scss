@@ -7,7 +7,10 @@
 }   
 
 .panier_vider_anim{
+    font-size: 2.0rem;
+    color: $primary-color;
     transition: transform 300ms;
+    line-height: 0;
     &:hover{
         //transform: scale(0.82);
         animation: vibrate 0.4s linear infinite both;

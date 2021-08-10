@@ -140,7 +140,7 @@ function loadPanier()
             //appellé le fonction pour tester Regular Expressions pour adresse e-mail
             const regExForAddress = (value) =>
             {
-                return /^[a-z0-9\s,'-]*$/.test(value);
+                return /^[A-Za-z0-9\s,'-]*$/.test(value);
             }
             
             //checking validity for first name
