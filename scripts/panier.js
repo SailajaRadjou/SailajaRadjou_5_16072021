@@ -140,7 +140,7 @@ function loadPanier()
             //appellé le fonction pour tester Regular Expressions pour adresse e-mail
             const regExForAddress = (value) =>
             {
-                return /^[A-Za-z0-9\s,'-]*$/.test(value);
+                return /^[A-Za-z0-9\s,'-]{3,30}$/.test(value);
             }
             
             //checking validity for first name
@@ -150,6 +150,8 @@ function loadPanier()
                 const firstNameValid = contact.firstName;
                 if(regExForNameCity(firstNameValid))
                 {
+                    firstName.style.border = 'solid 2px green'
+                    firstName.style.boxShadow = '0px 0px 4px green'
                     return true;
                 }
                 else
@@ -167,6 +169,8 @@ function loadPanier()
                 const lastNameValid = contact.lastName;
                 if(regExForNameCity(lastNameValid))
                 {
+                    lastName.style.border = 'solid 2px green'
+                    lastName.style.boxShadow = '0px 0px 4px green'
                     return true;
                 }
                 else
@@ -184,6 +188,8 @@ function loadPanier()
                 const cityNameValid = contact.city;
                 if(regExForNameCity(cityNameValid))
                 {
+                    city.style.border = 'solid 2px green'
+                    city.style.boxShadow = '0px 0px 4px green'
                     return true;
                 }
                 else
@@ -201,6 +207,8 @@ function loadPanier()
                 const emailValid = contact.email;
                 if(regExForEmail(emailValid))
                 {
+                    email.style.border = 'solid 2px green'
+                    email.style.boxShadow = '0px 0px 4px green'
                     return true;
                 }
                 else
@@ -218,6 +226,8 @@ function loadPanier()
                 const addressValid = contact.address;
                 if(regExForAddress(addressValid))
                 {
+                    address.style.border = 'solid 2px green'
+                    address.style.boxShadow = '0px 0px 4px green'
                     return true;
                 }
                 else
@@ -230,7 +240,7 @@ function loadPanier()
             }
 
             //pour controller les valeurs de formulaire si bon le object contact va stocker dans le localStorage
-            if(firstNameValidity() && lastNameValidity() && citytNameValidity() && addressValidity() && emailValidity())
+            if(firstNameValidity() && lastNameValidity() && addressValidity() && citytNameValidity() && emailValidity())
             {
                 //mettre le objet contact dans le localStorage
                 localStorage.setItem("contact",JSON.stringify(contact));
