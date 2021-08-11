@@ -93,7 +93,7 @@ function loadPanier()
                 <button id="submit_button" class="btn btn-primary form_button_display" type="submit">Valider votre Commande</button>
             </form>`;
 
-            //injection le formulaire
+            //injection le formulaire HTML
             addForm.insertAdjacentHTML("beforeEnd",displayForm);
         }
 
@@ -137,7 +137,7 @@ function loadPanier()
                 return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value);
             }
 
-            //appellé le fonction pour tester Regular Expressions pour adresse e-mail
+            //appellé le fonction pour tester Regular Expressions pour adresse postale
             const regExForAddress = (value) =>
             {
                 return /^[A-Za-z0-9\s,'-]{3,30}$/.test(value);
