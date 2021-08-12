@@ -1,3 +1,4 @@
+//récupération les données de nombres de products dans le localStorage au format JSON
 let refreshQuantity= JSON.parse(localStorage.getItem('countProducts'));
 const noOfProducts =  document.getElementById('count_articles'); 
 main();

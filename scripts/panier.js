@@ -1,7 +1,7 @@
-//récupération les données de localStorage
+//récupération les données de localStorage au format JSON
 let storedProducts = JSON.parse(localStorage.getItem('newProduct'));
 console.log(storedProducts);
-
+//récupération les données de nombres de products dans le localStorage au format JSON
 let storageQuantity = JSON.parse(localStorage.getItem('countProducts'));
 
 const cartMain = document.getElementById('cart_page');
@@ -15,9 +15,9 @@ loadPanier();
 
 function loadPanier()
 {
+    // si le panier est vide 
     if(storedProducts == null || storedProducts.length === 0)
     {
-        // si le panier est vide 
         document.getElementById("cart_container").style.display = "none";
         document.getElementById("form_section").style.display = "none";
         document.getElementById("delete").style.display = "none";
@@ -30,9 +30,9 @@ function loadPanier()
         `;
         cartMain.innerHTML = emptyBasket; 
     } 
-    else {
-         // si le panier a des produits => récupération des éléments du panier
-
+    // si le panier a des produits => récupération des éléments du localStoge & les affiches dans le panier détaillé et le formulaire à remplir
+    else
+    {
         noOfStoredProducts.innerHTML = storageQuantity + "&nbsp;&nbsp;"+'Articles';
         for(i=0;i<storedProducts.length;i++)
         {
@@ -53,6 +53,7 @@ function loadPanier()
             calculMontantCol.innerText = calculMontant.toFixed(2) + '€';
         
         }
+        //injection html panier detaillé 
         if(i == storedProducts.length)
         {
             listProductOneByOne.innerHTML = showProductPanier;
@@ -63,7 +64,7 @@ function loadPanier()
         {
             //le positionnement du formulaire
             const addForm = document.querySelector('#form_section');
-            
+            //la structure pour formulaire
             const displayForm = 
             `<form class="needs-validation form_display" novalidate>
                 <div class="form-row form_content_display">
@@ -106,6 +107,7 @@ function loadPanier()
         //ajouter EventListener pour formulaire submit 
         submitFormButton.addEventListener("click", (e) => 
         {
+            //pour empêcher le lien de suivre l'URL
             e.preventDefault();
             //recupère des valeurs du formilaire pour stocker dans le locale Storage
            
@@ -128,7 +130,7 @@ function loadPanier()
             //appellé le fonction pour tester Regular Expressions pour firstName,lastName & city
             const regExForNameCity = (value) =>
             {
-                return /^[A-Za-z\s,'-]{2,20}$/.test(value);
+                return /^[A-Za-zçéèï\s,'-]{2,20}$/.test(value);
             }
 
             //appellé le fonction pour tester Regular Expressions pour adresse e-mail
@@ -140,7 +142,7 @@ function loadPanier()
             //appellé le fonction pour tester Regular Expressions pour adresse postale
             const regExForAddress = (value) =>
             {
-                return /^[A-Za-z0-9\s,'-]{3,30}$/.test(value);
+                return /^[A-Za-zçéèï0-9\s,'-]{3,30}$/.test(value);
             }
             
             //checking validity for first name

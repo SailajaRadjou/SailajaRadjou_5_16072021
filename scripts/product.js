@@ -1,5 +1,6 @@
 
 const noOfProducts =  document.getElementById('count_articles'); 
+//JSON.parse()- c'est pour convertir les données au format JSON 
 let refreshQuantity= JSON.parse(localStorage.getItem('countProducts'));
 main();
 
@@ -16,7 +17,7 @@ function getOneProduct()
    //récupération de l'id de l'ourson de URL pageweb
    //La partie de l'URL qui suit le symbole « ? », avec ce symbole inclus
    const urlQuery = window.location.search;
-   //Retourne un objet URLSearchParams  permettant d'accéder aux arguments de requête GET contenus dans l'URL.
+   //Retourne un objet URLSearchParams(c'est un constructeur) qui permettant d'accéder aux arguments de requête GET contenus dans l'URL.
    const urlParams = new URLSearchParams(urlQuery);
    //Retourne la première valeur associée au paramètre de recherche donné.
    const id = urlParams.get('id');
@@ -26,8 +27,10 @@ function getOneProduct()
    fetch('http://localhost:3000/api/teddies/' + id)
       .then(function (response)
       {
+        //pour récupérer le résultat de la requête au format json
         return response.json();
       })
+      //récupérons sa vraie valeur
       .then(function(receivedData)
       {
         const product = receivedData;
@@ -36,6 +39,7 @@ function getOneProduct()
 
         //crée le tag div pour image
         const productImageDiv = document.createElement("div");
+        //selctionner la classe où html va injecter
         document.querySelector(".product_description").appendChild(productImageDiv);
         productImageDiv.classList.add("product_display_container");
         productImageDiv.classList.add("container","container-sm");
@@ -97,7 +101,7 @@ function getOneProduct()
 
         const colors = product.colors;//Récupérer les listes de couleurs
        
-        //création l'élement HTML option pour ajouter les values 
+        //création l'élement HTML option pour ajouter les values couleur
         for (let i = 0; i < colors.length; i++)
         {
             const selectOption = document.createElement('option');
@@ -120,6 +124,7 @@ function getOneProduct()
         quantityList.setAttribute('id', "select_list_quantity");
         quantityList.setAttribute('class', "formselect select_quantity");
 
+        //la boucle pour afficher les options quantités
         for (let i = 1; i <= 10; i++)
         {
             const quantityOption = document.createElement('option');
@@ -157,10 +162,13 @@ function getOneProduct()
 
           event.preventDefault(); //pour empêcher le lien de suivre l'URL 
           let calculQuantityPanier=parseInt(quantityList.value);
+          //s'il n'y a pas des produits dans le localStorage
           if(selectedProduct == null || selectedProduct.length === 0)
           {
              console.log("Le Panier est Vide");
-          }else
+          }
+          //s' il y a des produits dans le localStorage il va ajouter le quantité selectionner avec les nombres de articles dans le local storage
+          else
           {           
             for(i=0;i<selectedProduct.length;i++)
             {
@@ -171,7 +179,7 @@ function getOneProduct()
               console.log(calculQuantityPanier);
             }
           }
-          
+          //Récupérations des valeurs pour ajouter dans le localStorage
           let productAdded = {
             productName : product.name,
             productId : product._id,
@@ -180,21 +188,24 @@ function getOneProduct()
             productCost : (product.price / 100)+ " €",
             TotalQuantity : calculQuantityPanier
           };
-
+          //fonction pour ajouter un produit selectionner dans le localStorage
           const storageProducts = () =>
           {
             //La méthode push() ajoute de nouveaux éléments à la fin d'un tableau
             selectedProduct.push(productAdded);
-            //pour ENREGISTRER les données sur localStorage
+            //pour ENREGISTRER les données sur localStorage, transformation en format JSON & l'envoyer dans la key "newProduct" du local storage
             localStorage.setItem('newProduct', JSON.stringify(selectedProduct));
+            //pour enregistrer les nombres articles et envoyer dans la key "countProducts" du localStorage
             localStorage.setItem('countProducts', productAdded.TotalQuantity);
           };
-         
+
+          //si il y a des produits déja enregistrer dans le localStorage
           if(selectedProduct)
           {
             storageProducts();
            
           }
+          //si il n'y a pas des produits enregistrer dans le localStorage
           else
           {
             selectedProduct = [];
@@ -202,7 +213,7 @@ function getOneProduct()
             console.log(selectedProduct.length);           
           } 
           //refreshQuantity= JSON.parse(localStorage.getItem('countProducts'));      
-          window.alert(product.name + " " + colorList.value + ' a bien été ajouté!');
+          window.alert(quantityList.value+ " " + product.name + " " + colorList.value + ' a bien été ajouté!');
           console.table(selectedProduct); 
           window.location.reload();
          /* noOfProducts.innerHTML = refreshQuantity + "&nbsp;&nbsp;"+'Articles';
