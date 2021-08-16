@@ -220,5 +220,12 @@ function getOneProduct()
           console.log(refreshQuantity);*/
         })
       })
-      .catch(erreur => console.log('error : '+ erreur))
+      //appelée s’il y a une erreur qui est survenue lors de la requête
+    .catch(erreur => {
+      const serveurErrorDiv = document.querySelector('#galerie_section_failure');
+      document.getElementById("product_container_display").style.display = "none";
+       const erreurServer =
+      `<p class="error_message_connexion container">Cette page n'existe pas.<br /> <a href="index.html">Voulez-vous retourner à la boutique ?</a></p>`
+        serveurErrorDiv.insertAdjacentHTML("beforeEnd",erreurServer);
+  });
 } 
